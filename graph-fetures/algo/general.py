@@ -2,9 +2,9 @@ from utils import timer
 
 def general_information(gnx, f, ft):
     if(gnx.is_directed()):
-        general_information_directed(gnx, f, ft)
+        return general_information_directed(gnx, f, ft)
     else:
-        general_information_undirected(gnx, f, ft)
+        return general_information_undirected(gnx, f, ft)
 
 def general_information_directed(gnx, f, ft):
     out_deg = []

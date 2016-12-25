@@ -272,3 +272,5 @@ def find_all_motifs(f, ft, gnx, motifs_number= 3):
             line = line + ',' + str(h)
         f.writelines(line + '\n')
     print 'finish write to file:  ' + str(datetime.now())
+
+    return motifsHist

@@ -12,6 +12,8 @@ def attractor_basin(gnx, f, ft):
     for k in attractor_dict.keys():
         f.writelines(str(k) + ',' + str(attractor_dict[k]) + '\n')
 
+    return attractor_dict
+
 
 def calc_attractor_basin(gnx):
     attractor_basin_dist, avg_in, avg_out = initialize_attraction_basin_dist(gnx)
