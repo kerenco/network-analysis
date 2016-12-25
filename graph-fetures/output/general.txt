@@ -1,0 +1,22 @@
+Number of Vertex:
+8
+Number of Edges:
+9
+Out Degrees:
+0,1
+1,1
+2,3
+3,1
+4,1
+5,1
+6,1
+7,0
+In Degrees:
+0,0
+1,1
+2,1
+3,1
+4,1
+5,1
+6,3
+7,1

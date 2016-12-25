@@ -1,0 +1,5 @@
+Start Attractor Basin at: 
+2016-12-25 16:29:32.427000
+2016-12-25 16:29:32.427000
+finish! 
+It Took: 0.0
