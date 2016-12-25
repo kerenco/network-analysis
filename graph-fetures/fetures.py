@@ -9,6 +9,8 @@ from algo import flow
 from algo import bfs
 from algo import attractorBasin
 from algo import myMotifs
+from algo import k_core
+from algo import louvain
 
 
 
@@ -23,6 +25,8 @@ def calc_fetures(file_input,outputDirectory,directed,fetures_list,weighted=True)
     # 6 - A.B
     # 7 - motif3
     # 8 - motif4
+    # 9 - k-core
+    # 10 - louvain
     ######
 
     ########### load graph from file ##########
@@ -105,6 +109,25 @@ def calc_fetures(file_input,outputDirectory,directed,fetures_list,weighted=True)
         print str(datetime.now()) +' finish motifs 4'
         map_fetures[8] = map_motif4
 
+    if(9 in fetures_list):
+        print str(datetime.now()) + ' start k-core'
+        f = open(outputDirectory + r'./output/k-core.txt', 'w')
+        ft = open(outputDirectory + r'./times/k-core_times.txt', 'w')
+        map_kcore = k_core.k_core(f,ft,gnx)
+        f.close()
+        ft.close()
+        print str(datetime.now()) + ' finish k_core'
+        map_fetures[9] = map_kcore
+
+    if (10 in fetures_list):
+        print str(datetime.now()) + ' start louvain'
+        f = open(outputDirectory + r'./output/louvain.txt', 'w')
+        ft = open(outputDirectory + r'./times/louvain_times.txt', 'w')
+        map_louvain = louvain.louvainCommunityDetection(f, ft, gnx)
+        f.close()
+        ft.close()
+        print str(datetime.now()) + ' finish louvain'
+        map_fetures[10] = map_louvain
 
     return map_fetures
     # print str(datetime.now()) +' start motifs 3'
@@ -133,6 +156,8 @@ def calc_fetures(file_input,outputDirectory,directed,fetures_list,weighted=True)
 
 
 
-fetures = calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\graph-fetures\data\roi-graph.txt',outputDirectory=r'c:\users\keren\Documents\github\network-analysis\graph-fetures',directed=True,weighted=False,fetures_list=[1,3,4,5,6,7,8])
-for k in fetures:
-    print k, fetures[k]
+# fetures = calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\graph-fetures\data\firms_1996.txt'
+#                        ,outputDirectory=r'c:\users\keren\Documents\github\network-analysis\graph-fetures'
+#                        ,directed=False
+#                        ,weighted=False
+#                        ,fetures_list=[10])
