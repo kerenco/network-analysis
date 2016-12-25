@@ -79,11 +79,11 @@ def createGrpah4(is_directed,i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12):
             g.add_edge(3, 4)
     return g
 
-def calculte_motif_3(is_directed = True):
+def calculte_motif_3(is_directed = True,motif_path=''):
     if(is_directed):
-        f = open(os.getcwd() + r'/algo/motifVariations/3_nodes_data_directed_key.txt')
+        f = open(motif_path + r'/3_nodes_data_directed_key.txt')
     else:
-        f = open(os.getcwd() + r'/algo/motifVariations/3_nodes_data_undirected_key.txt')
+        f = open(motif_path + r'/3_nodes_data_undirected_key.txt')
     raws = f.readlines()
     motifs_3_dict = {}
     for r in raws:
@@ -101,11 +101,11 @@ def calculte_motif_3(is_directed = True):
         ls.append(g)
     return ls
 
-def calculte_motif_4(is_directed = True):
+def calculte_motif_4(is_directed = True,motif_path=''):
     if(is_directed):
-        f = open(os.getcwd() + r'/algo/motifVariations/4_nodes_data_directed_key.txt')
+        f = open(motif_path + r'/4_nodes_data_directed_key.txt')
     else:
-        f = open(os.getcwd() + r'/algo/motifVariations/4_nodes_data_undirected_key.txt')
+        f = open(motif_path + r'/4_nodes_data_undirected_key.txt')
     raws = f.readlines()
     motifs_4_dict = {}
     for r in raws:
@@ -124,11 +124,11 @@ def calculte_motif_4(is_directed = True):
         ls.append(g)
     return ls
 
-def get_motif_veriation_list(motifs_number,is_directed):
+def get_motif_veriation_list(motifs_number,is_directed,motif_path):
     if (motifs_number == 3):
-        motifs_veriations = calculte_motif_3(is_directed)
+        motifs_veriations = calculte_motif_3(is_directed,motif_path)
     if (motifs_number == 4):
-        motifs_veriations = calculte_motif_4(is_directed)
+        motifs_veriations = calculte_motif_4(is_directed,motif_path)
     return motifs_veriations
 
 def initialize_motif_hist(g, motifs_veriations):
@@ -212,8 +212,8 @@ def get_sub_tree(g,root,veriation,motifs_veriations,motifsHist,comb_visited):
                             subg = g.subgraph(comb_new)
                             add_to_hist_by_subgraph(subg, motifsHist, motifs_veriations)
 
-def find_motifs_3(g):
-    motifs_veriations = get_motif_veriation_list(3,g.is_directed())
+def find_motifs_3(g,motif_path):
+    motifs_veriations = get_motif_veriation_list(3,g.is_directed(),motif_path)
     motifsHist = initialize_motif_hist(g, motifs_veriations)
     len_nodes = len(list(g.nodes()))
     index = 0
@@ -232,8 +232,8 @@ def find_motifs_3(g):
     print end
     return motifsHist
 
-def find_motifs_4(g):
-    motifs_veriations = get_motif_veriation_list(4,g.is_directed())
+def find_motifs_4(g,motif_path):
+    motifs_veriations = get_motif_veriation_list(4,g.is_directed(),motif_path)
     motifsHist = initialize_motif_hist(g, motifs_veriations)
     len_nodes = len(list(g.nodes()))
     index = 0
@@ -254,14 +254,14 @@ def find_motifs_4(g):
     print end
     return motifsHist
 
-def find_all_motifs(f, ft, gnx, motifs_number= 3):
+def find_all_motifs(f, ft, gnx, motif_path, motifs_number= 3):
     gnx_copy = gnx.copy()
     start = timer.start(ft, 'Find Motifs ' + str(motifs_number) + ' ')
 
     if motifs_number == 3:
-        motifsHist = find_motifs_3(gnx_copy)
+        motifsHist = find_motifs_3(gnx_copy,motif_path)
     if motifs_number == 4:
-        motifsHist = find_motifs_4(gnx_copy)
+        motifsHist = find_motifs_4(gnx_copy,motif_path)
 
     timer.stop(ft, start)
 
