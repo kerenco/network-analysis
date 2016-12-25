@@ -22,6 +22,11 @@ def general_information_directed(gnx, f, ft):
     [f.writelines(str(out[0]) + ',' + str(out[1]) + '\n') for out in out_deg]
     f.writelines('In Degrees:\n')
     [f.writelines(str(i[0]) + ',' + str(i[1]) + '\n') for i in in_deg]
+    map_degree ={}
+    for n in nodes:
+        map_degree[n] = [in_deg[n][1], out_deg[n][1]]
+    return map_degree
+
 
 def general_information_undirected(gnx, f, ft):
     degrees = []
@@ -35,4 +40,9 @@ def general_information_undirected(gnx, f, ft):
     f.writelines(str(len(gnx.edges())) + '\n')
     f.writelines('Degrees:\n')
     [f.writelines(str(degree[0]) + ',' + str(degree[1]) + '\n') for degree in degrees]
+    map_degree = {}
+    for n in nodes:
+        map_degree[n] = [degrees[n][1]]
+    return map_degree
+
 

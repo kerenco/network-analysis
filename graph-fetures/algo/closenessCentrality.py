@@ -8,3 +8,4 @@ def closeness_centrality(f, ft, gnx):
 
     for k in result:
         f.writelines(str(k) + ',' + str(result[k]) + '\n');
+    return result
