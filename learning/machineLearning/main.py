@@ -32,21 +32,19 @@ f = import_path(currentDirectory + r'.\..\..\graph-fetures\fetures.py')
 # 10 - louvain
 
 
-result  = f.calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\roi-graph.txt'
+result = f.calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\firms_1996.txt'
                         ,motif_path = r'C:\Users\Keren\Documents\GitHub\network-analysis\graph-fetures\algo\motifVariations'
                        ,outputDirectory=r'c:\users\keren\Documents\github\network-analysis\graph-fetures'
-                       ,directed=True
+                       ,directed=False
                        ,weighted=False
-                       ,fetures_list=['general','closeness','bfsmoments','flow','ab','motif3','kcore'])
+                       ,fetures_list=['general','closeness','bfsmoments','motif3','kcore','louvain'])
 
 
-fileNameTags = r'c:\users\keren\Documents\github\network-analysis\data\roi-graph_tags.txt'
+fileNameTags = r'c:\users\keren\Documents\github\network-analysis\data\firms_1996_tags.txt'
 
 gnx = result[0]
 map_fetures = result[1]
-print map_fetures[1]
-print map_fetures[3]
-matrix = FeturesMatrix.build_matrix_with_tags(gnx,map_fetures,fileNameTags)
-l = LearningPhase.learningPhase(matrix[:,1:],matrix[:,0])
+matrix = FeturesMatrix.build_matrix_with_tags(gnx,map_fetures, fileNameTags)
+l = LearningPhase.learningPhase(matrix[:, 1:], matrix[:, 0])
 
 l.implementLearningMethod()

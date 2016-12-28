@@ -158,8 +158,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
 # m = calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\roi-graph.txt'
 #                        ,outputDirectory=r'c:\users\keren\Documents\github\network-analysis\graph-fetures'
 #                         ,motif_path=r'C:\Users\Keren\Documents\GitHub\network-analysis\graph-fetures\algo\motifvariations'
-#                        ,directed=True
+#                        ,directed=False
 #                        ,weighted=False
-#                        ,fetures_list=['general','closeness','bfsmoments','flow','ab','motif3','kcore'])
-#
-#
+#                        ,fetures_list=['general','closeness','bfsmoments','motif3','kcore', 'louvain'])
+
+

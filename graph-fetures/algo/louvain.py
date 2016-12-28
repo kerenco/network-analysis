@@ -4,14 +4,11 @@ from utils import timer
 
 def louvainCommunityDetection(f,ft,gnx):
     start = timer.start(ft, 'Louvain')
-    dendrogram = community.generate_dendrogram(gnx)
-    partitions = []
-    for level in range(len(dendrogram)):
-        partition = community.partition_at_level(dendrogram, level)
-        partitions.append(getCommunitySize(gnx, partition))
+    bp = community.best_partition(gnx)
+    comSizeBp = getCommunitySize(gnx, bp)
     timer.stop(ft,start)
-    writeTofile(partitions, f)
-    return partitions
+    writeTofile(comSizeBp, f)
+    return comSizeBp
 
 
 def getCommunitySize(graph, partition):
@@ -25,9 +22,8 @@ def getCommunitySize(graph, partition):
         nodesComSize[node] = comSizeDict[partition[node]]
     return nodesComSize
 
-def writeTofile(partitions, f):
-    for k in partitions[0]:
+def writeTofile(partition, f):
+    for k in partition:
         string = str(k)
-        for part in partitions:
-            string += ',' + str(part[k])
+        string += ',' + str(partition[k])
         f.writelines(string + '\n')

@@ -5,6 +5,7 @@ def build_matrix_from_fetures(gnx,map_fetures):
     node_to_fetures = {}
     for n in gnx.nodes():
         node_to_fetures[n] = []
+    print map_fetures
     for fm in map_fetures:
         for k in map_fetures[fm]:
             if(type(map_fetures[fm][k]) == list):

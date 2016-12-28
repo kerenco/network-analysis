@@ -29,8 +29,8 @@ def general_information_undirected(gnx, f, ft):
     timer.stop(ft, start)
     [f.writelines(str(degree[0]) + ',' + str(degree[1]) + '\n') for degree in degrees]
     map_degree = {}
-    for n in nodes:
-        map_degree[n] = [degrees[n][1]]
+    for degree in degrees:
+        map_degree[degree[0]] = [degree[1]]
     return map_degree
 
 
