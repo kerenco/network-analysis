@@ -1,5 +1,6 @@
 import networkx as nx
 from utils import timer
+from networkx.algorithms.shortest_paths import weighted as weight
 
 
 def flow_mesure(f, ft, gnx):
@@ -17,12 +18,19 @@ def flow_mesure(f, ft, gnx):
 
 
 def calculate_flow_index(gnx):
+    flow_list = []
     nodes = gnx.nodes()
-    flow_list = {}
+    gnx_without_direction=gnx.to_undirected()
     for n in nodes:
-        count_in_nodes = float(len(nx.descendants(gnx, n)))
-        count_out_nodes = float(len(nx.ancestors(gnx, n)))
-        flow_node = count_out_nodes / (count_in_nodes + count_out_nodes)
-        flow_list[n] = flow_node
+        b_u=len(nx.ancestors(gnx_without_direction,n))
+        frac_but=weight.all_pairs_dijkstra_path_length(gnx, b_u, weight='weight')
+        frac_top=weight.all_pairs_dijkstra_path_length(gnx_without_direction, b_u, weight='weight')
+        vet_sum = 0
+        for k in nodes:
+            if (k in frac_but[n]):
+                if (frac_but[n][k] != 0):
+                    vet_sum+=frac_top[n][k]/frac_but[n][k]
+        flow_node = vet_sum/b_u
+        flow_list.append((n, flow_node))
 
     return flow_list

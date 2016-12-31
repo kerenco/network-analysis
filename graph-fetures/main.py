@@ -37,44 +37,44 @@ ft = open(r'./times/closenessCentrality_times.txt', 'w')
 closenessCentrality.closeness_centrality(f,ft,gnx)
 f.close()
 ft.close()
-print str(datetime.now()) +' finish Closeness Centrality'
+print (str(datetime.now()) +' finish Closeness Centrality')
 
 f = open(r'./output/bfsDistribution.txt', 'w')
 ft = open(r'./times/bfsDistribution_times.txt', 'w')
 bfs.bfs_distance_distribution(f, ft, gnx)
 f.close()
 ft.close()
-print str(datetime.now()) +' finish BFS distance distribution'
+print (str(datetime.now()) +' finish BFS distance distribution')
 
 f = open(r'./output/flowMesure.txt', 'w')
 ft = open(r'./times/flowMesure_times.txt', 'w')
 flow.flow_mesure(f,ft,gnx)
 f.close()
 ft.close()
-print str(datetime.now()) +' finish flow mesure'
+print (str(datetime.now()) +' finish flow mesure')
 
-f = open(r'./output/attractionBasin.txt', 'w')
-ft = open(r'./times/attractionBasin_times.txt', 'w')
-attractorBasin.attractor_basin(gnx,f,ft)
-f.close()
-ft.close()
-print str(datetime.now()) +' finish attraction basin'
+#f = open(r'./output/attractionBasin.txt', 'w')
+#ft = open(r'./times/attractionBasin_times.txt', 'w')
+#attractorBasin.attractor_basin(gnx,f,ft)
+#f.close()
+#ft.close()
+#print (str(datetime.now()) +' finish attraction basin')
 
-print str(datetime.now()) +' start motifs 3'
+print (str(datetime.now()) +' start motifs 3')
 f = open(r'./output/motifs3.txt', 'w')
 ft = open(r'./times/motifs3_times.txt', 'w')
 myMotifs.find_all_motifs(f, ft, gnx, motifs_number= 3)
 f.close()
 ft.close()
-print str(datetime.now()) +' finish motifs 3'
+print (str(datetime.now()) +' finish motifs 3')
 
-print str(datetime.now()) +' start motifs 4'
+print (str(datetime.now()) +' start motifs 4')
 f = open(r'./output/motifs4.txt', 'w')
 ft = open(r'./times/motifs4_times.txt', 'w')
 myMotifs.find_all_motifs(f, ft, gnx, motifs_number= 4)
 f.close()
 ft.close()
-print str(datetime.now()) +' finish motifs 4'
+print (str(datetime.now()) +' finish motifs 4')
 
 
 # print str(datetime.now()) +' start motifs 3'

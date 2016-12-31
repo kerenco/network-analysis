@@ -39,6 +39,34 @@ def draw_graph(G, directed):
 
 
 
+def init_graph_networkx(draw = False, directed = True):
+    file_name = os.getcwd() + r"\data\graph12_12_2016t=0.05.txt"
+    f = open(file_name, 'r')
+    lines = f.read();
+    lst = lines.split('\n')
+    edges=[]
+    for x in [row.split(',') for row in lst]:
+        if (len(x)==3): #for creation of weigthed graph
+            temp=(int(x[0]), int(x[1]),{'weight': float(x[2])})
+        else:
+            temp=((int(x[0]), int(x[1]),{'weight': 1}))
+        edges.append(temp)
+    print (edges)
+    if(directed ):
+        gnx = nx.DiGraph()
+    else:
+        gnx = nx.Graph()
+    for e in edges:
+        if (e[0]== -1 and e[1]== -1):
+            break;
+        gnx.add_edges_from([e])
+    # drawing the graph
+    if (draw):
+        nx.draw_networkx(gnx)
+        plt.savefig('graph.png')
+    return gnx;
+
+###################### old code ######################
 #
 # def init_graph(draw = False):
 #     #file_name =  os.getcwd() + r"/data/graph.txt"
