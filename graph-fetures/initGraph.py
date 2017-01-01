@@ -19,7 +19,7 @@ def init_graph(draw, file_name, directed):
     with open(file_name) as f:
         for line in f:
             (v1, v2, weight) = line.split()
-            G.add_edge(int(v1), int(v2), weight=float(weight))
+            G.add_edge(int(v1), int(v2),{'weight': float(weight)})
     if draw:
         draw_graph(G, directed)
     return G
@@ -40,7 +40,7 @@ def draw_graph(G, directed):
 
 
 def init_graph_networkx(draw = False, directed = True):
-    file_name = os.getcwd() + r"\data\graph12_12_2016t=0.05.txt"
+    file_name = os.getcwd() + r"network-analysis\data\firms_1996.txt"
     f = open(file_name, 'r')
     lines = f.read();
     lst = lines.split('\n')
