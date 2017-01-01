@@ -38,8 +38,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     map_fetures = {}
 
     if ('general' in fetures_list):
-        f = open(outputDirectory + r'./output/general.txt', 'w')
-        ft = open(outputDirectory + r'./times/general_times.txt', 'w')
+        f = open(outputDirectory + r'/output/general.txt', 'w')
+        ft = open(outputDirectory + r'/times/general_times.txt', 'w')
         map_general = general.general_information(gnx, f, ft);
         f.close()
         ft.close()
@@ -54,8 +54,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     #     print str(datetime.now()) +' finish betweeneseCentrality'
 
     if ('closeness' in fetures_list):
-        f = open(outputDirectory + r'./output/closenessCentrality.txt', 'w')
-        ft = open(outputDirectory + r'./times/closenessCentrality_times.txt', 'w')
+        f = open(outputDirectory + r'/output/closenessCentrality.txt', 'w')
+        ft = open(outputDirectory + r'/times/closenessCentrality_times.txt', 'w')
         map_closeness =closenessCentrality.closeness_centrality(f,ft,gnx)
         f.close()
         ft.close()
@@ -63,8 +63,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_fetures[3] = map_closeness
 
     if('bfsmoments' in fetures_list):
-        f = open(outputDirectory + r'./output/bfsMoments.txt', 'w')
-        ft = open(outputDirectory + r'./times/bfsMoments_times.txt', 'w')
+        f = open(outputDirectory + r'/output/bfsMoments.txt', 'w')
+        ft = open(outputDirectory + r'/times/bfsMoments_times.txt', 'w')
         map_bfs = bfs.bfs_distance_distribution(f, ft, gnx)
         f.close()
         ft.close()
@@ -72,8 +72,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_fetures[4] = map_bfs
 
     if('flow' in fetures_list):
-        f = open(outputDirectory + r'./output/flowMesure.txt', 'w')
-        ft = open(outputDirectory + r'./times/flowMesure_times.txt', 'w')
+        f = open(outputDirectory + r'/output/flowMesure.txt', 'w')
+        ft = open(outputDirectory + r'/times/flowMesure_times.txt', 'w')
         map_flow = flow.flow_mesure(f,ft,gnx)
         f.close()
         ft.close()
@@ -81,8 +81,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_fetures[5] = map_flow
 
     if('ab' in fetures_list):
-        f = open(outputDirectory + r'./output/attractionBasin.txt', 'w')
-        ft = open(outputDirectory + r'./times/attractionBasin_times.txt', 'w')
+        f = open(outputDirectory + r'/output/attractionBasin.txt', 'w')
+        ft = open(outputDirectory + r'/times/attractionBasin_times.txt', 'w')
         map_attracttor = attractorBasin.attractor_basin(gnx,f,ft)
         f.close()
         ft.close()
@@ -91,9 +91,9 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
 
     if('motif3' in fetures_list):
         print str(datetime.now()) +' start motifs 3'
-        f = open(outputDirectory + r'./output/motifs3.txt', 'w')
-        ft = open(outputDirectory + r'./times/motifs3_times.txt', 'w')
-        map_motif3 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'C:\Users\Keren\Documents\GitHub\network-analysis\graph-fetures\algo\motifVariations', motifs_number= 3)
+        f = open(outputDirectory + r'/output/motifs3.txt', 'w')
+        ft = open(outputDirectory + r'/times/motifs3_times.txt', 'w')
+        map_motif3 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 3)
         f.close()
         ft.close()
         print str(datetime.now()) +' finish motifs 3'
@@ -103,7 +103,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         print str(datetime.now()) +' start motifs 4'
         f = open(outputDirectory + r'./output/motifs4.txt', 'w')
         ft = open(outputDirectory + r'./times/motifs4_times.txt', 'w')
-        map_motif4 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'C:\Users\Keren\Documents\GitHub\network-analysis\graph-fetures\algo\motifVariations', motifs_number= 4)
+        map_motif4 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 4)
         f.close()
         ft.close()
         print str(datetime.now()) +' finish motifs 4'

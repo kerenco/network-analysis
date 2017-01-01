@@ -18,7 +18,7 @@ def import_path(fullpath):
 
 
 currentDirectory = str(os.getcwd())
-f = import_path(currentDirectory + r'.\..\..\graph-fetures\fetures.py')
+f = import_path(currentDirectory + r'/../../graph-fetures/fetures.py')
 
 # 1 - Degrees
 # 2 - betweenes
@@ -31,16 +31,17 @@ f = import_path(currentDirectory + r'.\..\..\graph-fetures\fetures.py')
 # 9 - k-core
 # 10 - louvain
 
-
-result = f.calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\firms_1996.txt'
-                        ,motif_path = r'C:\Users\Keren\Documents\GitHub\network-analysis\graph-fetures\algo\motifVariations'
-                       ,outputDirectory=r'c:\users\keren\Documents\github\network-analysis\graph-fetures'
+wdir = os.getcwd()
+print str(wdir) + r'./../../data/firms_1996.txt'
+result = f.calc_fetures(file_input = str(wdir) + r'/../../data/firms_1996.txt'
+                        ,motif_path =  str(wdir) + r'/../../graph-fetures/algo/motifVariations'
+                       ,outputDirectory=str(wdir) + r'/../../graph-fetures'
                        ,directed=False
                        ,weighted=False
                        ,fetures_list=['general','closeness','bfsmoments','motif3','kcore','louvain'])
 
 
-fileNameTags = r'c:\users\keren\Documents\github\network-analysis\data\firms_1996_tags.txt'
+fileNameTags = str(wdir) + r'/../../data/firms_1996_tags.txt'
 
 gnx = result[0]
 map_fetures = result[1]
