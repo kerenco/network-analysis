@@ -11,8 +11,7 @@ from algo import attractorBasin
 from algo import myMotifs
 from algo import k_core
 from algo import louvain
-
-
+from algo import pageRank
 
 
 def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,weighted=True):
@@ -27,6 +26,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     # 8 - motif4
     # 9 - k-core
     # 10 - louvain
+    # 11 - page_rank
     ######
 
     ########### load graph from file ##########
@@ -59,7 +59,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_closeness =closenessCentrality.closeness_centrality(f,ft,gnx)
         f.close()
         ft.close()
-        print str(datetime.now()) +' finish Closeness Centrality'
+        print (str(datetime.now()) +' finish Closeness Centrality')
         map_fetures[3] = map_closeness
 
     if('bfsmoments' in fetures_list):
@@ -68,7 +68,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_bfs = bfs.bfs_distance_distribution(f, ft, gnx)
         f.close()
         ft.close()
-        print str(datetime.now()) +' finish BFS Moments distribution'
+        print (str(datetime.now()) +' finish BFS Moments distribution')
         map_fetures[4] = map_bfs
 
     if('flow' in fetures_list):
@@ -77,7 +77,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_flow = flow.flow_mesure(f,ft,gnx)
         f.close()
         ft.close()
-        print str(datetime.now()) +' finish flow mesure'
+        print (str(datetime.now()) +' finish flow mesure')
         map_fetures[5] = map_flow
 
     if('ab' in fetures_list):
@@ -86,48 +86,57 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_attracttor = attractorBasin.attractor_basin(gnx,f,ft)
         f.close()
         ft.close()
-        print str(datetime.now()) +' finish attraction basin'
+        print (str(datetime.now()) +' finish attraction basin')
         map_fetures[6] = map_attracttor
 
     if('motif3' in fetures_list):
-        print str(datetime.now()) +' start motifs 3'
+        print (str(datetime.now()) +' start motifs 3')
         f = open(outputDirectory + r'/output/motifs3.txt', 'w')
         ft = open(outputDirectory + r'/times/motifs3_times.txt', 'w')
         map_motif3 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 3)
         f.close()
         ft.close()
-        print str(datetime.now()) +' finish motifs 3'
+        print (str(datetime.now()) +' finish motifs 3')
         map_fetures[7] = map_motif3
 
     if('motif4' in fetures_list):
-        print str(datetime.now()) +' start motifs 4'
+        print (str(datetime.now()) +' start motifs 4')
         f = open(outputDirectory + r'./output/motifs4.txt', 'w')
         ft = open(outputDirectory + r'./times/motifs4_times.txt', 'w')
         map_motif4 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 4)
         f.close()
         ft.close()
-        print str(datetime.now()) +' finish motifs 4'
+        print (str(datetime.now()) +' finish motifs 4')
         map_fetures[8] = map_motif4
 
     if('kcore' in fetures_list):
-        print str(datetime.now()) + ' start k-core'
+        print (str(datetime.now()) + ' start k-core')
         f = open(outputDirectory + r'./output/k-core.txt', 'w')
         ft = open(outputDirectory + r'./times/k-core_times.txt', 'w')
         map_kcore = k_core.k_core(f,ft,gnx)
         f.close()
         ft.close()
-        print str(datetime.now()) + ' finish k_core'
+        print (str(datetime.now()) + ' finish k_core')
         map_fetures[9] = map_kcore
 
     if ('louvain' in fetures_list):
-        print str(datetime.now()) + ' start louvain'
+        print (str(datetime.now()) + ' start louvain')
         f = open(outputDirectory + r'./output/louvain.txt', 'w')
         ft = open(outputDirectory + r'./times/louvain_times.txt', 'w')
         map_louvain = louvain.louvainCommunityDetection(f, ft, gnx)
         f.close()
         ft.close()
-        print str(datetime.now()) + ' finish louvain'
+        print (str(datetime.now()) + ' finish louvain')
         map_fetures[10] = map_louvain
+
+    if('page_rank' in fetures_list):
+        f = open(outputDirectory + r'./output/pageRank.txt', 'w')
+        ft = open(outputDirectory + r'./times/pageRank_times.txt', 'w')
+        map_attracttor = pageRank.page_rank(gnx,f,ft)
+        f.close()
+        ft.close()
+        print (str(datetime.now()) +' finish attraction basin')
+        map_fetures[11] = map_attracttor
 
     return gnx, map_fetures
     # print str(datetime.now()) +' start motifs 3'

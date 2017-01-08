@@ -8,6 +8,7 @@ from algo import closenessCentrality
 from algo import flow
 from algo import bfs
 from algo import attractorBasin
+from algo import pageRank
 from algo import myMotifs
 
 
@@ -53,12 +54,19 @@ f.close()
 ft.close()
 print (str(datetime.now()) +' finish flow mesure')
 
-#f = open(r'./output/attractionBasin.txt', 'w')
-#ft = open(r'./times/attractionBasin_times.txt', 'w')
-#attractorBasin.attractor_basin(gnx,f,ft)
-#f.close()
-#ft.close()
-#print (str(datetime.now()) +' finish attraction basin')
+f = open(r'./output/attractionBasin.txt', 'w')
+ft = open(r'./times/attractionBasin_times.txt', 'w')
+attractorBasin.attractor_basin(gnx,f,ft)
+f.close()
+ft.close()
+print (str(datetime.now()) +' finish attraction basin')
+
+f = open(r'./output/pageRank.txt', 'w')
+ft = open(r'./times/pageRank_times.txt', 'w')
+pageRank.page_rank(gnx,f,ft)
+f.close()
+ft.close()
+print (str(datetime.now()) +' finish pageRank')
 
 print (str(datetime.now()) +' start motifs 3')
 f = open(r'./output/motifs3.txt', 'w')
