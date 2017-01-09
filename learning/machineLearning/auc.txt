@@ -1,0 +1,21 @@
+             precision    recall  f1-score   support
+
+Certain Conditions Originating In The Perinatal Period       0.33      0.60      0.43         5
+Complications Of Pregnancy, Childbirth, And The Puerperium       0.46      0.80      0.59        15
+Congenital Anomalies       0.00      0.00      0.00         4
+Diseases Of The Blood And Blood-Forming Organs       0.00      0.00      0.00         4
+Diseases Of The Circulatory System       0.16      0.28      0.20        18
+Diseases Of The Digestive System       0.08      0.06      0.07        17
+Diseases Of The Genitourinary System       0.00      0.00      0.00        17
+Diseases Of The Musculoskeletal System And Connective Tissue       0.00      0.00      0.00        12
+Diseases Of The Nervous System And Sense Organs       0.00      0.00      0.00        22
+Diseases Of The Respiratory System       0.00      0.00      0.00        22
+Diseases Of The Skin And Subcutaneous Tissue       0.00      0.00      0.00        12
+Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders       0.00      0.00      0.00        11
+Infectious And Parasitic Diseases       0.30      0.29      0.29        38
+Injury And Poisoning       0.26      0.56      0.35        61
+Mental Disorders       0.00      0.00      0.00         8
+  Neoplasms       0.23      0.23      0.23        26
+Symptoms, Signs, And Ill-Defined Conditions       0.00      0.00      0.00         7
+
+avg / total       0.15      0.24      0.18       299

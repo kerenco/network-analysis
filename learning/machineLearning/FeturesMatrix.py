@@ -5,7 +5,7 @@ def build_matrix_from_fetures(gnx,map_fetures):
     node_to_fetures = {}
     for n in gnx.nodes():
         node_to_fetures[n] = []
-    print map_fetures
+    #print map_fetures
     for fm in map_fetures:
         for k in map_fetures[fm]:
             if(type(map_fetures[fm][k]) == list):
@@ -22,8 +22,9 @@ def build_matrix_from_fetures(gnx,map_fetures):
 def readTagsfromFile(node_to_fetures,fileName):
     with open(fileName) as f:
         for line in f:
-            (key, val) = line.split()
-            node_to_fetures[int(key)].insert(0,int(val))
+            line.rstrip()
+            (key, val) = line.split('\t')
+            node_to_fetures[int(key)].insert(0,val.rstrip())
 
 
 def build_matrix_with_tags(gnx,map_fetures,fileName):

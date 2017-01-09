@@ -2,6 +2,7 @@ import os
 import sys
 import LearningPhase
 import FeturesMatrix
+import numpy as np
 
 def import_path(fullpath):
     """
@@ -32,20 +33,21 @@ f = import_path(currentDirectory + r'/../../graph-fetures/fetures.py')
 # 10 - louvain
 
 wdir = os.getcwd()
-print str(wdir) + r'./../../data/firms_1996.txt'
-result = f.calc_fetures(file_input = str(wdir) + r'/../../data/firms_1996.txt'
+#print str(wdir) + r'./../../data/firms_1996.txt'
+result = f.calc_fetures(file_input = str(wdir) + r'/../../data/signaling_pathways.txt'
                         ,motif_path =  str(wdir) + r'/../../graph-fetures/algo/motifVariations'
                        ,outputDirectory=str(wdir) + r'/../../graph-fetures'
-                       ,directed=False
+                       ,directed=True
                        ,weighted=False
-                       ,fetures_list=['general','closeness','bfsmoments','motif3','kcore','louvain'])
+                       #,fetures_list=['general','closeness','bfsmoments','motif3','kcore', 'louvain'])
+                       ,fetures_list=['general', 'closeness', 'bfsmoments', 'motif3', 'kcore', 'flow', 'ab'])
 
 
-fileNameTags = str(wdir) + r'/../../data/firms_1996_tags.txt'
+fileNameTags = str(wdir) + r'/../../data/signaling_pathways_tags.txt'
 
 gnx = result[0]
 map_fetures = result[1]
 matrix = FeturesMatrix.build_matrix_with_tags(gnx,map_fetures, fileNameTags)
+# np.savetxt("matrix.txt", matrix)
 l = LearningPhase.learningPhase(matrix[:, 1:], matrix[:, 0])
-
 l.implementLearningMethod()

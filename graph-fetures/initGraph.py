@@ -19,7 +19,7 @@ def init_graph(draw, file_name, directed):
     with open(file_name) as f:
         for line in f:
             (v1, v2, weight) = line.split()
-            G.add_edge(int(v1), int(v2),{'weight': float(weight)})
+            G.add_edge(v1, v2,{'weight': float(weight)})
     if draw:
         draw_graph(G, directed)
     return G

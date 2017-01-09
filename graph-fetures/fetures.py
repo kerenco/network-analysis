@@ -1,7 +1,10 @@
 import initGraph
+import ReadFeatureFile
+import os
 from datetime import datetime
 
 from algo import general
+import ReadFeatureFile
 # from algo import betweennessCentrality
 # from algo import motifs
 from algo import closenessCentrality
@@ -36,13 +39,17 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     print (str(datetime.now()) +' finish reload graph')
 
     map_fetures = {}
+    wdir = r'./../../graph-fetures'
 
     if ('general' in fetures_list):
-        f = open(outputDirectory + r'/output/general.txt', 'w')
-        ft = open(outputDirectory + r'/times/general_times.txt', 'w')
-        map_general = general.general_information(gnx, f, ft);
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/general.txt') or os.stat(str(wdir) + r'/output/general.txt').st_size == 0:
+            f = open(outputDirectory + r'/output/general.txt', 'w')
+            ft = open(outputDirectory + r'/times/general_times.txt', 'w')
+            map_general = general.general_information(gnx, f, ft);
+            f.close()
+            ft.close()
+        else:
+            map_general = ReadFeatureFile.fileToMap(str(wdir) + r'/output/general.txt')
         print (str(datetime.now()) +' finish general information')
         map_fetures[1] = map_general
     # if ('betweenness' in fetures_list):
@@ -54,78 +61,102 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     #     print str(datetime.now()) +' finish betweeneseCentrality'
 
     if ('closeness' in fetures_list):
-        f = open(outputDirectory + r'/output/closenessCentrality.txt', 'w')
-        ft = open(outputDirectory + r'/times/closenessCentrality_times.txt', 'w')
-        map_closeness =closenessCentrality.closeness_centrality(f,ft,gnx)
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/closenessCentrality.txt') or os.stat(str(wdir) + r'/output/closenessCentrality.txt').st_size == 0:
+            f = open(outputDirectory + r'/output/closenessCentrality.txt', 'w')
+            ft = open(outputDirectory + r'/times/closenessCentrality_times.txt', 'w')
+            map_closeness =closenessCentrality.closeness_centrality(f,ft,gnx)
+            f.close()
+            ft.close()
+        else:
+            map_closeness = ReadFeatureFile.fileToMap(str(wdir) + r'/output/closenessCentrality.txt')
         print str(datetime.now()) +' finish Closeness Centrality'
         map_fetures[3] = map_closeness
 
     if('bfsmoments' in fetures_list):
-        f = open(outputDirectory + r'/output/bfsMoments.txt', 'w')
-        ft = open(outputDirectory + r'/times/bfsMoments_times.txt', 'w')
-        map_bfs = bfs.bfs_distance_distribution(f, ft, gnx)
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/bfsMoments.txt') or os.stat(str(wdir) + r'/output/bfsMoments.txt').st_size == 0:
+            f = open(outputDirectory + r'/output/bfsMoments.txt', 'w')
+            ft = open(outputDirectory + r'/times/bfsMoments_times.txt', 'w')
+            map_bfs = bfs.bfs_distance_distribution(f, ft, gnx)
+            f.close()
+            ft.close()
+        else:
+            map_bfs = ReadFeatureFile.fileToMap(str(wdir) + r'/output/bfsMoments.txt')
         print str(datetime.now()) +' finish BFS Moments distribution'
         map_fetures[4] = map_bfs
 
     if('flow' in fetures_list):
-        f = open(outputDirectory + r'/output/flowMesure.txt', 'w')
-        ft = open(outputDirectory + r'/times/flowMesure_times.txt', 'w')
-        map_flow = flow.flow_mesure(f,ft,gnx)
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/flowMesure.txt') or os.stat(str(wdir) + r'/output/flowMesure.txt').st_size == 0:
+            f = open(outputDirectory + r'/output/flowMesure.txt', 'w')
+            ft = open(outputDirectory + r'/times/flowMesure_times.txt', 'w')
+            map_flow = flow.flow_mesure(f,ft,gnx)
+            f.close()
+            ft.close()
+        else:
+            map_flow = ReadFeatureFile.fileToMap(str(wdir) + r'/output/flowMesure.txt')
         print str(datetime.now()) +' finish flow mesure'
         map_fetures[5] = map_flow
 
     if('ab' in fetures_list):
-        f = open(outputDirectory + r'/output/attractionBasin.txt', 'w')
-        ft = open(outputDirectory + r'/times/attractionBasin_times.txt', 'w')
-        map_attracttor = attractorBasin.attractor_basin(gnx,f,ft)
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/attractionBasin.txt') or os.stat(str(wdir) + r'/output/attractionBasin.txt').st_size == 0:
+            f = open(outputDirectory + r'/output/attractionBasin.txt', 'w')
+            ft = open(outputDirectory + r'/times/attractionBasin_times.txt', 'w')
+            map_attracttor = attractorBasin.attractor_basin(gnx,f,ft)
+            f.close()
+            ft.close()
+        else:
+            map_attracttor = ReadFeatureFile.fileToMap(str(wdir) + r'/output/attractionBasin.txt')
         print str(datetime.now()) +' finish attraction basin'
         map_fetures[6] = map_attracttor
 
     if('motif3' in fetures_list):
-        print str(datetime.now()) +' start motifs 3'
-        f = open(outputDirectory + r'/output/motifs3.txt', 'w')
-        ft = open(outputDirectory + r'/times/motifs3_times.txt', 'w')
-        map_motif3 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 3)
-        f.close()
-        ft.close()
-        print str(datetime.now()) +' finish motifs 3'
+        if not os.path.isfile(str(wdir) + r'/output/motifs3.txt') or os.stat(str(wdir) + r'/output/motifs3.txt').st_size == 0:
+            print str(datetime.now()) +' start motifs 3'
+            f = open(outputDirectory + r'/output/motifs3.txt', 'w')
+            ft = open(outputDirectory + r'/times/motifs3_times.txt', 'w')
+            map_motif3 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 3)
+            f.close()
+            ft.close()
+        else:
+            map_motif3 = ReadFeatureFile.fileToMap(str(wdir) + r'/output/motifs3.txt')
+        print str(datetime.now()) + ' finish motifs 3'
         map_fetures[7] = map_motif3
 
     if('motif4' in fetures_list):
-        print str(datetime.now()) +' start motifs 4'
-        f = open(outputDirectory + r'./output/motifs4.txt', 'w')
-        ft = open(outputDirectory + r'./times/motifs4_times.txt', 'w')
-        map_motif4 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 4)
-        f.close()
-        ft.close()
-        print str(datetime.now()) +' finish motifs 4'
+        if not os.path.isfile(str(wdir) + r'/output/motifs4.txt') or os.stat(str(wdir) + r'/output/motifs4.txt').st_size == 0:
+            print str(datetime.now()) +' start motifs 4'
+            f = open(outputDirectory + r'/output/motifs4.txt', 'w')
+            ft = open(outputDirectory + r'/times/motifs4_times.txt', 'w')
+            map_motif4 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 4)
+            f.close()
+            ft.close()
+        else:
+            map_motif4 = ReadFeatureFile.fileToMap(str(wdir) + r'/output/motifs4.txt')
+        print str(datetime.now()) + ' finish motifs 4'
         map_fetures[8] = map_motif4
 
     if('kcore' in fetures_list):
-        print str(datetime.now()) + ' start k-core'
-        f = open(outputDirectory + r'./output/k-core.txt', 'w')
-        ft = open(outputDirectory + r'./times/k-core_times.txt', 'w')
-        map_kcore = k_core.k_core(f,ft,gnx)
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/k-core.txt') or os.stat(str(wdir) + r'/output/k-core.txt').st_size == 0:
+            print str(datetime.now()) + ' start k-core'
+            f = open(outputDirectory + r'/output/k-core.txt', 'w')
+            ft = open(outputDirectory + r'/times/k-core_times.txt', 'w')
+            map_kcore = k_core.k_core(f,ft,gnx)
+            f.close()
+            ft.close()
+        else:
+            map_kcore = ReadFeatureFile.fileToMap(str(wdir) + r'/output/k-core.txt')
         print str(datetime.now()) + ' finish k_core'
         map_fetures[9] = map_kcore
 
     if ('louvain' in fetures_list):
-        print str(datetime.now()) + ' start louvain'
-        f = open(outputDirectory + r'./output/louvain.txt', 'w')
-        ft = open(outputDirectory + r'./times/louvain_times.txt', 'w')
-        map_louvain = louvain.louvainCommunityDetection(f, ft, gnx)
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/louvain.txt') or os.stat(str(wdir) + r'/output/louvain.txt').st_size == 0:
+            print str(datetime.now()) + ' start louvain'
+            f = open(outputDirectory + r'/output/louvain.txt', 'w')
+            ft = open(outputDirectory + r'/times/louvain_times.txt', 'w')
+            map_louvain = louvain.louvainCommunityDetection(f, ft, gnx)
+            f.close()
+            ft.close()
+        else:
+            map_louvain = ReadFeatureFile.fileToMap(str(wdir) + r'/output/louvain.txt')
         print str(datetime.now()) + ' finish louvain'
         map_fetures[10] = map_louvain
 
@@ -155,7 +186,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     print str(datetime.now()) +' finish cycles'''
 
 
-# m = calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\roi-graph.txt'
+# m = calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\firms_1996.txt'
 #                        ,outputDirectory=r'c:\users\keren\Documents\github\network-analysis\graph-fetures'
 #                         ,motif_path=r'C:\Users\Keren\Documents\GitHub\network-analysis\graph-fetures\algo\motifvariations'
 #                        ,directed=False

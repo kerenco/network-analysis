@@ -18,7 +18,7 @@ def flow_mesure(f, ft, gnx):
 
 
 def calculate_flow_index(gnx):
-    flow_list = []
+    flow_list = {}
     nodes = gnx.nodes()
     gnx_without_direction=gnx.to_undirected()
     for n in nodes:
@@ -31,6 +31,6 @@ def calculate_flow_index(gnx):
                 if (frac_but[n][k] != 0):
                     vet_sum+=frac_top[n][k]/frac_but[n][k]
         flow_node = vet_sum/b_u
-        flow_list.append((n, flow_node))
+        flow_list[n] = flow_node
 
     return flow_list
