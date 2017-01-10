@@ -132,11 +132,11 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     if('page_rank' in fetures_list):
         f = open(outputDirectory + r'./output/pageRank.txt', 'w')
         ft = open(outputDirectory + r'./times/pageRank_times.txt', 'w')
-        map_attracttor = pageRank.page_rank(gnx,f,ft)
+        map_pageRank = pageRank.page_rank(gnx,f,ft)
         f.close()
         ft.close()
         print (str(datetime.now()) +' finish attraction basin')
-        map_fetures[11] = map_attracttor
+        map_fetures[11] = map_pageRank
 
     return gnx, map_fetures
     # print str(datetime.now()) +' start motifs 3'

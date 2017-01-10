@@ -8,3 +8,4 @@ def page_rank(gnx, f, ft):
 
     for k in page_rank_values.keys():
         f.writelines(str(k) + ',' + str(page_rank_values[k]) + '\n')
+    return page_rank_values
