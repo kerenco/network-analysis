@@ -9,10 +9,8 @@ def attractor_basin(gnx, f, ft):
     start = timer.start(ft, 'Attractor Basin')
     attractor_dict = calc_attractor_basin(gnx)
     timer.stop(ft, start)
-
     for k in attractor_dict.keys():
         f.writelines(str(k) + ',' + str(attractor_dict[k]) + '\n')
-
     return attractor_dict
 
 
@@ -26,7 +24,8 @@ def calc_attractor_basin(gnx):
 def initialize_attraction_basin_dist(gnx):
     attractor_basin_out_dist,attractor_basin_in_dist, avg_in, avg_out = initialize_variables(gnx)
     ####for each node we are calculating the the out and in distances for the other nodes in the graph
-    for n in range (0,max(gnx.nodes())+1):
+    print(gnx.nodes())
+    for n in gnx.nodes():
         try:
             in_dist = []
             out_dist = []
@@ -61,14 +60,15 @@ def initialize_variables(gnx):
 
 
 def calc_final_attraction_basin(attractor_basin_details, gnx):
-    print(attractor_basin_details)
+    #print (attractor_basin_details)
     attractor_basin = {}
     avg_out=attractor_basin_details[1]
     avg_in = attractor_basin_details[3]
     for n in gnx.nodes():####running on all the nodes and calculate the value of 'attraction_basin'
         alpha = 2;
-        out_dist = attractor_basin_details[0][n]
-        in_dist = attractor_basin_details[2][n]
+        index =gnx.nodes().index(n)
+        out_dist = attractor_basin_details[0][index]
+        in_dist = attractor_basin_details[2][index]
         numerator = 0
         denominator = 0
         for m in in_dist:####calculating the numerator of the attraction_basin expression
