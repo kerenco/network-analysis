@@ -45,7 +45,7 @@ class learningPhase:
         #models.append(('LDA', LinearDiscriminantAnalysis()))
         models.append(('KNN', KNeighborsClassifier()))
         models.append(('SGD', SGDClassifier(n_iter=1000, alpha=0.01, class_weight='balanced')))
-        models.append(('RF', RandomForestClassifier(n_estimators=100, criterion="entropy", min_samples_split=5, oob_score=True)))
+        models.append(('RF', RandomForestClassifier(n_estimators=1000, criterion="entropy", min_samples_split=5, oob_score=True, class_weight='balanced')))
         models.append(('NB', GaussianNB()))
         models.append(('SVM-RBF', SVC(class_weight="balanced")))
         models.append(('AdaBoost', AdaBoostClassifier()))
@@ -70,11 +70,9 @@ class learningPhase:
         ax.set_xticklabels(names)
         plt.show()
 
-        sgd = RandomForestClassifier(n_estimators=30, criterion="entropy", min_samples_split=15, oob_score=True)
+        #sgd = RandomForestClassifier(n_estimators=1000, criterion="entropy", min_samples_split=5, oob_score=True, class_weight='balanced')
+        sgd = AdaBoostClassifier()
         sgd.fit(self.x_train, self.y_train)
-        oob_error = 1 - sgd.oob_score_
-        print sgd.classes_
-        print oob_error
         predictions = sgd.predict(self.x_test)
         print(accuracy_score(self.y_test, predictions))
         print(confusion_matrix(self.y_test, predictions))

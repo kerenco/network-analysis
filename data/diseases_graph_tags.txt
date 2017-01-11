@@ -1,14 +1,14 @@
 248	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
-010	Infectious And Parasitic Diseases
-011	Infectious And Parasitic Diseases
-012	Infectious And Parasitic Diseases
-013	Infectious And Parasitic Diseases
-014	Infectious And Parasitic Diseases
-015	Infectious And Parasitic Diseases
-016	Infectious And Parasitic Diseases
-017	Infectious And Parasitic Diseases
-018	Infectious And Parasitic Diseases
-019	Infectious And Parasitic Diseases
+10	Infectious And Parasitic Diseases
+11	Infectious And Parasitic Diseases
+12	Infectious And Parasitic Diseases
+13	Infectious And Parasitic Diseases
+14	Infectious And Parasitic Diseases
+15	Infectious And Parasitic Diseases
+16	Infectious And Parasitic Diseases
+17	Infectious And Parasitic Diseases
+18	Infectious And Parasitic Diseases
+19	Infectious And Parasitic Diseases
 668	Complications Of Pregnancy, Childbirth, And The Puerperium
 344	Diseases Of The Nervous System And Sense Organs
 345	Diseases Of The Nervous System And Sense Organs
@@ -150,15 +150,15 @@
 330	Diseases Of The Nervous System And Sense Organs
 333	Diseases Of The Nervous System And Sense Organs
 332	Diseases Of The Nervous System And Sense Organs
-059	Infectious And Parasitic Diseases
-054	Infectious And Parasitic Diseases
-055	Infectious And Parasitic Diseases
-056	Infectious And Parasitic Diseases
-057	Infectious And Parasitic Diseases
-050	Infectious And Parasitic Diseases
-051	Infectious And Parasitic Diseases
-052	Infectious And Parasitic Diseases
-053	Infectious And Parasitic Diseases
+59	Infectious And Parasitic Diseases
+54	Infectious And Parasitic Diseases
+55	Infectious And Parasitic Diseases
+56	Infectious And Parasitic Diseases
+57	Infectious And Parasitic Diseases
+50	Infectious And Parasitic Diseases
+51	Infectious And Parasitic Diseases
+52	Infectious And Parasitic Diseases
+53	Infectious And Parasitic Diseases
 854	Injury And Poisoning
 818	Injury And Poisoning
 856	Injury And Poisoning
@@ -170,7 +170,7 @@
 508	Diseases Of The Respiratory System
 858	Injury And Poisoning
 859	Injury And Poisoning
-042	Infectious And Parasitic Diseases
+42	Infectious And Parasitic Diseases
 748	Congenital Anomalies
 554	Diseases Of The Digestive System
 650	Complications Of Pregnancy, Childbirth, And The Puerperium
@@ -243,18 +243,18 @@
 680	Diseases Of The Skin And Subcutaneous Tissue
 683	Diseases Of The Skin And Subcutaneous Tissue
 682	Diseases Of The Skin And Subcutaneous Tissue
-098	Infectious And Parasitic Diseases
+98	Infectious And Parasitic Diseases
 623	Diseases Of The Genitourinary System
 819	Injury And Poisoning
 622	Diseases Of The Genitourinary System
-090	Infectious And Parasitic Diseases
-091	Infectious And Parasitic Diseases
-092	Infectious And Parasitic Diseases
-093	Infectious And Parasitic Diseases
-094	Infectious And Parasitic Diseases
-095	Infectious And Parasitic Diseases
-096	Infectious And Parasitic Diseases
-097	Infectious And Parasitic Diseases
+90	Infectious And Parasitic Diseases
+91	Infectious And Parasitic Diseases
+92	Infectious And Parasitic Diseases
+93	Infectious And Parasitic Diseases
+94	Infectious And Parasitic Diseases
+95	Infectious And Parasitic Diseases
+96	Infectious And Parasitic Diseases
+97	Infectious And Parasitic Diseases
 133	Infectious And Parasitic Diseases
 132	Infectious And Parasitic Diseases
 131	Infectious And Parasitic Diseases
@@ -290,16 +290,16 @@
 934	Injury And Poisoning
 628	Diseases Of The Genitourinary System
 758	Congenital Anomalies
-025	Infectious And Parasitic Diseases
-024	Infectious And Parasitic Diseases
-027	Infectious And Parasitic Diseases
-026	Infectious And Parasitic Diseases
-021	Infectious And Parasitic Diseases
-020	Infectious And Parasitic Diseases
-023	Infectious And Parasitic Diseases
-022	Infectious And Parasitic Diseases
-029	Infectious And Parasitic Diseases
-028	Infectious And Parasitic Diseases
+25	Infectious And Parasitic Diseases
+24	Infectious And Parasitic Diseases
+27	Infectious And Parasitic Diseases
+26	Infectious And Parasitic Diseases
+21	Infectious And Parasitic Diseases
+20	Infectious And Parasitic Diseases
+23	Infectious And Parasitic Diseases
+22	Infectious And Parasitic Diseases
+29	Infectious And Parasitic Diseases
+28	Infectious And Parasitic Diseases
 379	Diseases Of The Nervous System And Sense Organs
 378	Diseases Of The Nervous System And Sense Organs
 829	Injury And Poisoning
@@ -429,15 +429,15 @@
 189	Neoplasms
 658	Complications Of Pregnancy, Childbirth, And The Puerperium
 653	Complications Of Pregnancy, Childbirth, And The Puerperium
-061	Infectious And Parasitic Diseases
-060	Infectious And Parasitic Diseases
-063	Infectious And Parasitic Diseases
-062	Infectious And Parasitic Diseases
-065	Infectious And Parasitic Diseases
-064	Infectious And Parasitic Diseases
-066	Infectious And Parasitic Diseases
-069	Infectious And Parasitic Diseases
-068	Infectious And Parasitic Diseases
+61	Infectious And Parasitic Diseases
+60	Infectious And Parasitic Diseases
+63	Infectious And Parasitic Diseases
+62	Infectious And Parasitic Diseases
+65	Infectious And Parasitic Diseases
+64	Infectious And Parasitic Diseases
+66	Infectious And Parasitic Diseases
+69	Infectious And Parasitic Diseases
+68	Infectious And Parasitic Diseases
 764	Certain Conditions Originating In The Perinatal Period
 869	Injury And Poisoning
 868	Injury And Poisoning
@@ -468,7 +468,7 @@
 649	Complications Of Pregnancy, Childbirth, And The Puerperium
 929	Injury And Poisoning
 809	Injury And Poisoning
-037	Infectious And Parasitic Diseases
+37	Infectious And Parasitic Diseases
 322	Diseases Of The Nervous System And Sense Organs
 323	Diseases Of The Nervous System And Sense Organs
 320	Diseases Of The Nervous System And Sense Organs
@@ -495,7 +495,7 @@
 359	Diseases Of The Nervous System And Sense Organs
 804	Injury And Poisoning
 669	Complications Of Pregnancy, Childbirth, And The Puerperium
-099	Infectious And Parasitic Diseases
+99	Infectious And Parasitic Diseases
 667	Complications Of Pregnancy, Childbirth, And The Puerperium
 666	Complications Of Pregnancy, Childbirth, And The Puerperium
 665	Complications Of Pregnancy, Childbirth, And The Puerperium
@@ -573,16 +573,16 @@
 316	Mental Disorders
 315	Mental Disorders
 314	Mental Disorders
-038	Infectious And Parasitic Diseases
-039	Infectious And Parasitic Diseases
-032	Infectious And Parasitic Diseases
-033	Infectious And Parasitic Diseases
-030	Infectious And Parasitic Diseases
-031	Infectious And Parasitic Diseases
-036	Infectious And Parasitic Diseases
+38	Infectious And Parasitic Diseases
+39	Infectious And Parasitic Diseases
+32	Infectious And Parasitic Diseases
+33	Infectious And Parasitic Diseases
+30	Infectious And Parasitic Diseases
+31	Infectious And Parasitic Diseases
+36	Infectious And Parasitic Diseases
 139	Infectious And Parasitic Diseases
-034	Infectious And Parasitic Diseases
-035	Infectious And Parasitic Diseases
+34	Infectious And Parasitic Diseases
+35	Infectious And Parasitic Diseases
 752	Congenital Anomalies
 833	Injury And Poisoning
 830	Injury And Poisoning
@@ -703,16 +703,16 @@
 969	Injury And Poisoning
 409	Diseases Of The Circulatory System
 408	Diseases Of The Circulatory System
-076	Infectious And Parasitic Diseases
-077	Infectious And Parasitic Diseases
-074	Infectious And Parasitic Diseases
-075	Infectious And Parasitic Diseases
-072	Infectious And Parasitic Diseases
-073	Infectious And Parasitic Diseases
-070	Infectious And Parasitic Diseases
-071	Infectious And Parasitic Diseases
-078	Infectious And Parasitic Diseases
-079	Infectious And Parasitic Diseases
+76	Infectious And Parasitic Diseases
+77	Infectious And Parasitic Diseases
+74	Infectious And Parasitic Diseases
+75	Infectious And Parasitic Diseases
+72	Infectious And Parasitic Diseases
+73	Infectious And Parasitic Diseases
+70	Infectious And Parasitic Diseases
+71	Infectious And Parasitic Diseases
+78	Infectious And Parasitic Diseases
+79	Infectious And Parasitic Diseases
 878	Injury And Poisoning
 879	Injury And Poisoning
 876	Injury And Poisoning
@@ -734,16 +734,16 @@
 898	Injury And Poisoning
 899	Injury And Poisoning
 646	Complications Of Pregnancy, Childbirth, And The Puerperium
-003	Infectious And Parasitic Diseases
-002	Infectious And Parasitic Diseases
-001	Infectious And Parasitic Diseases
-000	Infectious And Parasitic Diseases
-007	Infectious And Parasitic Diseases
-006	Infectious And Parasitic Diseases
-005	Infectious And Parasitic Diseases
-004	Infectious And Parasitic Diseases
-009	Infectious And Parasitic Diseases
-008	Infectious And Parasitic Diseases
+3	Infectious And Parasitic Diseases
+2	Infectious And Parasitic Diseases
+1	Infectious And Parasitic Diseases
+0	Infectious And Parasitic Diseases
+7	Infectious And Parasitic Diseases
+6	Infectious And Parasitic Diseases
+5	Infectious And Parasitic Diseases
+4	Infectious And Parasitic Diseases
+9	Infectious And Parasitic Diseases
+8	Infectious And Parasitic Diseases
 357	Diseases Of The Nervous System And Sense Organs
 356	Diseases Of The Nervous System And Sense Organs
 355	Diseases Of The Nervous System And Sense Organs
@@ -867,16 +867,16 @@
 306	Mental Disorders
 307	Mental Disorders
 825	Injury And Poisoning
-049	Infectious And Parasitic Diseases
+49	Infectious And Parasitic Diseases
 824	Injury And Poisoning
-047	Infectious And Parasitic Diseases
-046	Infectious And Parasitic Diseases
-045	Infectious And Parasitic Diseases
-044	Infectious And Parasitic Diseases
-043	Infectious And Parasitic Diseases
+47	Infectious And Parasitic Diseases
+46	Infectious And Parasitic Diseases
+45	Infectious And Parasitic Diseases
+44	Infectious And Parasitic Diseases
+43	Infectious And Parasitic Diseases
 827	Injury And Poisoning
-041	Infectious And Parasitic Diseases
-040	Infectious And Parasitic Diseases
+41	Infectious And Parasitic Diseases
+40	Infectious And Parasitic Diseases
 847	Injury And Poisoning
 846	Injury And Poisoning
 845	Injury And Poisoning
@@ -895,7 +895,7 @@
 240	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
 745	Congenital Anomalies
 662	Complications Of Pregnancy, Childbirth, And The Puerperium
-048	Infectious And Parasitic Diseases
+48	Infectious And Parasitic Diseases
 568	Diseases Of The Digestive System
 569	Diseases Of The Digestive System
 751	Congenital Anomalies
@@ -961,16 +961,16 @@
 956	Injury And Poisoning
 638	Complications Of Pregnancy, Childbirth, And The Puerperium
 639	Complications Of Pregnancy, Childbirth, And The Puerperium
-089	Infectious And Parasitic Diseases
-088	Infectious And Parasitic Diseases
-083	Infectious And Parasitic Diseases
-082	Infectious And Parasitic Diseases
-081	Infectious And Parasitic Diseases
-080	Infectious And Parasitic Diseases
-087	Infectious And Parasitic Diseases
-086	Infectious And Parasitic Diseases
-085	Infectious And Parasitic Diseases
-084	Infectious And Parasitic Diseases
+89	Infectious And Parasitic Diseases
+88	Infectious And Parasitic Diseases
+83	Infectious And Parasitic Diseases
+82	Infectious And Parasitic Diseases
+81	Infectious And Parasitic Diseases
+80	Infectious And Parasitic Diseases
+87	Infectious And Parasitic Diseases
+86	Infectious And Parasitic Diseases
+85	Infectious And Parasitic Diseases
+84	Infectious And Parasitic Diseases
 489	Diseases Of The Respiratory System
 488	Diseases Of The Respiratory System
 487	Diseases Of The Respiratory System

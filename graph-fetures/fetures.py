@@ -14,8 +14,7 @@ from algo import attractorBasin
 from algo import myMotifs
 from algo import k_core
 from algo import louvain
-
-
+from algo import pageRank
 
 
 def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,weighted=True):
@@ -30,6 +29,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     # 8 - motif4
     # 9 - k-core
     # 10 - louvain
+    # 11 - page_rank
     ######
 
     ########### load graph from file ##########
@@ -148,7 +148,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         map_fetures[9] = map_kcore
 
     if ('louvain' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/louvain.txt') or os.stat(str(wdir) + r'/output/louvain.txt').st_size == 0:
+        if not os.path.isfile(str(wdir) + r'/output/louvain.txt') or os.stat(
+                        str(wdir) + r'/output/louvain.txt').st_size == 0:
             print str(datetime.now()) + ' start louvain'
             f = open(outputDirectory + r'/output/louvain.txt', 'w')
             ft = open(outputDirectory + r'/times/louvain_times.txt', 'w')
@@ -158,7 +159,18 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         else:
             map_louvain = ReadFeatureFile.fileToMap(str(wdir) + r'/output/louvain.txt')
         print str(datetime.now()) + ' finish louvain'
-        map_fetures[10] = map_louvain
+
+    if ('page_rank' in fetures_list):
+        if not os.path.isfile(str(wdir) + r'/output/pageRank.txt') or os.stat(
+                        str(wdir) + r'/output/pageRank.txt').st_size == 0:
+            f = open(outputDirectory + r'./output/pageRank.txt', 'w')
+            ft = open(outputDirectory + r'./times/pageRank_times.txt', 'w')
+            map_attracttor = pageRank.page_rank(gnx, f, ft)
+            f.close()
+            ft.close()
+            print (str(datetime.now()) + ' finish page rank')
+            map_fetures[11] = map_attracttor
+
 
     return gnx, map_fetures
     # print str(datetime.now()) +' start motifs 3'

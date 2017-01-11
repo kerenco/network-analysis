@@ -24,7 +24,7 @@ def readTagsfromFile(node_to_fetures,fileName):
         for line in f:
             line.rstrip()
             (key, val) = line.split('\t')
-            node_to_fetures[int(key)].insert(0,val.rstrip())
+            node_to_fetures[key].insert(0,val.rstrip())
 
 
 def build_matrix_with_tags(gnx,map_fetures,fileName):

@@ -37,10 +37,10 @@ wdir = os.getcwd()
 result = f.calc_fetures(file_input = str(wdir) + r'/../../data/signaling_pathways.txt'
                         ,motif_path =  str(wdir) + r'/../../graph-fetures/algo/motifVariations'
                        ,outputDirectory=str(wdir) + r'/../../graph-fetures'
-                       ,directed=True
+                       ,directed=False
                        ,weighted=False
                        #,fetures_list=['general','closeness','bfsmoments','motif3','kcore', 'louvain'])
-                       ,fetures_list=['general', 'closeness', 'bfsmoments', 'motif3', 'kcore', 'flow', 'ab'])
+                       ,fetures_list=['page_rank', 'general', 'closeness', 'bfsmoments', 'motif3', 'kcore', 'flow'])
 
 
 fileNameTags = str(wdir) + r'/../../data/signaling_pathways_tags.txt'
@@ -48,6 +48,5 @@ fileNameTags = str(wdir) + r'/../../data/signaling_pathways_tags.txt'
 gnx = result[0]
 map_fetures = result[1]
 matrix = FeturesMatrix.build_matrix_with_tags(gnx,map_fetures, fileNameTags)
-# np.savetxt("matrix.txt", matrix)
 l = LearningPhase.learningPhase(matrix[:, 1:], matrix[:, 0])
 l.implementLearningMethod()
