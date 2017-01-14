@@ -15,6 +15,8 @@ from algo import myMotifs
 from algo import k_core
 from algo import louvain
 from algo import pageRank
+from algo import hierarchyEnergy
+
 
 
 def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,weighted=True):
@@ -30,6 +32,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     # 9 - k-core
     # 10 - louvain
     # 11 - page_rank
+    # 12 - hierarchyEnerg
     ######
 
     ########### load graph from file ##########
@@ -171,6 +174,14 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
             print (str(datetime.now()) + ' finish page rank')
             map_fetures[11] = map_attracttor
 
+    if('hierarchy_energ' in fetures_list):
+        f = open(outputDirectory + r'./output/hierarchyEnerg.txt', 'w')
+        ft = open(outputDirectory + r'./times/hierarchyEnerg_times.txt', 'w')
+        map_hierarchyEnerg = hierarchyEnerg.hierarchyEnerg(gnx,f,ft)
+        f.close()
+        ft.close()
+        print (str(datetime.now()) +' finish hierarchyEnerg')
+        map_fetures[12] = map_hierarchyEnerg
 
     return gnx, map_fetures
     # print str(datetime.now()) +' start motifs 3'
