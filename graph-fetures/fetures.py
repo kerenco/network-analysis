@@ -91,7 +91,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         if not os.path.isfile(str(wdir) + r'/output/flowMesure.txt') or os.stat(str(wdir) + r'/output/flowMesure.txt').st_size == 0:
             f = open(outputDirectory + r'/output/flowMesure.txt', 'w')
             ft = open(outputDirectory + r'/times/flowMesure_times.txt', 'w')
-            map_flow = flow.flow_mesure(f,ft,gnx)
+            threshold = 0;
+            map_flow = flow.flow_mesure(f,ft,gnx,threshold)
             f.close()
             ft.close()
         else:
@@ -209,11 +210,11 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     print str(datetime.now()) +' finish cycles'''
 
 
-# m = calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\firms_1996.txt'
-#                        ,outputDirectory=r'c:\users\keren\Documents\github\network-analysis\graph-fetures'
-#                         ,motif_path=r'C:\Users\Keren\Documents\GitHub\network-analysis\graph-fetures\algo\motifvariations'
-#                        ,directed=False
+# m = calc_fetures(file_input = r'C:\Users\roi\Documents\GitHub\network-analysis\data\roi-graph.txt'
+#                        ,outputDirectory=r'C:\Users\roi\Documents\GitHub\network-analysis\graph-fetures'
+#                         ,motif_path=r'C:\Users\roi\Documents\GitHub\network-analysis\graph-fetures\algo\motifVariations'
+#                        ,directed=True
 #                        ,weighted=False
-#                        ,fetures_list=['general','closeness','bfsmoments','motif3','kcore', 'louvain'])
+#                        ,fetures_list=['flow'])
 
 
