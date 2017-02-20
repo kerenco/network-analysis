@@ -15,7 +15,12 @@ from algo import myMotifs
 from algo import k_core
 from algo import louvain
 from algo import pageRank
+<<<<<<< HEAD
 from algo import fiedlerVector
+=======
+from algo import hierarchyEnergy
+
+>>>>>>> 2bdec60e4170e864225cfeba8e7820a1c02ec2e4
 
 
 def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,weighted=True):
@@ -31,6 +36,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     # 9 - k-core
     # 10 - louvain
     # 11 - page_rank
+    # 12 - hierarchyEnerg
     ######
 
     ########### load graph from file ##########
@@ -176,6 +182,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
             map_pageRank = pageRank.page_rank(gnx, f, ft)
             f.close()
             ft.close()
+<<<<<<< HEAD
         else:
             map_pageRank = ReadFeatureFile.fileToMap(str(wdir) + r'/output/pageRank.txt')
         print (str(datetime.now()) + ' finish page rank')
@@ -193,6 +200,19 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
             map_fiedlerVector = ReadFeatureFile.fileToMap(str(wdir) + r'/output/fiedlerVector.txt')
         print (str(datetime.now()) + ' finish fiedler vector')
         map_fetures[12] = map_fiedlerVector
+=======
+            print (str(datetime.now()) + ' finish page rank')
+            map_fetures[11] = map_attracttor
+
+    if('hierarchy_energ' in fetures_list):
+        f = open(outputDirectory + r'./output/hierarchyEnerg.txt', 'w')
+        ft = open(outputDirectory + r'./times/hierarchyEnerg_times.txt', 'w')
+        map_hierarchyEnerg = hierarchyEnerg.hierarchyEnerg(gnx,f,ft)
+        f.close()
+        ft.close()
+        print (str(datetime.now()) +' finish hierarchyEnerg')
+        map_fetures[12] = map_hierarchyEnerg
+>>>>>>> 2bdec60e4170e864225cfeba8e7820a1c02ec2e4
 
     return gnx, map_fetures
     # print str(datetime.now()) +' start motifs 3'

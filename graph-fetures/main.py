@@ -10,7 +10,7 @@ from algo import bfs
 from algo import attractorBasin
 from algo import pageRank
 from algo import myMotifs
-
+from algo import hierarchyEnergy
 
 ########### load graph from file ##########
 print (str(datetime.now()) +' start reload graph')
@@ -67,6 +67,13 @@ pageRank.page_rank(gnx,f,ft)
 f.close()
 ft.close()
 print (str(datetime.now()) +' finish pageRank')
+
+f = open(r'./output/hierarchyEnergy.txt', 'w')
+ft = open(r'./times/hierarchyEnergy_times.txt', 'w')
+hierarchyEnergy.hierarchy_energy(gnx,f,ft)
+f.close()
+ft.close()
+print (str(datetime.now()) +' finish hierarchyEnergy')
 
 print (str(datetime.now()) +' start motifs 3')
 f = open(r'./output/motifs3.txt', 'w')
