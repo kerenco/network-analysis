@@ -19,7 +19,6 @@ def build_matrix_from_fetures(gnx,map_fetures):
     for n in gnx.nodes():
         node_to_fetures[n] = []
     for fm in map_fetures:
-        print fm
         for k in map_fetures[fm]:
             if fm == 7:
                 for i in range(len(map_fetures[fm][k])):
@@ -27,7 +26,6 @@ def build_matrix_from_fetures(gnx,map_fetures):
                         map_fetures[fm][k][i] = map_fetures[fm][k][i]/sum(map_fetures[fm][k])
                 node_to_fetures[k] = list(itertools.chain(node_to_fetures[k], map_fetures[fm][k]))
             elif(type(map_fetures[fm][k]) == list):
-                print k,fm
                 node_to_fetures[k] = list(itertools.chain(node_to_fetures[k],map_fetures[fm][k]))
             else:
                 node_to_fetures[k].append(map_fetures[fm][k])
