@@ -15,12 +15,9 @@ from algo import myMotifs
 from algo import k_core
 from algo import louvain
 from algo import pageRank
-<<<<<<< HEAD
 from algo import fiedlerVector
-=======
 from algo import hierarchyEnergy
 
->>>>>>> 2bdec60e4170e864225cfeba8e7820a1c02ec2e4
 
 
 def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,weighted=True):
@@ -182,7 +179,6 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
             map_pageRank = pageRank.page_rank(gnx, f, ft)
             f.close()
             ft.close()
-<<<<<<< HEAD
         else:
             map_pageRank = ReadFeatureFile.fileToMap(str(wdir) + r'/output/pageRank.txt')
         print (str(datetime.now()) + ' finish page rank')
@@ -200,19 +196,19 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
             map_fiedlerVector = ReadFeatureFile.fileToMap(str(wdir) + r'/output/fiedlerVector.txt')
         print (str(datetime.now()) + ' finish fiedler vector')
         map_fetures[12] = map_fiedlerVector
-=======
-            print (str(datetime.now()) + ' finish page rank')
-            map_fetures[11] = map_attracttor
 
     if('hierarchy_energ' in fetures_list):
-        f = open(outputDirectory + r'./output/hierarchyEnerg.txt', 'w')
-        ft = open(outputDirectory + r'./times/hierarchyEnerg_times.txt', 'w')
-        map_hierarchyEnerg = hierarchyEnerg.hierarchyEnerg(gnx,f,ft)
-        f.close()
-        ft.close()
+        if not os.path.isfile(str(wdir) + r'/output/hierarchyEnerg.txt') or os.stat(
+                        str(wdir) + r'/output/hierarchyEnerg.txt').st_size == 0:
+            f = open(outputDirectory + r'./output/hierarchyEnerg.txt', 'w')
+            ft = open(outputDirectory + r'./times/hierarchyEnerg_times.txt', 'w')
+            map_hierarchyEnerg = hierarchyEnergy.hierarchyEnerg(gnx,f,ft)
+            f.close()
+            ft.close()
+        else:
+            map_hierarchyEnerg = ReadFeatureFile.fileToMap(str(wdir) + r'/output/fiedlerVector.txt')
         print (str(datetime.now()) +' finish hierarchyEnerg')
-        map_fetures[12] = map_hierarchyEnerg
->>>>>>> 2bdec60e4170e864225cfeba8e7820a1c02ec2e4
+        map_fetures[13] = map_hierarchyEnerg
 
     return gnx, map_fetures
     # print str(datetime.now()) +' start motifs 3'
