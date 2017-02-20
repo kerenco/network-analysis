@@ -1,37 +1,96 @@
 import numpy as np
 import itertools
 
+import numpy as np
+def z_scoring(matrix):
+    new_matrix = np.asmatrix(matrix)
+    minimum = np.asarray(new_matrix.min(0))
+    for i in range(minimum.shape[1]):
+        if minimum[0,i] > 0:
+            new_matrix[:,i] = np.log10(new_matrix[:,i])
+        elif minimum[0,i] == 0:
+            new_matrix[:, i] = np.log10(new_matrix[:, i]+0.1)
+        if new_matrix[:,i].std() > 0:
+            new_matrix[:,i] = (new_matrix[:,i]-new_matrix[:,i].min())/new_matrix[:,i].std()
+    return new_matrix
+
 def build_matrix_from_fetures(gnx,map_fetures):
     node_to_fetures = {}
     for n in gnx.nodes():
         node_to_fetures[n] = []
-    #print map_fetures
     for fm in map_fetures:
         for k in map_fetures[fm]:
-            if(type(map_fetures[fm][k]) == list):
+            if fm == 7:
+                for i in range(len(map_fetures[fm][k])):
+                    if sum(map_fetures[fm][k]) != 0:
+                        map_fetures[fm][k][i] = map_fetures[fm][k][i]/sum(map_fetures[fm][k])
+                node_to_fetures[k] = list(itertools.chain(node_to_fetures[k], map_fetures[fm][k]))
+            elif(type(map_fetures[fm][k]) == list):
                 node_to_fetures[k] = list(itertools.chain(node_to_fetures[k],map_fetures[fm][k]))
             else:
                 node_to_fetures[k].append(map_fetures[fm][k])
-
-
     return node_to_fetures
     # matrix = [node_to_fetures[node] for node in node_to_fetures]
 
 
 
-def readTagsfromFile(node_to_fetures,fileName):
-    with open(fileName) as f:
-        for line in f:
-            line.rstrip()
-            (key, val) = line.split('\t')
-            node_to_fetures[key].insert(0,val.rstrip())
-
-
-def build_matrix_with_tags(gnx,map_fetures,fileName):
+def build_matrix_with_tags(gnx,map_fetures,vertex_to_tag,zscoring = True):
     node_to_fetures = build_matrix_from_fetures(gnx,map_fetures)
-    readTagsfromFile(node_to_fetures, fileName)
-    return np.asarray([node_to_fetures[node] for node in node_to_fetures])
+    [[node_to_fetures[node].insert(0,vertex_to_tag[node]) for node in node_to_fetures]]
+    matrix_with_tags = np.asmatrix([node_to_fetures[node] for node in node_to_fetures])
+    if(zscoring):
+        feature_matrix = z_scoring(matrix_with_tags[:,1:])
+    else:
+        feature_matrix = matrix_with_tags[:,1:]
 
+    tags_vector = matrix_with_tags[:,:1]
+    return [feature_matrix, tags_vector]
+
+
+
+
+
+
+
+# import numpy as np
+# import itertools
+#
+# def build_matrix_from_fetures(gnx,map_fetures):
+#     node_to_fetures = {}
+#     for n in gnx.nodes():
+#         node_to_fetures[n] = []
+#     for fm in map_fetures:
+#         for k in map_fetures[fm]:
+#             if fm == 7:
+#                 for i in range(len(map_fetures[fm][k])):
+#                     if sum(map_fetures[fm][k]) != 0:
+#                         map_fetures[fm][k][i] = map_fetures[fm][k][i]/sum(map_fetures[fm][k])
+#                 node_to_fetures[k] = list(itertools.chain(node_to_fetures[k], map_fetures[fm][k]))
+#             elif(type(map_fetures[fm][k]) == list):
+#                 node_to_fetures[k] = list(itertools.chain(node_to_fetures[k],map_fetures[fm][k]))
+#             else:
+#                 node_to_fetures[k].append(map_fetures[fm][k])
+#
+#
+#     return node_to_fetures
+#     # matrix = [node_to_fetures[node] for node in node_to_fetures]
+#
+#
+#
+# def readTagsfromFile(node_to_fetures,fileName):
+#     with open(fileName) as f:
+#         for line in f:
+#             line.rstrip()
+#             (key, val) = line.split('\t')
+#             node_to_fetures[key].insert(0,val.rstrip())
+#
+#
+# def build_matrix_with_tags(gnx,map_fetures,fileName):
+#     node_to_fetures = build_matrix_from_fetures(gnx,map_fetures)
+#     readTagsfromFile(node_to_fetures, fileName)
+#     matrix = np.asarray([node_to_fetures[node] for node in node_to_fetures])
+#     return matrix
+#
 
 
 

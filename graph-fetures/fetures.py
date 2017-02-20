@@ -5,7 +5,7 @@ from datetime import datetime
 
 from algo import general
 import ReadFeatureFile
-# from algo import betweennessCentrality
+from algo import betweennessCentrality
 # from algo import motifs
 from algo import closenessCentrality
 from algo import flow
@@ -15,6 +15,7 @@ from algo import myMotifs
 from algo import k_core
 from algo import louvain
 from algo import pageRank
+from algo import fiedlerVector
 
 
 def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,weighted=True):
@@ -52,13 +53,19 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
             map_general = ReadFeatureFile.fileToMap(str(wdir) + r'/output/general.txt')
         print (str(datetime.now()) +' finish general information')
         map_fetures[1] = map_general
-    # if ('betweenness' in fetures_list):
-    #     f = open(outputDirectory + r'./output/betweeneseCentrality.txt', 'w')
-    #     ft = open(outputDirectory +1 +  r'./times/betweeneseCentrality_times.txt', 'w')
-    #     betweennessCentrality.betweenness_centrality(ggt,f,ft, normalized=False);
-    #     f.close()
-    #     ft.close()
-    #     print str(datetime.now()) +' finish betweeneseCentrality'
+
+    if ('betweenness' in fetures_list):
+        if not os.path.isfile(str(wdir) + r'/output/betweeneseCentrality.txt') or os.stat(
+                        str(wdir) + r'/output/betweeneseCentrality.txt').st_size == 0:
+            f = open(outputDirectory + r'./output/betweeneseCentrality.txt', 'w')
+            ft = open(outputDirectory  +  r'./times/betweeneseCentrality_times.txt', 'w')
+            map_betweenness = betweennessCentrality.betweenness_centrality(gnx,f,ft, normalized=False);
+            f.close()
+            ft.close()
+        else:
+            map_betweenness = ReadFeatureFile.fileToMap(str(wdir) + r'/output/betweeneseCentrality.txt')
+        print str(datetime.now()) +' finish betweeneseCentrality'
+        map_fetures[2] = map_betweenness
 
     if ('closeness' in fetures_list):
         if not os.path.isfile(str(wdir) + r'/output/closenessCentrality.txt') or os.stat(str(wdir) + r'/output/closenessCentrality.txt').st_size == 0:
@@ -159,18 +166,33 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
         else:
             map_louvain = ReadFeatureFile.fileToMap(str(wdir) + r'/output/louvain.txt')
         print str(datetime.now()) + ' finish louvain'
+        map_fetures[10] = map_louvain
 
     if ('page_rank' in fetures_list):
         if not os.path.isfile(str(wdir) + r'/output/pageRank.txt') or os.stat(
                         str(wdir) + r'/output/pageRank.txt').st_size == 0:
             f = open(outputDirectory + r'./output/pageRank.txt', 'w')
             ft = open(outputDirectory + r'./times/pageRank_times.txt', 'w')
-            map_attracttor = pageRank.page_rank(gnx, f, ft)
+            map_pageRank = pageRank.page_rank(gnx, f, ft)
             f.close()
             ft.close()
-            print (str(datetime.now()) + ' finish page rank')
-            map_fetures[11] = map_attracttor
+        else:
+            map_pageRank = ReadFeatureFile.fileToMap(str(wdir) + r'/output/pageRank.txt')
+        print (str(datetime.now()) + ' finish page rank')
+        map_fetures[11] = map_pageRank
 
+    if('fiedler_vector' in fetures_list):
+        if not os.path.isfile(str(wdir) + r'/output/fiedlerVector.txt') or os.stat(
+                        str(wdir) + r'/output/fiedlerVector.txt').st_size == 0:
+            f = open(outputDirectory + r'./output/fiedlerVector.txt', 'w')
+            ft = open(outputDirectory + r'./times/fiedlerVector_times.txt', 'w')
+            map_fiedlerVector = fiedlerVector.fiedlerVector(gnx, f, ft)
+            f.close()
+            ft.close()
+        else:
+            map_fiedlerVector = ReadFeatureFile.fileToMap(str(wdir) + r'/output/fiedlerVector.txt')
+        print (str(datetime.now()) + ' finish fiedler vector')
+        map_fetures[12] = map_fiedlerVector
 
     return gnx, map_fetures
     # print str(datetime.now()) +' start motifs 3'
@@ -181,21 +203,13 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     # ft.close()
     # print str(datetime.now()) +' finish motifs 3'
 
-
-    '''f = open(r'./output/motifs4.txt', 'w')
-    ft = open(r'./times/motifs4_times.txt', 'w')
-    motifs.find_all_motifs(f, ft, ggt, motifs_number= 4)
-    f.close()
-    ft.close()
-    print str(datetime.now()) +' finish motifs 4'''''
-
-    '''
-    f = open(r'./output/cycles.txt', 'w')
-    ft = open(r'./times/cycles_times.txt', 'w')
-    topology.find_all_circuits(f, ft, ggt)
-    f.close()
-    ft.close()
-    print str(datetime.now()) +' finish cycles'''
+    # '''
+    # f = open(r'./output/cycles.txt', 'w')
+    # ft = open(r'./times/cycles_times.txt', 'w')
+    # topology.find_all_circuits(f, ft, ggt)
+    # f.close()
+    # ft.close()
+    # print str(datetime.now()) +' finish cycles'''
 
 
 # m = calc_fetures(file_input = r'c:\users\keren\Documents\github\network-analysis\data\firms_1996.txt'
