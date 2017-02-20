@@ -6,102 +6,38 @@ import math
 import sys
 import time
 import itertools
+from itertools import izip
 from utils import timer
+import matplotlib.pyplot as plt
+from timeit import default_timer as timerp
+from operator import itemgetter
 
+debug = False
 
-
-#### read the types of motifs ####
-def createGrpah3(is_directed,i1,i2,i3,i4,i5,i6):
-    if(is_directed):
-        g = nx.DiGraph()
-        if (i1 == '1'):
-            g.add_edge(1, 2)
-        if (i2 == '1'):
-            g.add_edge(1, 3)
-        if (i3 == '1'):
-            g.add_edge(2, 1)
-        if (i4 == '1'):
-            g.add_edge(2, 3)
-        if (i5 == '1'):
-            g.add_edge(3, 1)
-        if (i6 == '1'):
-            g.add_edge(3, 2)
-    else:
-        g = nx.Graph()
-        if (i1 == '1'):
-            g.add_edge(1, 2)
-        if (i2 == '1'):
-            g.add_edge(1, 3)
-        if (i3 == '1'):
-            g.add_edge(2, 3)
-    return g
-
-def createGrpah4(is_directed,i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12):
-    if(is_directed):
-        g = nx.DiGraph()
-        if (i1 == '1'):
-            g.add_edge(1, 2)
-        if (i2 == '1'):
-            g.add_edge(1, 3)
-        if (i3 == '1'):
-            g.add_edge(1, 4)
-        if (i4 == '1'):
-            g.add_edge(2, 1)
-        if (i5 == '1'):
-            g.add_edge(2, 3)
-        if (i6 == '1'):
-            g.add_edge(2, 4)
-        if (i7 == '1'):
-            g.add_edge(3, 1)
-        if (i8 == '1'):
-            g.add_edge(3, 2)
-        if (i9 == '1'):
-            g.add_edge(3, 4)
-        if (i10 == '1'):
-            g.add_edge(4, 1)
-        if (i11 == '1'):
-            g.add_edge(4, 2)
-        if (i12 == '1'):
-            g.add_edge(4, 3)
-    else:
-        g = nx.Graph()
-        if (i7 == '1'):
-            g.add_edge(1, 2)
-        if (i8 == '1'):
-            g.add_edge(1, 3)
-        if (i9 == '1'):
-            g.add_edge(1, 4)
-        if (i10 == '1'):
-            g.add_edge(2, 3)
-        if (i11 == '1'):
-            g.add_edge(2, 4)
-        if (i12 == '1'):
-            g.add_edge(3, 4)
-    return g
-
-def calculte_motif_3(is_directed = True,motif_path=''):
+def calculte_motif_3_dictionaries(is_directed = True,motif_path=''):
     if(is_directed):
         f = open(motif_path + r'/3_nodes_data_directed_key.txt')
     else:
         f = open(motif_path + r'/3_nodes_data_undirected_key.txt')
     raws = f.readlines()
     motifs_3_dict = {}
+    motifs_3_final_dict = {}
     for r in raws:
         new_raw = r.replace('\r\n', '')
         clean_raw = new_raw.replace('\t', ',')
         s = clean_raw.split(',')
         if (s[0] == '-1'):
             break;
-        motifs_3_dict[s[0]] = format((int(s[1])), '06b'), int(s[1])
-    motifs_3_dict.pop('0')
-    ls = []
-    for veriation in motifs_3_dict.values():
-        matrix = veriation[0]
-        g = createGrpah3(is_directed,matrix[5], matrix[4], matrix[3], matrix[2], matrix[1], matrix[0])
-        ls.append(g)
-    return ls
+        if(is_directed):
+            motifs_3_dict[format((int(s[1])), '06b')] = int(s[0])
+        else:
+            motifs_3_dict[format((int(s[1])), '03b')] = int(s[0])
+        motifs_3_final_dict[int(s[0])] = 0
+    if(debug):
+        print motifs_3_dict
+    return motifs_3_dict
 
-def calculte_motif_4(is_directed = True,motif_path=''):
+def calculte_motif_4_dictionaries(is_directed = True,motif_path=''):
     if(is_directed):
         f = open(motif_path + r'/4_nodes_data_directed_key.txt')
     else:
@@ -114,27 +50,21 @@ def calculte_motif_4(is_directed = True,motif_path=''):
         s = clean_raw.split(',')
         if (s[0] == '-1'):
             break;
-        motifs_4_dict[s[0]] = format((int(s[1])), '012b'), int(s[1])
-    motifs_4_dict.pop('0')
-    ls = []
-    for veriation in motifs_4_dict.values():
-        matrix = veriation[0]
-        g = createGrpah4(is_directed,matrix[0], matrix[1], matrix[2], matrix[3], matrix[4], matrix[5], matrix[6], matrix[7],
-                         matrix[8], matrix[9], matrix[10], matrix[11])
-        ls.append(g)
-    return ls
+        motifs_4_dict[format((int(s[1])), '012b')] = int(s[0])
+    return motifs_4_dict
 
 def get_motif_veriation_list(motifs_number,is_directed,motif_path):
     if (motifs_number == 3):
-        motifs_veriations = calculte_motif_3(is_directed,motif_path)
+        motifs_veriations = calculte_motif_3_dictionaries(is_directed,motif_path)
     if (motifs_number == 4):
-        motifs_veriations = calculte_motif_4(is_directed,motif_path)
+        motifs_veriations = calculte_motif_4_dictionaries(is_directed,motif_path)
     return motifs_veriations
 
 def initialize_motif_hist(g, motifs_veriations):
     motifsHist = {}
+    length = max(motifs_veriations.values()) + 1
     for n in g.nodes():
-        motifsHist[n] = [0] * len(motifs_veriations)
+        motifsHist[n] = [0] * length
     return motifsHist
 
 def neighbor(G,start):
@@ -143,109 +73,232 @@ def neighbor(G,start):
     else:
         return G.neighbors(start)
 
-def add_to_hist_by_subgraph(subg,motifsHist,motifs_veriations):
-    if(len(subg.nodes()) != len(motifs_veriations[0].nodes())):
-        # print 'error'
-        return
-    for i in range(len(motifs_veriations)):
-        if( nx.faster_could_be_isomorphic(subg,motifs_veriations[i]) ):
-            if nx.is_isomorphic(subg, motifs_veriations[i]):
-                for v in subg:
-                    motifsHist[v][i] = motifsHist[v][i] + 1
-                return
+def add_to_hist_by_subgraph(subg,comb,motifsHist,motifs_veriations):
+    for n in comb:
+        motifsHist[n][motifs_veriations[subg]] = motifsHist[n][motifs_veriations[subg]]  + 1
 
-def get_sub_tree(g,root,veriation,motifs_veriations,motifsHist,comb_visited):
+count_timer = {'comp':0,'sub':0,'sub_old':0,'hist':0}
+def get_sub_tree(g,root,veriation,motifs_veriations,motifsHist,edges_dict, visited_vertices, visited_index):
+    #### motif 3 ####
+    #print 'root:',root
     if (veriation == (1,1)):
         neighbors = neighbor(g, root)
+        neighbors, visited_neighbors = itertools.tee(neighbors)
+        for n in visited_neighbors:
+            visited_vertices[n] = visited_index
+            visited_index += 1
         for n in neighbors:
             last_neighbors = neighbor(g, n)
             for l in last_neighbors:
-                comb = tuple(sorted((l,) + (n,)+(root,)))
-                if(not comb_visited.has_key(comb)):
-                    comb_visited[comb] = True
-                    subg = g.subgraph(comb)
-                    add_to_hist_by_subgraph(subg,motifsHist,motifs_veriations)
+                if(visited_vertices.has_key(l)):
+                    if(visited_vertices[root] < visited_vertices[n] < visited_vertices[l]):
+                        s = [root,n,l]
+                        combination_calc(edges_dict,g, motifsHist, motifs_veriations, s,motif_size = 3)
+                else:
+                    visited_vertices[l] = visited_index
+                    visited_index += 1
+                    s = [root, n, l]
+                    combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, motif_size=3)
+        return [visited_vertices, visited_index]
     if (veriation == (2,0)):
         neighbors = neighbor(g, root)
         for comb in itertools.combinations(neighbors, 2):
-            comb_new = tuple(sorted(comb + (root,)))
-            if (not comb_visited.has_key(comb_new)):
-                comb_visited[comb_new] = True
-                subg = g.subgraph(comb_new)
-                add_to_hist_by_subgraph(subg, motifsHist, motifs_veriations)
-    if (veriation == (1,1,1)):
-        for n1 in neighbor(g, root):
-            for n2 in neighbor(g,n1):
-                for n3 in neighbor(g,n2):
-                    comb = tuple(sorted((root,) + (n1,) + (n2,)+(n3,)))
-                    if (not comb_visited.has_key(comb)):
-                        comb_visited[comb] = True
-                        subg = g.subgraph(comb)
-                        add_to_hist_by_subgraph(subg, motifsHist, motifs_veriations)
+            if (visited_vertices[root] < visited_vertices[comb[0]] < visited_vertices[comb[1]]):
+                e1 = comb[0]+','+comb[1]
+                e2 = comb[1]+','+comb[0]
+                if(not (edges_dict.has_key(e1) or edges_dict.has_key(e2))):
+                    s = [root,comb[0],comb[1]]
+                    combination_calc(edges_dict,g, motifsHist, motifs_veriations, s, motif_size = 3)
 
+    #### motif 4 ####
+    if (veriation == (1,1,1)):
+        neighbors_first_deg = neighbor(g, root)
+        neighbors_first_deg, visited_neighbors,len_a = itertools.tee(neighbors_first_deg,3)
+        for n in visited_neighbors:
+            visited_vertices[n] = visited_index
+            visited_index += 1
+        # first_deg = len(list(len_a));
+        # print 'neighbors_first_deg:  ',first_deg
+        for n1 in neighbors_first_deg:
+            neighbors_sec_deg = neighbor(g,n1)
+            neighbors_sec_deg, visited_neighbors, len_b = itertools.tee(neighbors_sec_deg,3)
+            for n in visited_neighbors:
+                if(not visited_vertices.has_key(n)):
+                    visited_vertices[n] = visited_index
+                    visited_index += 1
+            # first_deg -= 1
+            # print str(first_deg) + ':neighbors_sec_deg:  ', len(list(len_b))
+            for n2 in neighbors_sec_deg:
+                for n3 in neighbor(g,n2):
+                    if (visited_vertices.has_key(n3)):
+                        if (visited_vertices[root] < visited_vertices[n1] < visited_vertices[n2] < visited_vertices[n3]):
+                            s = [root, n1, n2, n3]
+                            combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, motif_size=4)
+                    else:
+                        visited_vertices[n3] = visited_index
+                        visited_index += 1
+                        s = [root, n1, n2, n3]
+                        combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, motif_size=4)
+        return [visited_vertices, visited_index]
     if (veriation == (1,2,0)):
         for n1 in neighbor(g, root):
             neighbors = neighbor(g,n1)
             for comb in itertools.combinations(neighbors, 2):
-                comb_new = tuple(sorted(comb + (n1,) + (root,)))
-                if (not comb_visited.has_key(comb_new)):
-                    comb_visited[comb_new] = True
-                    subg = g.subgraph(comb_new)
-                    add_to_hist_by_subgraph(subg, motifsHist, motifs_veriations)
+                if (visited_vertices[root] < visited_vertices[n1] < visited_vertices[comb[0]] < visited_vertices[comb[1]]):
+                    e1 = comb[0] + ',' + comb[1]
+                    e2 = comb[1] + ',' + comb[0]
+                    e3 = comb[0] + ',' + root
+                    e4 = root + ',' + comb[0]
+                    e5 = root + ',' + comb[1]
+                    e6 = comb[1] + ',' + root
+                    if(not(edges_dict.has_key(e1) or edges_dict.has_key(e2) or
+                           edges_dict.has_key(e3) or edges_dict.has_key(e4)
+                       or edges_dict.has_key(e5) or edges_dict.has_key(e6))):
+                        s = [root,n1, comb[0], comb[1]]
+                        combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, motif_size=4)
     if (veriation == (3,0,0)):
         neighbors = neighbor(g, root)
         for comb in itertools.combinations(neighbors, 3):
-            comb_new = tuple(sorted(comb + (root,)))
-            if (not comb_visited.has_key(comb_new)):
-                comb_visited[comb_new] = True
-                subg = g.subgraph(comb_new)
-                add_to_hist_by_subgraph(subg, motifsHist, motifs_veriations)
+            if(visited_vertices[root] < visited_vertices[comb[0]] < visited_vertices[comb[1]] < visited_vertices[comb[2]]):
+                e1 = comb[0] + ',' + comb[1]
+                e2 = comb[1] + ',' + comb[0]
+                e3 = comb[0] + ',' + comb[2]
+                e4 = comb[2] + ',' + comb[0]
+                e5 = comb[2] + ',' + comb[1]
+                e6 = comb[1] + ',' + comb[2]
+                if (not (edges_dict.has_key(e1) or edges_dict.has_key(e2) or
+                             edges_dict.has_key(e3) or edges_dict.has_key(e4)
+                         or edges_dict.has_key(e5) or edges_dict.has_key(e6))):
+                    s = [root, comb[0], comb[1], comb[2]]
+                    combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, motif_size=4)
     if (veriation == (2,1,0)):
         neighbors = neighbor(g, root)
         for comb in itertools.combinations(neighbors, 2):
-            for x in comb:
-                last_neighbors = neighbor(g,x)
-                for l in last_neighbors:
-                        comb_new = tuple(sorted(comb + (l,) + (root,)))
-                        if (not comb_visited.has_key(comb_new)):
-                            comb_visited[comb_new] = True
-                            subg = g.subgraph(comb_new)
-                            add_to_hist_by_subgraph(subg, motifsHist, motifs_veriations)
+            e1 = comb[0] + ',' + comb[1]
+            e2 = comb[1] + ',' + comb[0]
+            if (not (edges_dict.has_key(e1) or edges_dict.has_key(e2))):
+                for x in comb:
+                    last_neighbors = neighbor(g,x)
+                    for l in last_neighbors:
+                            if(visited_vertices[root] < visited_vertices[comb[0]] < visited_vertices[comb[1]] < visited_vertices[l]):
+                                    s = [root, comb[0], comb[1], l]
+                                    combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, motif_size=4)
+
+def combination_calc(edges_dict,g, motifsHist, motifs_veriations, comb, motif_size):
+    start_comb = timerp()
+    #if(debug): start_sub = timerp()
+    subg = mySubgraphStr(edges_dict,g, comb)
+    #if (debug): start_hist = timerp()
+    add_to_hist_by_subgraph(subg, comb, motifsHist, motifs_veriations)
+    #if (debug): end = timerp()
+    # if (debug):
+    #     count_timer['comp'] += start_sub - start_comb
+    #     count_timer['sub'] += start_hist - start_sub
+    #     count_timer['hist'] += end - start_hist
+    #     print count_timer
+    #
+def mySubgraphStr(edges_dict,g,comb):
+    subg = directed_sub_graph(comb, edges_dict)
+    # if(g.is_directed()):
+    #     subg = directed_sub_graph(comb, edges_dict)
+    # else:
+    #     subg = undirected_sub_graph(comb, edges_dict)
+    return subg
+
+def undirected_sub_graph(comb, edges_dict):
+    subg = ''
+    for (a, b) in itertools.combinations(comb, 2):
+        e = a + ',' + b
+        if (edges_dict.has_key(e)):
+            subg = subg + '1'
+        else:
+            subg = subg + '0'
+    return subg
+
+def directed_sub_graph(comb, edges_dict):
+    subg = ''
+    for (a, b) in itertools.permutations(comb, 2):
+        e = a + ',' + b
+        if (edges_dict.has_key(e)):
+            subg = subg + '1'
+        else:
+            subg = subg + '0'
+    return subg
 
 def find_motifs_3(g,motif_path):
     motifs_veriations = get_motif_veriation_list(3,g.is_directed(),motif_path)
     motifsHist = initialize_motif_hist(g, motifs_veriations)
+    edges_dict = init_edges_dict(g)
     len_nodes = len(list(g.nodes()))
     index = 0
     start = datetime.now()
-    for n in g.nodes():
+    degree_list = order_by_degree(g)
+
+    for degree in degree_list:
+        n = degree[0]
+        visited_vertices = {}
+        visited_index = 0
+        visited_vertices[n] = 0
+        visited_index +=1
         p = str(index) + ',' + str(len_nodes) + ': ' + str(index / len_nodes)
-        sys.stdout.write('\r' + p)
-        comb_visited = {}
-        get_sub_tree(g, n, (1, 1), motifs_veriations, motifsHist, comb_visited)
-        get_sub_tree(g, n, (2, 0), motifs_veriations, motifsHist, comb_visited)
+        if(not debug):
+            sys.stdout.write('\r' + p)
+        #print p
+        [visited_vertices, visited_index] = get_sub_tree(g, n, (1, 1), motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index)
+        if(debug):
+            print 'end11'
+        get_sub_tree(g, n, (2, 0), motifs_veriations, motifsHist,edges_dict, visited_vertices, visited_index)
+        if(debug):
+            print 'end22'
         g.remove_node(n)
+        if(debug):
+            print 'end'
         index = index + 1.0
 
     end = datetime.now()
     print str(end - start)
     print end
     return motifsHist
+
+
+def order_by_degree(g):
+    nodes = g.nodes()
+    degree_list = []
+    for n in nodes:
+        degree_list.append((n, len(list(neighbor(g,n)))))
+    degree_list = sorted(degree_list, key=itemgetter(1), reverse=True)
+    return degree_list
+
 
 def find_motifs_4(g,motif_path):
     motifs_veriations = get_motif_veriation_list(4,g.is_directed(),motif_path)
     motifsHist = initialize_motif_hist(g, motifs_veriations)
+    edges_dict = init_edges_dict(g)
     len_nodes = len(list(g.nodes()))
     index = 0
     start = datetime.now()
-    for n in g.nodes():
+
+    degree_list = order_by_degree(g)
+
+    for degree in degree_list:
+        n = degree[0]
+        visited_vertices = {}
+        visited_index = 0
+        visited_vertices[n] = 0
+        visited_index += 1
         p = str(index) + ',' + str(len_nodes) + ': ' + str(index / len_nodes)
-        sys.stdout.write('\r' + p)
-        comb_visited = {}
-        get_sub_tree(g, n, (1, 1, 1),motifs_veriations, motifsHist, comb_visited)
-        get_sub_tree(g, n, (1, 2, 0),motifs_veriations, motifsHist, comb_visited)
-        get_sub_tree(g, n, (2, 1, 0),motifs_veriations, motifsHist, comb_visited)
-        get_sub_tree(g, n, (3, 0, 0),motifs_veriations, motifsHist, comb_visited)
+        #if (not debug):
+            #sys.stdout.write('\r' + p)
+        start_node = datetime.now()
+        [visited_vertices, visited_index] = get_sub_tree(g, n, (1, 1, 1),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index)
+        #print 'finish (1,1,1)  ' + str(datetime.now())
+        get_sub_tree(g, n, (2, 1, 0),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index)
+        #print 'finish (2,1,0)  ' + str(datetime.now())
+        get_sub_tree(g, n, (1, 2, 0),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index)
+        #print 'finish (1,2,0)  ' + str(datetime.now())
+        get_sub_tree(g, n, (3, 0, 0),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index)
+        #print 'finish (3,0,0)  ' + str(datetime.now())
+        print n +',' +str(degree[1]) +','+ str(datetime.now() - start_node)
         g.remove_node(n)
         index = index + 1.0
 
@@ -253,6 +306,20 @@ def find_motifs_4(g,motif_path):
     print str(end - start)
     print end
     return motifsHist
+
+def init_edges_dict(g):
+    edges_dict = {}
+    if(g.is_directed()):
+        for e in g.edges():
+            t = e[0] + ',' + e[1]
+            edges_dict[t] = True
+    else:
+        for e in g.edges():
+            t1 = e[0] + ',' + e[1]
+            t2 = e[1] + ',' + e[0]
+            edges_dict[t1] = True
+            edges_dict[t2] = True
+    return edges_dict
 
 def find_all_motifs(f, ft, gnx, motif_path, motifs_number= 3):
     gnx_copy = gnx.copy()
