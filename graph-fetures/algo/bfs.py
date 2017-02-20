@@ -8,7 +8,7 @@ def bfs_distance_distribution(f,ft,gnx):
     dist_moments = {}
     for key in bfs_dist.keys():
         lst = []
-        lst.append(float(np.mean(bfs_dist[key])))
+        lst.append(float(np.average(bfs_dist[key], weights=range(1,len(bfs_dist[key])+1))))
         lst.append(float(np.std(bfs_dist[key])))
         dist_moments[key] = lst
     timer.stop(ft, start)

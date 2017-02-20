@@ -14,10 +14,10 @@ def general_information_directed(gnx, f, ft):
     [out_deg.append([n, gnx.out_degree(n)]) for n in nodes]
     [in_deg.append([n, gnx.in_degree(n)]) for n in nodes]
     timer.stop(ft,start)
-    [f.writelines(str(i) + ',' + str(in_deg[i][1]) +',' + str(out_deg[i][1]) + '\n') for i in nodes]
+    [f.writelines(str(nodes[i]) + ',' + str(in_deg[i][1]) +',' + str(out_deg[i][1]) + '\n') for i in range(len(nodes))]
     map_degree ={}
-    for n in nodes:
-        map_degree[n] = [in_deg[n][1], out_deg[n][1]]
+    for n in range(len(nodes)):
+        map_degree[nodes[n]] = [in_deg[n][1], out_deg[n][1]]
     return map_degree
 
 
