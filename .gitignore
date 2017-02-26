@@ -1,3 +1,3 @@
 *.pyc
-graph-fetures/.idea
-graph-fetures/output/
+./graph-fetures/.idea
+./graph-fetures/output/
