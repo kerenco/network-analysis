@@ -1,7 +1,3 @@
-graph-fetures/utils/timer.pyc
 *.pyc
-graph-fetures/.idea/workspace.xml
-.idea/workspace.xml
-.idea/network-analysis.iml
+graph-fetures/.idea
 graph-fetures/output/
-.idea/workspace.xml
