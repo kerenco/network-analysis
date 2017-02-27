@@ -3,4 +3,6 @@
 graph-fetures/.idea/
 graph-fetures/output/
 graph-fetures/times/
+data/output/
+data/times/
 learning/machineLearning/roi-main.py
