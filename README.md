@@ -1,2 +1,6 @@
 # network-analysis
-blabla
+need to install:
+    * networkx
+    * python-louvain
+    * sklearn
+

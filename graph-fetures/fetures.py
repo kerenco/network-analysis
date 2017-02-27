@@ -43,197 +43,108 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     print (str(datetime.now()) +' finish reload graph')
 
     map_fetures = {}
-    wdir = r'./../../graph-fetures'
 
     if ('general' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/general.txt') or os.stat(str(wdir) + r'/output/general.txt').st_size == 0:
-            f = open(outputDirectory + r'/output/general.txt', 'w')
-            ft = open(outputDirectory + r'/times/general_times.txt', 'w')
-            map_general = general.general_information(gnx, f, ft);
-            f.close()
-            ft.close()
-        else:
-            map_general = ReadFeatureFile.fileToMap(str(wdir) + r'/output/general.txt')
-        print (str(datetime.now()) +' finish general information')
+        map_general = compute_specific_nav(gnx, outputDirectory,algo_name = 'general')
         map_fetures[1] = map_general
 
     if ('betweenness' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/betweeneseCentrality.txt') or os.stat(
-                        str(wdir) + r'/output/betweeneseCentrality.txt').st_size == 0:
-            f = open(outputDirectory + r'./output/betweeneseCentrality.txt', 'w')
-            ft = open(outputDirectory  +  r'./times/betweeneseCentrality_times.txt', 'w')
-            map_betweenness = betweennessCentrality.betweenness_centrality(gnx,f,ft, normalized=False);
-            f.close()
-            ft.close()
-        else:
-            map_betweenness = ReadFeatureFile.fileToMap(str(wdir) + r'/output/betweeneseCentrality.txt')
-        print str(datetime.now()) +' finish betweeneseCentrality'
+        map_betweenness = compute_specific_nav(gnx,outputDirectory,algo_name='betweeneseCentrality')
         map_fetures[2] = map_betweenness
 
     if ('closeness' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/closenessCentrality.txt') or os.stat(str(wdir) + r'/output/closenessCentrality.txt').st_size == 0:
-            f = open(outputDirectory + r'/output/closenessCentrality.txt', 'w')
-            ft = open(outputDirectory + r'/times/closenessCentrality_times.txt', 'w')
-            map_closeness =closenessCentrality.closeness_centrality(f,ft,gnx)
-            f.close()
-            ft.close()
-        else:
-            map_closeness = ReadFeatureFile.fileToMap(str(wdir) + r'/output/closenessCentrality.txt')
-        print str(datetime.now()) +' finish Closeness Centrality'
+        map_closeness = compute_specific_nav(gnx, outputDirectory, algo_name='closenessCentrality')
         map_fetures[3] = map_closeness
 
     if('bfsmoments' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/bfsMoments.txt') or os.stat(str(wdir) + r'/output/bfsMoments.txt').st_size == 0:
-            f = open(outputDirectory + r'/output/bfsMoments.txt', 'w')
-            ft = open(outputDirectory + r'/times/bfsMoments_times.txt', 'w')
-            map_bfs = bfs.bfs_distance_distribution(f, ft, gnx)
-            f.close()
-            ft.close()
-        else:
-            map_bfs = ReadFeatureFile.fileToMap(str(wdir) + r'/output/bfsMoments.txt')
-        print str(datetime.now()) +' finish BFS Moments distribution'
+        map_bfs = compute_specific_nav(gnx, outputDirectory, algo_name='bfsMoments')
         map_fetures[4] = map_bfs
 
     if('flow' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/flowMesure.txt') or os.stat(str(wdir) + r'/output/flowMesure.txt').st_size == 0:
-            f = open(outputDirectory + r'/output/flowMesure.txt', 'w')
-            ft = open(outputDirectory + r'/times/flowMesure_times.txt', 'w')
-            threshold = 0;
-            map_flow = flow.flow_mesure(f,ft,gnx,threshold)
-            f.close()
-            ft.close()
-        else:
-            map_flow = ReadFeatureFile.fileToMap(str(wdir) + r'/output/flowMesure.txt')
-        print str(datetime.now()) +' finish flow mesure'
+        map_flow = compute_specific_nav(gnx, outputDirectory, algo_name='flowMeasure')
         map_fetures[5] = map_flow
 
     if('ab' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/attractionBasin.txt') or os.stat(str(wdir) + r'/output/attractionBasin.txt').st_size == 0:
-            f = open(outputDirectory + r'/output/attractionBasin.txt', 'w')
-            ft = open(outputDirectory + r'/times/attractionBasin_times.txt', 'w')
-            map_attracttor = attractorBasin.attractor_basin(gnx,f,ft)
-            f.close()
-            ft.close()
-        else:
-            map_attracttor = ReadFeatureFile.fileToMap(str(wdir) + r'/output/attractionBasin.txt')
-        print str(datetime.now()) +' finish attraction basin'
+        map_attracttor = compute_specific_nav(gnx, outputDirectory, algo_name='attractionBasin')
         map_fetures[6] = map_attracttor
 
     if('motif3' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/motifs3.txt') or os.stat(str(wdir) + r'/output/motifs3.txt').st_size == 0:
-            print str(datetime.now()) +' start motifs 3'
-            f = open(outputDirectory + r'/output/motifs3.txt', 'w')
-            ft = open(outputDirectory + r'/times/motifs3_times.txt', 'w')
-            map_motif3 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 3)
-            f.close()
-            ft.close()
-        else:
-            map_motif3 = ReadFeatureFile.fileToMap(str(wdir) + r'/output/motifs3.txt')
-        print str(datetime.now()) + ' finish motifs 3'
+        map_motif3 = compute_specific_nav(gnx, outputDirectory, algo_name='motifs3',motif_variations_path = motif_path)
         map_fetures[7] = map_motif3
 
     if('motif4' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/motifs4.txt') or os.stat(str(wdir) + r'/output/motifs4.txt').st_size == 0:
-            print str(datetime.now()) +' start motifs 4'
-            f = open(outputDirectory + r'/output/motifs4.txt', 'w')
-            ft = open(outputDirectory + r'/times/motifs4_times.txt', 'w')
-            map_motif4 = myMotifs.find_all_motifs(f, ft, gnx,motif_path = r'./../../graph-fetures/algo/motifVariations', motifs_number= 4)
-            f.close()
-            ft.close()
-        else:
-            map_motif4 = ReadFeatureFile.fileToMap(str(wdir) + r'/output/motifs4.txt')
-        print str(datetime.now()) + ' finish motifs 4'
+        map_motif4 = compute_specific_nav(gnx, outputDirectory, algo_name='motifs4', motif_variations_path = motif_path)
         map_fetures[8] = map_motif4
 
     if('kcore' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/k-core.txt') or os.stat(str(wdir) + r'/output/k-core.txt').st_size == 0:
-            print str(datetime.now()) + ' start k-core'
-            f = open(outputDirectory + r'/output/k-core.txt', 'w')
-            ft = open(outputDirectory + r'/times/k-core_times.txt', 'w')
-            map_kcore = k_core.k_core(f,ft,gnx)
-            f.close()
-            ft.close()
-        else:
-            map_kcore = ReadFeatureFile.fileToMap(str(wdir) + r'/output/k-core.txt')
-        print str(datetime.now()) + ' finish k_core'
+        map_kcore = compute_specific_nav(gnx, outputDirectory, algo_name='k-core')
         map_fetures[9] = map_kcore
 
     if ('louvain' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/louvain.txt') or os.stat(
-                        str(wdir) + r'/output/louvain.txt').st_size == 0:
-            print str(datetime.now()) + ' start louvain'
-            f = open(outputDirectory + r'/output/louvain.txt', 'w')
-            ft = open(outputDirectory + r'/times/louvain_times.txt', 'w')
-            map_louvain = louvain.louvainCommunityDetection(f, ft, gnx)
-            f.close()
-            ft.close()
-        else:
-            map_louvain = ReadFeatureFile.fileToMap(str(wdir) + r'/output/louvain.txt')
-        print str(datetime.now()) + ' finish louvain'
+        map_louvain = compute_specific_nav(gnx, outputDirectory, algo_name='louvain')
         map_fetures[10] = map_louvain
 
     if ('page_rank' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/pageRank.txt') or os.stat(
-                        str(wdir) + r'/output/pageRank.txt').st_size == 0:
-            f = open(outputDirectory + r'./output/pageRank.txt', 'w')
-            ft = open(outputDirectory + r'./times/pageRank_times.txt', 'w')
-            map_pageRank = pageRank.page_rank(gnx, f, ft)
-            f.close()
-            ft.close()
-        else:
-            map_pageRank = ReadFeatureFile.fileToMap(str(wdir) + r'/output/pageRank.txt')
-        print (str(datetime.now()) + ' finish page rank')
+        map_pageRank = compute_specific_nav(gnx, outputDirectory, algo_name='pageRank')
         map_fetures[11] = map_pageRank
 
     if('fiedler_vector' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/fiedlerVector.txt') or os.stat(
-                        str(wdir) + r'/output/fiedlerVector.txt').st_size == 0:
-            f = open(outputDirectory + r'./output/fiedlerVector.txt', 'w')
-            ft = open(outputDirectory + r'./times/fiedlerVector_times.txt', 'w')
-            map_fiedlerVector = fiedlerVector.fiedlerVector(gnx, f, ft)
-            f.close()
-            ft.close()
-        else:
-            map_fiedlerVector = ReadFeatureFile.fileToMap(str(wdir) + r'/output/fiedlerVector.txt')
-        print (str(datetime.now()) + ' finish fiedler vector')
+        map_fiedlerVector = compute_specific_nav(gnx, outputDirectory, algo_name='fiedlerVector')
         map_fetures[12] = map_fiedlerVector
 
     if('hierarchy_energ' in fetures_list):
-        if not os.path.isfile(str(wdir) + r'/output/hierarchyEnerg.txt') or os.stat(
-                        str(wdir) + r'/output/hierarchyEnerg.txt').st_size == 0:
-            f = open(outputDirectory + r'./output/hierarchyEnerg.txt', 'w')
-            ft = open(outputDirectory + r'./times/hierarchyEnerg_times.txt', 'w')
-            map_hierarchyEnerg = hierarchyEnergy.hierarchyEnerg(gnx,f,ft)
-            f.close()
-            ft.close()
-        else:
-            map_hierarchyEnerg = ReadFeatureFile.fileToMap(str(wdir) + r'/output/fiedlerVector.txt')
-        print (str(datetime.now()) +' finish hierarchyEnerg')
+        map_hierarchyEnerg = compute_specific_nav(gnx, outputDirectory, algo_name='hierarchyEnerg')
         map_fetures[13] = map_hierarchyEnerg
 
     return gnx, map_fetures
-    # print str(datetime.now()) +' start motifs 3'
-    # f = open(r'./output/motifs3.txt', 'w')
-    # ft = open(r'./times/motifs3_times.txt', 'w')
-    # motifs.find_all_motifs(f, ft, ggt, motifs_number= 3)
-    # f.close()
-    # ft.close()
-    # print str(datetime.now()) +' finish motifs 3'
-
-    # '''
-    # f = open(r'./output/cycles.txt', 'w')
-    # ft = open(r'./times/cycles_times.txt', 'w')
-    # topology.find_all_circuits(f, ft, ggt)
-    # f.close()
-    # ft.close()
-    # print str(datetime.now()) +' finish cycles'''
 
 
-# m = calc_fetures(file_input = r'C:\Users\roi\Documents\GitHub\network-analysis\data\roi-graph.txt'
-#                        ,outputDirectory=r'C:\Users\roi\Documents\GitHub\network-analysis\graph-fetures'
-#                         ,motif_path=r'C:\Users\roi\Documents\GitHub\network-analysis\graph-fetures\algo\motifVariations'
-#                        ,directed=True
-#                        ,weighted=False
-#                        ,fetures_list=['flow'])
+def compute_specific_nav(gnx, outputDirectory,algo_name, motif_variations_path = None):
+    file_name = str(outputDirectory) + '/output/' + algo_name + '.txt'
+    if (not os.path.isfile(file_name) or os.stat(file_name).st_size == 0):
+        f = open(file_name, 'w')
+        ft = open(outputDirectory + r'/times/' + algo_name + '_times.txt', 'w')
+        map_nav = run_specific_algo(f, ft, gnx,algo_name,motif_variations_path);
+        f.close()
+        ft.close()
+    else:
+        map_nav = ReadFeatureFile.fileToMap(file_name)
+    print (str(datetime.now()) + ' finish ' + algo_name + ' information')
+    return map_nav
+
+
+def run_specific_algo(f, ft, gnx, algo_name, motif_variations_path = None):
+
+    if('general' == algo_name):
+        return general.general_information(gnx, f, ft)
+    elif('betweeneseCentrality' == algo_name):
+        return betweennessCentrality.betweenness_centrality(gnx, f, ft, normalized=False)
+    elif ('closenessCentrality' == algo_name):
+        return closenessCentrality.closeness_centrality(f, ft, gnx)
+    elif('bfsMoments' == algo_name):
+        return bfs.bfs_distance_distribution(f, ft, gnx)
+    elif('flowMeasure' == algo_name):
+        threshold = 0;
+        return flow.flow_mesure(f, ft, gnx, threshold)
+    elif('attractionBasin' == algo_name):
+        return attractorBasin.attractor_basin(gnx, f, ft)
+    elif('motifs3' == algo_name):
+        return myMotifs.find_all_motifs(f, ft, gnx,
+                                        motif_path=motif_variations_path,
+                                        motifs_number=3)
+    elif('motifs4' == algo_name):
+            return myMotifs.find_all_motifs(f, ft, gnx,
+                                        motif_path=motif_variations_path,
+                                        motifs_number=4)
+    elif('k-core' == algo_name):
+        return k_core.k_core(f, ft, gnx)
+    elif ('louvain' == algo_name):
+        return louvain.louvainCommunityDetection(f, ft, gnx)
+    elif ('pageRank' == algo_name):
+        return pageRank.page_rank(gnx, f, ft)
+    elif ('fiedlerVector' == algo_name):
+        return fiedlerVector.fiedlerVector(gnx, f, ft)
+    elif ('hierarchyEnerg' == algo_name):
+        return hierarchyEnergy.hierarchy_energy(gnx, f, ft)
 
 
