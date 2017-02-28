@@ -39,7 +39,6 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = 
     ########### load graph from file ##########
     print (str(datetime.now()) +' start reload graph')
     # [ggt,   gnx] = initGraph.init_graph(draw = False);
-    print takeConnected
     gnx = initGraph.init_graph(draw=False,file_name = file_input,directed=directed,Connected =takeConnected);
     print (str(datetime.now()) +' finish reload graph')
 
