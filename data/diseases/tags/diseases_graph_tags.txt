@@ -1,0 +1,995 @@
+248	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+010	Infectious And Parasitic Diseases
+011	Infectious And Parasitic Diseases
+012	Infectious And Parasitic Diseases
+013	Infectious And Parasitic Diseases
+014	Infectious And Parasitic Diseases
+015	Infectious And Parasitic Diseases
+016	Infectious And Parasitic Diseases
+017	Infectious And Parasitic Diseases
+018	Infectious And Parasitic Diseases
+019	Infectious And Parasitic Diseases
+668	Complications Of Pregnancy, Childbirth, And The Puerperium
+344	Diseases Of The Nervous System And Sense Organs
+345	Diseases Of The Nervous System And Sense Organs
+346	Diseases Of The Nervous System And Sense Organs
+347	Diseases Of The Nervous System And Sense Organs
+340	Diseases Of The Nervous System And Sense Organs
+341	Diseases Of The Nervous System And Sense Organs
+342	Diseases Of The Nervous System And Sense Organs
+343	Diseases Of The Nervous System And Sense Organs
+810	Injury And Poisoning
+811	Injury And Poisoning
+812	Injury And Poisoning
+813	Injury And Poisoning
+348	Diseases Of The Nervous System And Sense Organs
+349	Diseases Of The Nervous System And Sense Organs
+816	Injury And Poisoning
+817	Injury And Poisoning
+664	Complications Of Pregnancy, Childbirth, And The Puerperium
+719	Diseases Of The Musculoskeletal System And Connective Tissue
+718	Diseases Of The Musculoskeletal System And Connective Tissue
+717	Diseases Of The Musculoskeletal System And Connective Tissue
+716	Diseases Of The Musculoskeletal System And Connective Tissue
+715	Diseases Of The Musculoskeletal System And Connective Tissue
+714	Diseases Of The Musculoskeletal System And Connective Tissue
+713	Diseases Of The Musculoskeletal System And Connective Tissue
+712	Diseases Of The Musculoskeletal System And Connective Tissue
+711	Diseases Of The Musculoskeletal System And Connective Tissue
+710	Diseases Of The Musculoskeletal System And Connective Tissue
+915	Injury And Poisoning
+914	Injury And Poisoning
+606	Diseases Of The Genitourinary System
+917	Injury And Poisoning
+594	Diseases Of The Genitourinary System
+422	Diseases Of The Circulatory System
+195	Neoplasms
+911	Injury And Poisoning
+910	Injury And Poisoning
+913	Injury And Poisoning
+298	Mental Disorders
+299	Mental Disorders
+296	Mental Disorders
+297	Mental Disorders
+294	Mental Disorders
+295	Mental Disorders
+292	Mental Disorders
+293	Mental Disorders
+290	Mental Disorders
+291	Mental Disorders
+591	Diseases Of The Genitourinary System
+590	Diseases Of The Genitourinary System
+593	Diseases Of The Genitourinary System
+592	Diseases Of The Genitourinary System
+199	Neoplasms
+198	Neoplasms
+597	Diseases Of The Genitourinary System
+596	Diseases Of The Genitourinary System
+599	Diseases Of The Genitourinary System
+598	Diseases Of The Genitourinary System
+197	Neoplasms
+196	Neoplasms
+191	Neoplasms
+190	Neoplasms
+193	Neoplasms
+192	Neoplasms
+270	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+271	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+272	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+273	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+274	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+275	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+276	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+277	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+278	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+279	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+497	Diseases Of The Respiratory System
+524	Diseases Of The Digestive System
+525	Diseases Of The Digestive System
+526	Diseases Of The Digestive System
+527	Diseases Of The Digestive System
+520	Diseases Of The Digestive System
+521	Diseases Of The Digestive System
+522	Diseases Of The Digestive System
+523	Diseases Of The Digestive System
+528	Diseases Of The Digestive System
+529	Diseases Of The Digestive System
+449	Diseases Of The Circulatory System
+448	Diseases Of The Circulatory System
+443	Diseases Of The Circulatory System
+442	Diseases Of The Circulatory System
+441	Diseases Of The Circulatory System
+440	Diseases Of The Circulatory System
+447	Diseases Of The Circulatory System
+446	Diseases Of The Circulatory System
+445	Diseases Of The Circulatory System
+444	Diseases Of The Circulatory System
+108	Infectious And Parasitic Diseases
+109	Infectious And Parasitic Diseases
+102	Infectious And Parasitic Diseases
+103	Infectious And Parasitic Diseases
+100	Infectious And Parasitic Diseases
+101	Infectious And Parasitic Diseases
+106	Infectious And Parasitic Diseases
+107	Infectious And Parasitic Diseases
+104	Infectious And Parasitic Diseases
+105	Infectious And Parasitic Diseases
+902	Injury And Poisoning
+903	Injury And Poisoning
+900	Injury And Poisoning
+901	Injury And Poisoning
+906	Injury And Poisoning
+907	Injury And Poisoning
+904	Injury And Poisoning
+905	Injury And Poisoning
+908	Injury And Poisoning
+909	Injury And Poisoning
+641	Complications Of Pregnancy, Childbirth, And The Puerperium
+640	Complications Of Pregnancy, Childbirth, And The Puerperium
+643	Complications Of Pregnancy, Childbirth, And The Puerperium
+642	Complications Of Pregnancy, Childbirth, And The Puerperium
+645	Complications Of Pregnancy, Childbirth, And The Puerperium
+644	Complications Of Pregnancy, Childbirth, And The Puerperium
+438	Diseases Of The Circulatory System
+439	Diseases Of The Circulatory System
+436	Diseases Of The Circulatory System
+437	Diseases Of The Circulatory System
+434	Diseases Of The Circulatory System
+435	Diseases Of The Circulatory System
+432	Diseases Of The Circulatory System
+433	Diseases Of The Circulatory System
+430	Diseases Of The Circulatory System
+431	Diseases Of The Circulatory System
+339	Diseases Of The Nervous System And Sense Organs
+338	Diseases Of The Nervous System And Sense Organs
+335	Diseases Of The Nervous System And Sense Organs
+334	Diseases Of The Nervous System And Sense Organs
+337	Diseases Of The Nervous System And Sense Organs
+336	Diseases Of The Nervous System And Sense Organs
+331	Diseases Of The Nervous System And Sense Organs
+330	Diseases Of The Nervous System And Sense Organs
+333	Diseases Of The Nervous System And Sense Organs
+332	Diseases Of The Nervous System And Sense Organs
+059	Infectious And Parasitic Diseases
+054	Infectious And Parasitic Diseases
+055	Infectious And Parasitic Diseases
+056	Infectious And Parasitic Diseases
+057	Infectious And Parasitic Diseases
+050	Infectious And Parasitic Diseases
+051	Infectious And Parasitic Diseases
+052	Infectious And Parasitic Diseases
+053	Infectious And Parasitic Diseases
+854	Injury And Poisoning
+818	Injury And Poisoning
+856	Injury And Poisoning
+857	Injury And Poisoning
+850	Injury And Poisoning
+851	Injury And Poisoning
+852	Injury And Poisoning
+853	Injury And Poisoning
+508	Diseases Of The Respiratory System
+858	Injury And Poisoning
+859	Injury And Poisoning
+042	Infectious And Parasitic Diseases
+748	Congenital Anomalies
+554	Diseases Of The Digestive System
+650	Complications Of Pregnancy, Childbirth, And The Puerperium
+848	Injury And Poisoning
+844	Injury And Poisoning
+814	Injury And Poisoning
+815	Injury And Poisoning
+740	Congenital Anomalies
+741	Congenital Anomalies
+742	Congenital Anomalies
+743	Congenital Anomalies
+559	Diseases Of The Digestive System
+558	Diseases Of The Digestive System
+746	Congenital Anomalies
+747	Congenital Anomalies
+555	Diseases Of The Digestive System
+749	Congenital Anomalies
+557	Diseases Of The Digestive System
+556	Diseases Of The Digestive System
+551	Diseases Of The Digestive System
+550	Diseases Of The Digestive System
+553	Diseases Of The Digestive System
+552	Diseases Of The Digestive System
+238	Neoplasms
+239	Neoplasms
+234	Neoplasms
+235	Neoplasms
+236	Neoplasms
+237	Neoplasms
+230	Neoplasms
+231	Neoplasms
+232	Neoplasms
+233	Neoplasms
+155	Neoplasms
+146	Neoplasms
+147	Neoplasms
+618	Diseases Of The Genitourinary System
+619	Diseases Of The Genitourinary System
+142	Neoplasms
+143	Neoplasms
+140	Neoplasms
+141	Neoplasms
+612	Diseases Of The Genitourinary System
+613	Diseases Of The Genitourinary System
+610	Diseases Of The Genitourinary System
+611	Diseases Of The Genitourinary System
+616	Diseases Of The Genitourinary System
+617	Diseases Of The Genitourinary System
+614	Diseases Of The Genitourinary System
+149	Neoplasms
+154	Neoplasms
+194	Neoplasms
+948	Injury And Poisoning
+949	Injury And Poisoning
+946	Injury And Poisoning
+947	Injury And Poisoning
+944	Injury And Poisoning
+945	Injury And Poisoning
+942	Injury And Poisoning
+943	Injury And Poisoning
+940	Injury And Poisoning
+941	Injury And Poisoning
+689	Diseases Of The Skin And Subcutaneous Tissue
+688	Diseases Of The Skin And Subcutaneous Tissue
+685	Diseases Of The Skin And Subcutaneous Tissue
+684	Diseases Of The Skin And Subcutaneous Tissue
+687	Diseases Of The Skin And Subcutaneous Tissue
+686	Diseases Of The Skin And Subcutaneous Tissue
+681	Diseases Of The Skin And Subcutaneous Tissue
+680	Diseases Of The Skin And Subcutaneous Tissue
+683	Diseases Of The Skin And Subcutaneous Tissue
+682	Diseases Of The Skin And Subcutaneous Tissue
+098	Infectious And Parasitic Diseases
+623	Diseases Of The Genitourinary System
+819	Injury And Poisoning
+622	Diseases Of The Genitourinary System
+090	Infectious And Parasitic Diseases
+091	Infectious And Parasitic Diseases
+092	Infectious And Parasitic Diseases
+093	Infectious And Parasitic Diseases
+094	Infectious And Parasitic Diseases
+095	Infectious And Parasitic Diseases
+096	Infectious And Parasitic Diseases
+097	Infectious And Parasitic Diseases
+133	Infectious And Parasitic Diseases
+132	Infectious And Parasitic Diseases
+131	Infectious And Parasitic Diseases
+130	Infectious And Parasitic Diseases
+137	Infectious And Parasitic Diseases
+136	Infectious And Parasitic Diseases
+135	Infectious And Parasitic Diseases
+134	Infectious And Parasitic Diseases
+494	Diseases Of The Respiratory System
+495	Diseases Of The Respiratory System
+496	Diseases Of The Respiratory System
+138	Infectious And Parasitic Diseases
+490	Diseases Of The Respiratory System
+491	Diseases Of The Respiratory System
+492	Diseases Of The Respiratory System
+493	Diseases Of The Respiratory System
+927	Injury And Poisoning
+407	Diseases Of The Circulatory System
+406	Diseases Of The Circulatory System
+939	Injury And Poisoning
+404	Diseases Of The Circulatory System
+403	Diseases Of The Circulatory System
+402	Diseases Of The Circulatory System
+401	Diseases Of The Circulatory System
+400	Diseases Of The Circulatory System
+933	Injury And Poisoning
+932	Injury And Poisoning
+931	Injury And Poisoning
+930	Injury And Poisoning
+937	Injury And Poisoning
+936	Injury And Poisoning
+935	Injury And Poisoning
+934	Injury And Poisoning
+628	Diseases Of The Genitourinary System
+758	Congenital Anomalies
+025	Infectious And Parasitic Diseases
+024	Infectious And Parasitic Diseases
+027	Infectious And Parasitic Diseases
+026	Infectious And Parasitic Diseases
+021	Infectious And Parasitic Diseases
+020	Infectious And Parasitic Diseases
+023	Infectious And Parasitic Diseases
+022	Infectious And Parasitic Diseases
+029	Infectious And Parasitic Diseases
+028	Infectious And Parasitic Diseases
+379	Diseases Of The Nervous System And Sense Organs
+378	Diseases Of The Nervous System And Sense Organs
+829	Injury And Poisoning
+828	Injury And Poisoning
+371	Diseases Of The Nervous System And Sense Organs
+370	Diseases Of The Nervous System And Sense Organs
+373	Diseases Of The Nervous System And Sense Organs
+372	Diseases Of The Nervous System And Sense Organs
+375	Diseases Of The Nervous System And Sense Organs
+820	Injury And Poisoning
+377	Diseases Of The Nervous System And Sense Organs
+822	Injury And Poisoning
+708	Diseases Of The Skin And Subcutaneous Tissue
+709	Diseases Of The Skin And Subcutaneous Tissue
+704	Diseases Of The Skin And Subcutaneous Tissue
+705	Diseases Of The Skin And Subcutaneous Tissue
+706	Diseases Of The Skin And Subcutaneous Tissue
+707	Diseases Of The Skin And Subcutaneous Tissue
+700	Diseases Of The Skin And Subcutaneous Tissue
+701	Diseases Of The Skin And Subcutaneous Tissue
+702	Diseases Of The Skin And Subcutaneous Tissue
+703	Diseases Of The Skin And Subcutaneous Tissue
+393	Diseases Of The Circulatory System
+392	Diseases Of The Circulatory System
+391	Diseases Of The Circulatory System
+145	Neoplasms
+397	Diseases Of The Circulatory System
+396	Diseases Of The Circulatory System
+395	Diseases Of The Circulatory System
+176	Neoplasms
+181	Neoplasms
+399	Diseases Of The Circulatory System
+398	Diseases Of The Circulatory System
+797	Symptoms, Signs, And Ill-Defined Conditions
+796	Symptoms, Signs, And Ill-Defined Conditions
+795	Symptoms, Signs, And Ill-Defined Conditions
+794	Symptoms, Signs, And Ill-Defined Conditions
+793	Symptoms, Signs, And Ill-Defined Conditions
+792	Symptoms, Signs, And Ill-Defined Conditions
+791	Symptoms, Signs, And Ill-Defined Conditions
+790	Symptoms, Signs, And Ill-Defined Conditions
+799	Symptoms, Signs, And Ill-Defined Conditions
+798	Symptoms, Signs, And Ill-Defined Conditions
+607	Diseases Of The Genitourinary System
+586	Diseases Of The Genitourinary System
+587	Diseases Of The Genitourinary System
+584	Diseases Of The Genitourinary System
+585	Diseases Of The Genitourinary System
+582	Diseases Of The Genitourinary System
+583	Diseases Of The Genitourinary System
+580	Diseases Of The Genitourinary System
+581	Diseases Of The Genitourinary System
+588	Diseases Of The Genitourinary System
+589	Diseases Of The Genitourinary System
+245	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+244	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+247	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+246	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+241	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+148	Neoplasms
+243	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+242	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+615	Diseases Of The Genitourinary System
+249	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+912	Injury And Poisoning
+418	Diseases Of The Circulatory System
+498	Diseases Of The Respiratory System
+925	Injury And Poisoning
+519	Diseases Of The Respiratory System
+518	Diseases Of The Respiratory System
+926	Injury And Poisoning
+511	Diseases Of The Respiratory System
+510	Diseases Of The Respiratory System
+513	Diseases Of The Respiratory System
+512	Diseases Of The Respiratory System
+515	Diseases Of The Respiratory System
+514	Diseases Of The Respiratory System
+517	Diseases Of The Respiratory System
+516	Diseases Of The Respiratory System
+458	Diseases Of The Circulatory System
+459	Diseases Of The Circulatory System
+621	Diseases Of The Genitourinary System
+620	Diseases Of The Genitourinary System
+627	Diseases Of The Genitourinary System
+626	Diseases Of The Genitourinary System
+625	Diseases Of The Genitourinary System
+624	Diseases Of The Genitourinary System
+450	Diseases Of The Circulatory System
+451	Diseases Of The Circulatory System
+452	Diseases Of The Circulatory System
+453	Diseases Of The Circulatory System
+454	Diseases Of The Circulatory System
+455	Diseases Of The Circulatory System
+456	Diseases Of The Circulatory System
+457	Diseases Of The Circulatory System
+179	Neoplasms
+178	Neoplasms
+595	Diseases Of The Genitourinary System
+175	Neoplasms
+174	Neoplasms
+173	Neoplasms
+172	Neoplasms
+171	Neoplasms
+170	Neoplasms
+977	Injury And Poisoning
+976	Injury And Poisoning
+975	Injury And Poisoning
+974	Injury And Poisoning
+973	Injury And Poisoning
+972	Injury And Poisoning
+971	Injury And Poisoning
+970	Injury And Poisoning
+832	Injury And Poisoning
+654	Complications Of Pregnancy, Childbirth, And The Puerperium
+979	Injury And Poisoning
+978	Injury And Poisoning
+182	Neoplasms
+183	Neoplasms
+180	Neoplasms
+655	Complications Of Pregnancy, Childbirth, And The Puerperium
+186	Neoplasms
+187	Neoplasms
+184	Neoplasms
+185	Neoplasms
+652	Complications Of Pregnancy, Childbirth, And The Puerperium
+188	Neoplasms
+189	Neoplasms
+658	Complications Of Pregnancy, Childbirth, And The Puerperium
+653	Complications Of Pregnancy, Childbirth, And The Puerperium
+061	Infectious And Parasitic Diseases
+060	Infectious And Parasitic Diseases
+063	Infectious And Parasitic Diseases
+062	Infectious And Parasitic Diseases
+065	Infectious And Parasitic Diseases
+064	Infectious And Parasitic Diseases
+066	Infectious And Parasitic Diseases
+069	Infectious And Parasitic Diseases
+068	Infectious And Parasitic Diseases
+764	Certain Conditions Originating In The Perinatal Period
+869	Injury And Poisoning
+868	Injury And Poisoning
+861	Injury And Poisoning
+860	Injury And Poisoning
+863	Injury And Poisoning
+862	Injury And Poisoning
+865	Injury And Poisoning
+864	Injury And Poisoning
+867	Injury And Poisoning
+866	Injury And Poisoning
+938	Injury And Poisoning
+659	Complications Of Pregnancy, Childbirth, And The Puerperium
+656	Complications Of Pregnancy, Childbirth, And The Puerperium
+883	Injury And Poisoning
+753	Congenital Anomalies
+881	Injury And Poisoning
+880	Injury And Poisoning
+887	Injury And Poisoning
+886	Injury And Poisoning
+885	Injury And Poisoning
+884	Injury And Poisoning
+928	Injury And Poisoning
+889	Injury And Poisoning
+888	Injury And Poisoning
+648	Complications Of Pregnancy, Childbirth, And The Puerperium
+657	Complications Of Pregnancy, Childbirth, And The Puerperium
+649	Complications Of Pregnancy, Childbirth, And The Puerperium
+929	Injury And Poisoning
+809	Injury And Poisoning
+037	Infectious And Parasitic Diseases
+322	Diseases Of The Nervous System And Sense Organs
+323	Diseases Of The Nervous System And Sense Organs
+320	Diseases Of The Nervous System And Sense Organs
+354	Diseases Of The Nervous System And Sense Organs
+326	Diseases Of The Nervous System And Sense Organs
+327	Diseases Of The Nervous System And Sense Organs
+324	Diseases Of The Nervous System And Sense Organs
+325	Diseases Of The Nervous System And Sense Organs
+328	Diseases Of The Nervous System And Sense Organs
+329	Diseases Of The Nervous System And Sense Organs
+759	Congenital Anomalies
+201	Neoplasms
+200	Neoplasms
+203	Neoplasms
+202	Neoplasms
+205	Neoplasms
+204	Neoplasms
+773	Certain Conditions Originating In The Perinatal Period
+206	Neoplasms
+209	Neoplasms
+208	Neoplasms
+779	Certain Conditions Originating In The Perinatal Period
+778	Certain Conditions Originating In The Perinatal Period
+359	Diseases Of The Nervous System And Sense Organs
+804	Injury And Poisoning
+669	Complications Of Pregnancy, Childbirth, And The Puerperium
+099	Infectious And Parasitic Diseases
+667	Complications Of Pregnancy, Childbirth, And The Puerperium
+666	Complications Of Pregnancy, Childbirth, And The Puerperium
+665	Complications Of Pregnancy, Childbirth, And The Puerperium
+228	Neoplasms
+663	Complications Of Pregnancy, Childbirth, And The Puerperium
+768	Certain Conditions Originating In The Perinatal Period
+661	Complications Of Pregnancy, Childbirth, And The Puerperium
+660	Complications Of Pregnancy, Childbirth, And The Puerperium
+769	Certain Conditions Originating In The Perinatal Period
+692	Diseases Of The Skin And Subcutaneous Tissue
+693	Diseases Of The Skin And Subcutaneous Tissue
+690	Diseases Of The Skin And Subcutaneous Tissue
+691	Diseases Of The Skin And Subcutaneous Tissue
+696	Diseases Of The Skin And Subcutaneous Tissue
+697	Diseases Of The Skin And Subcutaneous Tissue
+694	Diseases Of The Skin And Subcutaneous Tissue
+695	Diseases Of The Skin And Subcutaneous Tissue
+698	Diseases Of The Skin And Subcutaneous Tissue
+699	Diseases Of The Skin And Subcutaneous Tissue
+542	Diseases Of The Digestive System
+543	Diseases Of The Digestive System
+540	Diseases Of The Digestive System
+541	Diseases Of The Digestive System
+546	Diseases Of The Digestive System
+547	Diseases Of The Digestive System
+544	Diseases Of The Digestive System
+545	Diseases Of The Digestive System
+548	Diseases Of The Digestive System
+549	Diseases Of The Digestive System
+995	Injury And Poisoning
+994	Injury And Poisoning
+997	Injury And Poisoning
+996	Injury And Poisoning
+991	Injury And Poisoning
+990	Injury And Poisoning
+993	Injury And Poisoning
+992	Injury And Poisoning
+999	Injury And Poisoning
+998	Injury And Poisoning
+120	Infectious And Parasitic Diseases
+121	Infectious And Parasitic Diseases
+122	Infectious And Parasitic Diseases
+123	Infectious And Parasitic Diseases
+124	Infectious And Parasitic Diseases
+125	Infectious And Parasitic Diseases
+126	Infectious And Parasitic Diseases
+127	Infectious And Parasitic Diseases
+128	Infectious And Parasitic Diseases
+129	Infectious And Parasitic Diseases
+765	Certain Conditions Originating In The Perinatal Period
+777	Certain Conditions Originating In The Perinatal Period
+414	Diseases Of The Circulatory System
+415	Diseases Of The Circulatory System
+416	Diseases Of The Circulatory System
+417	Diseases Of The Circulatory System
+410	Diseases Of The Circulatory System
+411	Diseases Of The Circulatory System
+412	Diseases Of The Circulatory System
+413	Diseases Of The Circulatory System
+920	Injury And Poisoning
+921	Injury And Poisoning
+922	Injury And Poisoning
+923	Injury And Poisoning
+924	Injury And Poisoning
+419	Diseases Of The Circulatory System
+776	Certain Conditions Originating In The Perinatal Period
+499	Diseases Of The Respiratory System
+319	Mental Disorders
+318	Mental Disorders
+313	Mental Disorders
+312	Mental Disorders
+311	Mental Disorders
+310	Mental Disorders
+317	Mental Disorders
+316	Mental Disorders
+315	Mental Disorders
+314	Mental Disorders
+038	Infectious And Parasitic Diseases
+039	Infectious And Parasitic Diseases
+032	Infectious And Parasitic Diseases
+033	Infectious And Parasitic Diseases
+030	Infectious And Parasitic Diseases
+031	Infectious And Parasitic Diseases
+036	Infectious And Parasitic Diseases
+139	Infectious And Parasitic Diseases
+034	Infectious And Parasitic Diseases
+035	Infectious And Parasitic Diseases
+752	Congenital Anomalies
+833	Injury And Poisoning
+830	Injury And Poisoning
+831	Injury And Poisoning
+836	Injury And Poisoning
+837	Injury And Poisoning
+834	Injury And Poisoning
+835	Injury And Poisoning
+838	Injury And Poisoning
+839	Injury And Poisoning
+368	Diseases Of The Nervous System And Sense Organs
+369	Diseases Of The Nervous System And Sense Organs
+366	Diseases Of The Nervous System And Sense Organs
+367	Diseases Of The Nervous System And Sense Organs
+364	Diseases Of The Nervous System And Sense Organs
+365	Diseases Of The Nervous System And Sense Organs
+362	Diseases Of The Nervous System And Sense Organs
+363	Diseases Of The Nervous System And Sense Organs
+360	Diseases Of The Nervous System And Sense Organs
+361	Diseases Of The Nervous System And Sense Organs
+882	Injury And Poisoning
+380	Diseases Of The Nervous System And Sense Organs
+381	Diseases Of The Nervous System And Sense Organs
+382	Diseases Of The Nervous System And Sense Organs
+383	Diseases Of The Nervous System And Sense Organs
+384	Diseases Of The Nervous System And Sense Organs
+385	Diseases Of The Nervous System And Sense Organs
+386	Diseases Of The Nervous System And Sense Organs
+387	Diseases Of The Nervous System And Sense Organs
+388	Diseases Of The Nervous System And Sense Organs
+389	Diseases Of The Nervous System And Sense Organs
+784	Symptoms, Signs, And Ill-Defined Conditions
+785	Symptoms, Signs, And Ill-Defined Conditions
+786	Symptoms, Signs, And Ill-Defined Conditions
+787	Symptoms, Signs, And Ill-Defined Conditions
+780	Symptoms, Signs, And Ill-Defined Conditions
+781	Symptoms, Signs, And Ill-Defined Conditions
+782	Symptoms, Signs, And Ill-Defined Conditions
+783	Symptoms, Signs, And Ill-Defined Conditions
+788	Symptoms, Signs, And Ill-Defined Conditions
+789	Symptoms, Signs, And Ill-Defined Conditions
+605	Diseases Of The Genitourinary System
+579	Diseases Of The Digestive System
+578	Diseases Of The Digestive System
+150	Neoplasms
+573	Diseases Of The Digestive System
+572	Diseases Of The Digestive System
+571	Diseases Of The Digestive System
+570	Diseases Of The Digestive System
+577	Diseases Of The Digestive System
+576	Diseases Of The Digestive System
+575	Diseases Of The Digestive System
+574	Diseases Of The Digestive System
+258	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+259	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+252	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+253	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+250	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+251	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+256	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+257	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+254	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+255	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+157	Neoplasms
+602	Diseases Of The Genitourinary System
+405	Diseases Of The Circulatory System
+731	Diseases Of The Musculoskeletal System And Connective Tissue
+730	Diseases Of The Musculoskeletal System And Connective Tissue
+733	Diseases Of The Musculoskeletal System And Connective Tissue
+732	Diseases Of The Musculoskeletal System And Connective Tissue
+735	Diseases Of The Musculoskeletal System And Connective Tissue
+734	Diseases Of The Musculoskeletal System And Connective Tissue
+737	Diseases Of The Musculoskeletal System And Connective Tissue
+736	Diseases Of The Musculoskeletal System And Connective Tissue
+506	Diseases Of The Respiratory System
+507	Diseases Of The Respiratory System
+504	Diseases Of The Respiratory System
+505	Diseases Of The Respiratory System
+502	Diseases Of The Respiratory System
+503	Diseases Of The Respiratory System
+500	Diseases Of The Respiratory System
+501	Diseases Of The Respiratory System
+630	Complications Of Pregnancy, Childbirth, And The Puerperium
+631	Complications Of Pregnancy, Childbirth, And The Puerperium
+632	Complications Of Pregnancy, Childbirth, And The Puerperium
+633	Complications Of Pregnancy, Childbirth, And The Puerperium
+469	Diseases Of The Respiratory System
+468	Diseases Of The Respiratory System
+636	Complications Of Pregnancy, Childbirth, And The Puerperium
+637	Complications Of Pregnancy, Childbirth, And The Puerperium
+465	Diseases Of The Respiratory System
+464	Diseases Of The Respiratory System
+467	Diseases Of The Respiratory System
+466	Diseases Of The Respiratory System
+461	Diseases Of The Respiratory System
+460	Diseases Of The Respiratory System
+463	Diseases Of The Respiratory System
+462	Diseases Of The Respiratory System
+390	Diseases Of The Circulatory System
+169	Neoplasms
+164	Neoplasms
+165	Neoplasms
+166	Neoplasms
+167	Neoplasms
+160	Neoplasms
+161	Neoplasms
+162	Neoplasms
+163	Neoplasms
+964	Injury And Poisoning
+965	Injury And Poisoning
+966	Injury And Poisoning
+967	Injury And Poisoning
+960	Injury And Poisoning
+961	Injury And Poisoning
+962	Injury And Poisoning
+963	Injury And Poisoning
+968	Injury And Poisoning
+969	Injury And Poisoning
+409	Diseases Of The Circulatory System
+408	Diseases Of The Circulatory System
+076	Infectious And Parasitic Diseases
+077	Infectious And Parasitic Diseases
+074	Infectious And Parasitic Diseases
+075	Infectious And Parasitic Diseases
+072	Infectious And Parasitic Diseases
+073	Infectious And Parasitic Diseases
+070	Infectious And Parasitic Diseases
+071	Infectious And Parasitic Diseases
+078	Infectious And Parasitic Diseases
+079	Infectious And Parasitic Diseases
+878	Injury And Poisoning
+879	Injury And Poisoning
+876	Injury And Poisoning
+877	Injury And Poisoning
+874	Injury And Poisoning
+875	Injury And Poisoning
+872	Injury And Poisoning
+873	Injury And Poisoning
+870	Injury And Poisoning
+871	Injury And Poisoning
+890	Injury And Poisoning
+891	Injury And Poisoning
+892	Injury And Poisoning
+893	Injury And Poisoning
+894	Injury And Poisoning
+895	Injury And Poisoning
+896	Injury And Poisoning
+897	Injury And Poisoning
+898	Injury And Poisoning
+899	Injury And Poisoning
+646	Complications Of Pregnancy, Childbirth, And The Puerperium
+003	Infectious And Parasitic Diseases
+002	Infectious And Parasitic Diseases
+001	Infectious And Parasitic Diseases
+000	Infectious And Parasitic Diseases
+007	Infectious And Parasitic Diseases
+006	Infectious And Parasitic Diseases
+005	Infectious And Parasitic Diseases
+004	Infectious And Parasitic Diseases
+009	Infectious And Parasitic Diseases
+008	Infectious And Parasitic Diseases
+357	Diseases Of The Nervous System And Sense Organs
+356	Diseases Of The Nervous System And Sense Organs
+355	Diseases Of The Nervous System And Sense Organs
+808	Injury And Poisoning
+353	Diseases Of The Nervous System And Sense Organs
+352	Diseases Of The Nervous System And Sense Organs
+351	Diseases Of The Nervous System And Sense Organs
+350	Diseases Of The Nervous System And Sense Organs
+803	Injury And Poisoning
+802	Injury And Poisoning
+801	Injury And Poisoning
+800	Injury And Poisoning
+807	Injury And Poisoning
+806	Injury And Poisoning
+805	Injury And Poisoning
+358	Diseases Of The Nervous System And Sense Organs
+216	Neoplasms
+217	Neoplasms
+214	Neoplasms
+215	Neoplasms
+212	Neoplasms
+213	Neoplasms
+210	Neoplasms
+211	Neoplasms
+762	Certain Conditions Originating In The Perinatal Period
+763	Certain Conditions Originating In The Perinatal Period
+760	Certain Conditions Originating In The Perinatal Period
+761	Certain Conditions Originating In The Perinatal Period
+766	Certain Conditions Originating In The Perinatal Period
+767	Certain Conditions Originating In The Perinatal Period
+218	Neoplasms
+219	Neoplasms
+289	Diseases Of The Blood And Blood-Forming Organs
+288	Diseases Of The Blood And Blood-Forming Organs
+321	Diseases Of The Nervous System And Sense Organs
+281	Diseases Of The Blood And Blood-Forming Organs
+280	Diseases Of The Blood And Blood-Forming Organs
+283	Diseases Of The Blood And Blood-Forming Organs
+282	Diseases Of The Blood And Blood-Forming Organs
+285	Diseases Of The Blood And Blood-Forming Organs
+284	Diseases Of The Blood And Blood-Forming Organs
+287	Diseases Of The Blood And Blood-Forming Organs
+286	Diseases Of The Blood And Blood-Forming Organs
+678	Complications Of Pregnancy, Childbirth, And The Puerperium
+674	Complications Of Pregnancy, Childbirth, And The Puerperium
+675	Complications Of Pregnancy, Childbirth, And The Puerperium
+676	Complications Of Pregnancy, Childbirth, And The Puerperium
+677	Complications Of Pregnancy, Childbirth, And The Puerperium
+670	Complications Of Pregnancy, Childbirth, And The Puerperium
+671	Complications Of Pregnancy, Childbirth, And The Puerperium
+672	Complications Of Pregnancy, Childbirth, And The Puerperium
+673	Complications Of Pregnancy, Childbirth, And The Puerperium
+263	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+262	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+261	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+260	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+267	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+266	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+265	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+264	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+269	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+268	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+537	Diseases Of The Digestive System
+536	Diseases Of The Digestive System
+535	Diseases Of The Digestive System
+534	Diseases Of The Digestive System
+533	Diseases Of The Digestive System
+532	Diseases Of The Digestive System
+531	Diseases Of The Digestive System
+530	Diseases Of The Digestive System
+539	Diseases Of The Digestive System
+538	Diseases Of The Digestive System
+775	Certain Conditions Originating In The Perinatal Period
+988	Injury And Poisoning
+989	Injury And Poisoning
+774	Certain Conditions Originating In The Perinatal Period
+982	Injury And Poisoning
+983	Injury And Poisoning
+980	Injury And Poisoning
+981	Injury And Poisoning
+986	Injury And Poisoning
+987	Injury And Poisoning
+984	Injury And Poisoning
+985	Injury And Poisoning
+115	Infectious And Parasitic Diseases
+114	Infectious And Parasitic Diseases
+117	Infectious And Parasitic Diseases
+116	Infectious And Parasitic Diseases
+111	Infectious And Parasitic Diseases
+110	Infectious And Parasitic Diseases
+113	Infectious And Parasitic Diseases
+112	Infectious And Parasitic Diseases
+771	Certain Conditions Originating In The Perinatal Period
+119	Infectious And Parasitic Diseases
+118	Infectious And Parasitic Diseases
+770	Certain Conditions Originating In The Perinatal Period
+647	Complications Of Pregnancy, Childbirth, And The Puerperium
+207	Neoplasms
+772	Certain Conditions Originating In The Perinatal Period
+429	Diseases Of The Circulatory System
+428	Diseases Of The Circulatory System
+919	Injury And Poisoning
+918	Injury And Poisoning
+421	Diseases Of The Circulatory System
+420	Diseases Of The Circulatory System
+423	Diseases Of The Circulatory System
+916	Injury And Poisoning
+425	Diseases Of The Circulatory System
+424	Diseases Of The Circulatory System
+427	Diseases Of The Circulatory System
+426	Diseases Of The Circulatory System
+308	Mental Disorders
+309	Mental Disorders
+855	Injury And Poisoning
+300	Mental Disorders
+301	Mental Disorders
+302	Mental Disorders
+303	Mental Disorders
+304	Mental Disorders
+305	Mental Disorders
+306	Mental Disorders
+307	Mental Disorders
+825	Injury And Poisoning
+049	Infectious And Parasitic Diseases
+824	Injury And Poisoning
+047	Infectious And Parasitic Diseases
+046	Infectious And Parasitic Diseases
+045	Infectious And Parasitic Diseases
+044	Infectious And Parasitic Diseases
+043	Infectious And Parasitic Diseases
+827	Injury And Poisoning
+041	Infectious And Parasitic Diseases
+040	Infectious And Parasitic Diseases
+847	Injury And Poisoning
+846	Injury And Poisoning
+845	Injury And Poisoning
+826	Injury And Poisoning
+843	Injury And Poisoning
+842	Injury And Poisoning
+841	Injury And Poisoning
+840	Injury And Poisoning
+821	Injury And Poisoning
+849	Injury And Poisoning
+374	Diseases Of The Nervous System And Sense Organs
+823	Injury And Poisoning
+376	Diseases Of The Nervous System And Sense Organs
+744	Congenital Anomalies
+144	Neoplasms
+240	Endocrine, Nutritional And Metabolic Diseases, And Immunity Disorders
+745	Congenital Anomalies
+662	Complications Of Pregnancy, Childbirth, And The Puerperium
+048	Infectious And Parasitic Diseases
+568	Diseases Of The Digestive System
+569	Diseases Of The Digestive System
+751	Congenital Anomalies
+750	Congenital Anomalies
+757	Congenital Anomalies
+756	Congenital Anomalies
+755	Congenital Anomalies
+754	Congenital Anomalies
+560	Diseases Of The Digestive System
+561	Diseases Of The Digestive System
+562	Diseases Of The Digestive System
+563	Diseases Of The Digestive System
+564	Diseases Of The Digestive System
+565	Diseases Of The Digestive System
+566	Diseases Of The Digestive System
+567	Diseases Of The Digestive System
+739	Diseases Of The Musculoskeletal System And Connective Tissue
+229	Neoplasms
+738	Diseases Of The Musculoskeletal System And Connective Tissue
+227	Neoplasms
+226	Neoplasms
+225	Neoplasms
+224	Neoplasms
+223	Neoplasms
+222	Neoplasms
+221	Neoplasms
+220	Neoplasms
+629	Diseases Of The Genitourinary System
+726	Diseases Of The Musculoskeletal System And Connective Tissue
+727	Diseases Of The Musculoskeletal System And Connective Tissue
+724	Diseases Of The Musculoskeletal System And Connective Tissue
+725	Diseases Of The Musculoskeletal System And Connective Tissue
+722	Diseases Of The Musculoskeletal System And Connective Tissue
+723	Diseases Of The Musculoskeletal System And Connective Tissue
+720	Diseases Of The Musculoskeletal System And Connective Tissue
+721	Diseases Of The Musculoskeletal System And Connective Tissue
+728	Diseases Of The Musculoskeletal System And Connective Tissue
+729	Diseases Of The Musculoskeletal System And Connective Tissue
+151	Neoplasms
+604	Diseases Of The Genitourinary System
+153	Neoplasms
+152	Neoplasms
+601	Diseases Of The Genitourinary System
+600	Diseases Of The Genitourinary System
+603	Diseases Of The Genitourinary System
+156	Neoplasms
+159	Neoplasms
+158	Neoplasms
+394	Diseases Of The Circulatory System
+609	Diseases Of The Genitourinary System
+608	Diseases Of The Genitourinary System
+634	Complications Of Pregnancy, Childbirth, And The Puerperium
+635	Complications Of Pregnancy, Childbirth, And The Puerperium
+959	Injury And Poisoning
+958	Injury And Poisoning
+951	Injury And Poisoning
+950	Injury And Poisoning
+953	Injury And Poisoning
+952	Injury And Poisoning
+955	Injury And Poisoning
+954	Injury And Poisoning
+957	Injury And Poisoning
+956	Injury And Poisoning
+638	Complications Of Pregnancy, Childbirth, And The Puerperium
+639	Complications Of Pregnancy, Childbirth, And The Puerperium
+089	Infectious And Parasitic Diseases
+088	Infectious And Parasitic Diseases
+083	Infectious And Parasitic Diseases
+082	Infectious And Parasitic Diseases
+081	Infectious And Parasitic Diseases
+080	Infectious And Parasitic Diseases
+087	Infectious And Parasitic Diseases
+086	Infectious And Parasitic Diseases
+085	Infectious And Parasitic Diseases
+084	Infectious And Parasitic Diseases
+489	Diseases Of The Respiratory System
+488	Diseases Of The Respiratory System
+487	Diseases Of The Respiratory System
+486	Diseases Of The Respiratory System
+485	Diseases Of The Respiratory System
+484	Diseases Of The Respiratory System
+483	Diseases Of The Respiratory System
+482	Diseases Of The Respiratory System
+481	Diseases Of The Respiratory System
+480	Diseases Of The Respiratory System
+509	Diseases Of The Respiratory System
+472	Diseases Of The Respiratory System
+473	Diseases Of The Respiratory System
+470	Diseases Of The Respiratory System
+471	Diseases Of The Respiratory System
+476	Diseases Of The Respiratory System
+477	Diseases Of The Respiratory System
+474	Diseases Of The Respiratory System
+475	Diseases Of The Respiratory System
+168	Neoplasms
+478	Diseases Of The Respiratory System
+479	Diseases Of The Respiratory System

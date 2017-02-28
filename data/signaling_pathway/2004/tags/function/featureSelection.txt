@@ -1,0 +1,245 @@
+features important for class Adapter:
+algorithm adaBoost:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+algorithm RF:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+features important for class Kinase:
+algorithm adaBoost:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	page rank	
+algorithm RF:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+features important for class Receptor:
+algorithm adaBoost:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	page rank	
+algorithm RF:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+features important for class TF:
+algorithm adaBoost:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+algorithm RF:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+features important for class Ligand:
+algorithm adaBoost:
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[8]	K-Core	page rank	
+algorithm RF:
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	
+in degree	out degree	betweenness	closeness	bfs 1st moment	bfs 2nd moment	attraction basin	motif3[4]	motif3[6]	motif3[7]	motif3[8]	motif3[11]	K-Core	page rank	

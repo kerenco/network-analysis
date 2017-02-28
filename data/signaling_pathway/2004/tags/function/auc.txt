@@ -1,0 +1,25 @@
+AUC for class Adapter:
+algorithm adaBoost:
+0.553046218487
+algorithm RF:
+0.545693277311
+AUC for class Kinase:
+algorithm adaBoost:
+0.510243277849
+algorithm RF:
+0.54833546735
+AUC for class Receptor:
+algorithm adaBoost:
+0.761304521809
+algorithm RF:
+0.761304521809
+AUC for class TF:
+algorithm adaBoost:
+0.584373143197
+algorithm RF:
+0.752822341058
+AUC for class Ligand:
+algorithm adaBoost:
+0.660337552743
+algorithm RF:
+0.885021097046

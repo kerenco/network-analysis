@@ -1,0 +1,30 @@
+AUC for class Cytosol:
+algorithm adaBoost:
+0.617948717949
+algorithm RF:
+0.630769230769
+AUC for class Nucleus:
+algorithm adaBoost:
+0.592205807438
+algorithm RF:
+0.684411614875
+AUC for class Membrane:
+algorithm adaBoost:
+0.662014388489
+algorithm RF:
+0.656402877698
+AUC for class Vesicles:
+algorithm adaBoost:
+0.561874431301
+algorithm RF:
+0.487261146497
+AUC for class Ribosomes:
+algorithm adaBoost:
+0.6
+algorithm RF:
+0.843396226415
+AUC for class Extracellular:
+algorithm adaBoost:
+0.71110100091
+algorithm RF:
+0.896724294813
