@@ -20,7 +20,7 @@ from algo import hierarchyEnergy
 
 
 
-def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,weighted=True):
+def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = False,fetures_list=[]):
     ######
     # 1 - Degrees
     # 2 - betweenes
@@ -39,7 +39,8 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,fetures_list,wei
     ########### load graph from file ##########
     print (str(datetime.now()) +' start reload graph')
     # [ggt,   gnx] = initGraph.init_graph(draw = False);
-    gnx = initGraph.init_graph(draw=False,file_name = file_input,directed=directed);
+    print takeConnected
+    gnx = initGraph.init_graph(draw=False,file_name = file_input,directed=directed,Connected =takeConnected);
     print (str(datetime.now()) +' finish reload graph')
 
     map_fetures = {}

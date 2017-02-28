@@ -4,7 +4,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import os;
 
-def init_graph(draw, file_name, directed):
+def init_graph(draw, file_name, directed,Connected = False):
     '''
     initializes the graph with using networkx packege
     :param draw: boolean parameter- True if we want to draw the graph otherwise - False
@@ -23,6 +23,11 @@ def init_graph(draw, file_name, directed):
             G.add_edge(v1, v2,{'weight': float(weight)})
     if draw:
         draw_graph(G, directed)
+
+    if(not directed and Connected):
+        G = max(nx.connected_component_subgraphs(G),key = len)
+        print 'connected and directed'
+
     return G
 
 def draw_graph(G, directed):
