@@ -13,7 +13,7 @@ class TagsLoader:
         with open(fileName) as f:
             for line in f:
                 line.rstrip()
-                (key, val) = line.split('\t')
+                (key, val) = line.split()
                 vertex_to_tag[key] = float(val)
         return vertex_to_tag
 
