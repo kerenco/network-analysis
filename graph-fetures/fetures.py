@@ -17,6 +17,9 @@ from algo import louvain
 from algo import pageRank
 from algo import fiedlerVector
 from algo import hierarchyEnergy
+from algo import eccentricity
+from algo import loadCentrality
+from algo import communicabilityCentrality
 
 
 
@@ -96,6 +99,18 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = 
         map_hierarchyEnerg = compute_specific_nav(gnx, outputDirectory, algo_name='hierarchyEnerg')
         map_fetures[13] = map_hierarchyEnerg
 
+    if('eccentricity' in fetures_list):
+        map_eccentricity = compute_specific_nav(gnx, outputDirectory, algo_name='eccentricity')
+        map_fetures[14] = map_eccentricity
+
+    if ('load_centrality' in fetures_list):
+        map_load_centrality = compute_specific_nav(gnx, outputDirectory, algo_name='load_centrality')
+        map_fetures[15] = map_load_centrality
+
+    if ('communicability_centrality' in fetures_list):
+        map_communicability_centrality = compute_specific_nav(gnx, outputDirectory, algo_name='communicability_centrality')
+        map_fetures[16] = map_communicability_centrality
+
     return gnx, map_fetures
 
 
@@ -146,5 +161,14 @@ def run_specific_algo(f, ft, gnx, algo_name, motif_variations_path = None):
         return fiedlerVector.fiedlerVector(gnx, f, ft)
     elif ('hierarchyEnerg' == algo_name):
         return hierarchyEnergy.hierarchy_energy(gnx, f, ft)
+    elif ('eccentricity' == algo_name):
+        return eccentricity.eccentricity(gnx, f, ft)
+    elif ('load_centrality' == algo_name):
+        return loadCentrality.load_centrality(gnx, f, ft)
+    elif ('communicability_centrality' == algo_name):
+        return communicabilityCentrality.communicability_centrality(gnx, f, ft)
+
+
+
 
 
