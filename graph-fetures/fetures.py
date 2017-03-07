@@ -20,6 +20,7 @@ from algo import hierarchyEnergy
 from algo import eccentricity
 from algo import loadCentrality
 from algo import communicabilityCentrality
+from algo import averageNeighborDegree
 
 
 
@@ -111,6 +112,12 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = 
         map_communicability_centrality = compute_specific_nav(gnx, outputDirectory, algo_name='communicability_centrality')
         map_fetures[16] = map_communicability_centrality
 
+    if ('average_neighbor_degree' in fetures_list):
+        map_average_neighbor_degree = compute_specific_nav(gnx, outputDirectory, algo_name='average_neighbor_degree')
+        map_fetures[17] = map_average_neighbor_degree
+
+
+
     return gnx, map_fetures
 
 
@@ -167,6 +174,8 @@ def run_specific_algo(f, ft, gnx, algo_name, motif_variations_path = None):
         return loadCentrality.load_centrality(gnx, f, ft)
     elif ('communicability_centrality' == algo_name):
         return communicabilityCentrality.communicability_centrality(gnx, f, ft)
+    elif ('average_neighbor_degree' == algo_name):
+        return averageNeighborDegree.average_neighbor_degree(gnx, f, ft)
 
 
 
