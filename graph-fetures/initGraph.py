@@ -23,8 +23,11 @@ def init_graph(draw, file_name, directed,Connected = False):
             G.add_edge(v1, v2,{'weight': float(weight)})
     if draw:
         draw_graph(G, directed)
-    if(not directed and Connected):
-        G = max(nx.connected_component_subgraphs(G),key = len)
+    if(Connected):
+        if(directed):
+            G = max(nx.weakly_connected_component_subgraphs(G), key=len)
+        else:
+            G = max(nx.connected_component_subgraphs(G),key = len)
     return G
 
 def draw_graph(G, directed):
