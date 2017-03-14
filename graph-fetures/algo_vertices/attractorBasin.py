@@ -17,14 +17,14 @@ def attractor_basin(gnx, f, ft):
 def calc_attractor_basin(gnx):
     attractor_basin_details= initialize_attraction_basin_dist(gnx)####arrange the details for the calcultions
     attractor_basin = calc_final_attraction_basin(attractor_basin_details,gnx)
-    print("attractor_basin",attractor_basin)
+    # print("attractor_basin",attractor_basin)
     return attractor_basin
 
 
 def initialize_attraction_basin_dist(gnx):
     attractor_basin_out_dist,attractor_basin_in_dist, avg_in, avg_out = initialize_variables(gnx)
     ####for each node we are calculating the the out and in distances for the other nodes in the graph
-    print(gnx.nodes())
+    # print(gnx.nodes())
     for n in gnx.nodes():
         try:
             in_dist = []

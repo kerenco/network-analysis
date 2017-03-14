@@ -120,9 +120,6 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
         map_average_neighbor_degree = compute_specific_nav(gnx, outputDirectory, algo_name='average_neighbor_degree')
         map_fetures[17] = map_average_neighbor_degree
 
-    print map_fetures
-
-
     return gnx, map_fetures
 
 
