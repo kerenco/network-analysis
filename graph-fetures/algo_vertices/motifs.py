@@ -159,7 +159,7 @@ def createGrpah4(i1, i2, i3, i4, i5, i6,i7,i8,i9,i10,i11,i12):
     return g
 
 def calculte_motif_3():
-    f = open(os.getcwd() + r'/algo/motifVariations/3_nodes_data_directed_key.txt')
+    f = open(os.getcwd() + r'/algo_vertices/motifVariations/3_nodes_data_directed_key.txt')
     raws = f.readlines()
     motifs_3_dict = {}
     for r in raws:
@@ -178,7 +178,7 @@ def calculte_motif_3():
     return ls
 
 def calculte_motif_4():
-    f = open(os.getcwd() + r'/algo/motifVariations/4_nodes_data_directed_key.txt')
+    f = open(os.getcwd() + r'/algo_vertices/motifVariations/4_nodes_data_directed_key.txt')
     raws = f.readlines()
     motifs_4_dict = {}
     for r in raws:

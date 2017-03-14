@@ -3,28 +3,32 @@ import ReadFeatureFile
 import os
 from datetime import datetime
 
-from algo import general
+from algo_vertices import general
 import ReadFeatureFile
-from algo import betweennessCentrality
-# from algo import motifs
-from algo import closenessCentrality
-from algo import flow
-from algo import bfs
-from algo import attractorBasin
-from algo import myMotifs
-from algo import k_core
-from algo import louvain
-from algo import pageRank
-from algo import fiedlerVector
-from algo import hierarchyEnergy
-from algo import eccentricity
-from algo import loadCentrality
-from algo import communicabilityCentrality
-from algo import averageNeighborDegree
+from algo_vertices import betweennessCentrality
+# from algo_vertices import motifs
+from algo_vertices import closenessCentrality
+from algo_vertices import flow
+from algo_vertices import bfs
+from algo_vertices import attractorBasin
+from algo_vertices import myMotifs
+from algo_vertices import k_core
+from algo_vertices import louvain
+from algo_vertices import pageRank
+from algo_vertices import fiedlerVector
+from algo_vertices import hierarchyEnergy
+from algo_vertices import eccentricity
+from algo_vertices import loadCentrality
+from algo_vertices import communicabilityCentrality
+from algo_vertices import averageNeighborDegree
+
+from algo_edges import edgeFeatureBasedVertices
+from algo_edges import minimum_edge_cut
+from algo_edges import edge_current_flow_betweenness_centrality
+from algo_edges import edge_betweenness_centrality
 
 
-
-def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = False,fetures_list=[]):
+def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected = False, fetures_list=[]):
     ######
     # 1 - Degrees
     # 2 - betweenes
@@ -53,23 +57,23 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = 
         map_fetures[1] = map_general
 
     if ('betweenness' in fetures_list):
-        map_betweenness = compute_specific_nav(gnx,outputDirectory,algo_name='betweeneseCentrality')
+        map_betweenness = compute_specific_nav(gnx,outputDirectory,algo_name='betweenness')
         map_fetures[2] = map_betweenness
 
     if ('closeness' in fetures_list):
-        map_closeness = compute_specific_nav(gnx, outputDirectory, algo_name='closenessCentrality')
+        map_closeness = compute_specific_nav(gnx, outputDirectory, algo_name='closeness')
         map_fetures[3] = map_closeness
 
     if('bfsmoments' in fetures_list):
-        map_bfs = compute_specific_nav(gnx, outputDirectory, algo_name='bfsMoments')
+        map_bfs = compute_specific_nav(gnx, outputDirectory, algo_name='bfsmoments')
         map_fetures[4] = map_bfs
 
     if('flow' in fetures_list):
-        map_flow = compute_specific_nav(gnx, outputDirectory, algo_name='flowMeasure')
+        map_flow = compute_specific_nav(gnx, outputDirectory, algo_name='flow')
         map_fetures[5] = map_flow
 
     if('ab' in fetures_list):
-        map_attracttor = compute_specific_nav(gnx, outputDirectory, algo_name='attractionBasin')
+        map_attracttor = compute_specific_nav(gnx, outputDirectory, algo_name='ab')
         map_fetures[6] = map_attracttor
 
     if('motif3' in fetures_list):
@@ -81,7 +85,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = 
         map_fetures[8] = map_motif4
 
     if('kcore' in fetures_list):
-        map_kcore = compute_specific_nav(gnx, outputDirectory, algo_name='k-core')
+        map_kcore = compute_specific_nav(gnx, outputDirectory, algo_name='kcore')
         map_fetures[9] = map_kcore
 
     if ('louvain' in fetures_list):
@@ -89,15 +93,15 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = 
         map_fetures[10] = map_louvain
 
     if ('page_rank' in fetures_list):
-        map_pageRank = compute_specific_nav(gnx, outputDirectory, algo_name='pageRank')
+        map_pageRank = compute_specific_nav(gnx, outputDirectory, algo_name='page_rank')
         map_fetures[11] = map_pageRank
 
     if('fiedler_vector' in fetures_list):
-        map_fiedlerVector = compute_specific_nav(gnx, outputDirectory, algo_name='fiedlerVector')
+        map_fiedlerVector = compute_specific_nav(gnx, outputDirectory, algo_name='fiedler_vector')
         map_fetures[12] = map_fiedlerVector
 
-    if('hierarchy_energ' in fetures_list):
-        map_hierarchyEnerg = compute_specific_nav(gnx, outputDirectory, algo_name='hierarchyEnerg')
+    if('hierarchy_energy' in fetures_list):
+        map_hierarchyEnerg = compute_specific_nav(gnx, outputDirectory, algo_name='hierarchy_energy')
         map_fetures[13] = map_hierarchyEnerg
 
     if('eccentricity' in fetures_list):
@@ -116,6 +120,7 @@ def calc_fetures(file_input,motif_path,outputDirectory,directed,takeConnected = 
         map_average_neighbor_degree = compute_specific_nav(gnx, outputDirectory, algo_name='average_neighbor_degree')
         map_fetures[17] = map_average_neighbor_degree
 
+    print map_fetures
 
 
     return gnx, map_fetures
@@ -126,29 +131,29 @@ def compute_specific_nav(gnx, outputDirectory,algo_name, motif_variations_path =
     if (not os.path.isfile(file_name) or os.stat(file_name).st_size == 0):
         f = open(file_name, 'w')
         ft = open(outputDirectory + r'/times/' + algo_name + '_times.txt', 'w')
-        map_nav = run_specific_algo(f, ft, gnx,algo_name,motif_variations_path);
+        map_nav = run_specific_algo_vertices(f, ft, gnx, algo_name, motif_variations_path);
         f.close()
         ft.close()
     else:
-        map_nav = ReadFeatureFile.fileToMap(file_name)
+        map_nav = ReadFeatureFile.fileToMap_vertices(file_name)
     print (str(datetime.now()) + ' finish ' + algo_name + ' information')
     return map_nav
 
 
-def run_specific_algo(f, ft, gnx, algo_name, motif_variations_path = None):
+def run_specific_algo_vertices(f, ft, gnx, algo_name, motif_variations_path = None):
 
     if('general' == algo_name):
         return general.general_information(gnx, f, ft)
-    elif('betweeneseCentrality' == algo_name):
+    elif('betweenness' == algo_name):
         return betweennessCentrality.betweenness_centrality(gnx, f, ft, normalized=False)
-    elif ('closenessCentrality' == algo_name):
+    elif ('closeness' == algo_name):
         return closenessCentrality.closeness_centrality(f, ft, gnx)
-    elif('bfsMoments' == algo_name):
+    elif('bfsmoments' == algo_name):
         return bfs.bfs_distance_distribution(f, ft, gnx)
-    elif('flowMeasure' == algo_name):
+    elif('flow' == algo_name):
         threshold = 0;
         return flow.flow_mesure(f, ft, gnx, threshold)
-    elif('attractionBasin' == algo_name):
+    elif('ab' == algo_name):
         return attractorBasin.attractor_basin(gnx, f, ft)
     elif('motifs3' == algo_name):
         return myMotifs.find_all_motifs(f, ft, gnx,
@@ -158,15 +163,15 @@ def run_specific_algo(f, ft, gnx, algo_name, motif_variations_path = None):
             return myMotifs.find_all_motifs(f, ft, gnx,
                                         motif_path=motif_variations_path,
                                         motifs_number=4)
-    elif('k-core' == algo_name):
+    elif('kcore' == algo_name):
         return k_core.k_core(f, ft, gnx)
     elif ('louvain' == algo_name):
         return louvain.louvainCommunityDetection(f, ft, gnx)
-    elif ('pageRank' == algo_name):
+    elif ('page_rank' == algo_name):
         return pageRank.page_rank(gnx, f, ft)
-    elif ('fiedlerVector' == algo_name):
+    elif ('fiedler_vector' == algo_name):
         return fiedlerVector.fiedlerVector(gnx, f, ft)
-    elif ('hierarchyEnerg' == algo_name):
+    elif ('hierarchy_energy' == algo_name):
         return hierarchyEnergy.hierarchy_energy(gnx, f, ft)
     elif ('eccentricity' == algo_name):
         return eccentricity.eccentricity(gnx, f, ft)
@@ -178,6 +183,98 @@ def run_specific_algo(f, ft, gnx, algo_name, motif_variations_path = None):
         return averageNeighborDegree.average_neighbor_degree(gnx, f, ft)
 
 
+def compute_specific_eav(gnx, outputDirectory,algo_name, motif_variations_path = None):
+    file_name_edges = str(outputDirectory) + r'/output_edges/' + algo_name + '_edges.txt'
+    file_name_vertex = str(outputDirectory) + '/output/' + algo_name + '.txt'
+    if (not os.path.isfile(file_name_edges) or os.stat(file_name_edges).st_size == 0):
+        file_edges = open(file_name_edges, 'w')
+        file_vertex = open(file_name_vertex, 'w')
+
+        file_edges_t = open(outputDirectory + r'/times_edges/' + algo_name + '_times.txt', 'w')
+        file_vertex_t = open(outputDirectory + r'/times/' + algo_name + '_times.txt', 'w')
+        if (not os.path.isfile(file_name_vertex) or os.stat(file_name_vertex).st_size == 0):
+            map_algo = run_specific_algo_vertices(file_vertex, file_vertex_t, gnx,algo_name,motif_variations_path)
+        else:
+            map_algo = ReadFeatureFile.fileToMap_vertices(file_name_vertex)
+
+        file_vertex.close()
+        file_vertex_t.close()
+        map_eav = run_specific_algo_edges(file_edges,file_edges_t,gnx,algo_name,map_algo)
+        file_edges.close()
+        file_edges_t.close()
+
+    else:
+        map_eav = ReadFeatureFile.fileToMap_edges(file_name_edges)
+    print (str(datetime.now()) + ' finish ' + algo_name + ' information')
+    return map_eav
+
+def run_specific_algo_edges(f, ft, gnx, algo_name,map_algo):
+
+    new_edge_algo=['min_cut', 'edge_flow', 'edge_betweenness']
+    if(algo_name not in new_edge_algo):
+        return edgeFeatureBasedVertices.edge_based_node_feature(f, gnx, map_algo)
+
+    #only for undirected
+    elif ('min_cut' == algo_name):
+        return minimum_edge_cut.minimum_edge_cut(f, ft,gnx)
+
+
+    elif ('edge_flow' == algo_name):
+        return edge_current_flow_betweenness_centrality.edge_current_flow_betweenness_centrality(f, ft, gnx)
+
+    elif ('edge_betweenness' == algo_name):
+        return edge_betweenness_centrality.edge_betweenness_centrality(f, ft, gnx)
 
 
 
+def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeConnected = False, fetures_list=[]):
+    print (str(datetime.now()) + ' start reload graph')
+    # [ggt,   gnx] = initGraph.init_graph(draw = False);
+    gnx = initGraph.init_graph(draw=False, file_name=file_input, directed=directed, Connected=takeConnected);
+    print (str(datetime.now()) + ' finish reload graph')
+
+    map_fetures = {}
+    new_edge_algo = ['min_cut', 'edge_flow', 'edge_betweenness']
+
+    if ('general' in fetures_list):
+        map_general = compute_specific_eav(gnx, outputDirectory, algo_name='general')
+        map_fetures[1] = map_general
+    if ('closeness' in fetures_list):
+        map_closeness = compute_specific_eav(gnx, outputDirectory, algo_name='closeness')
+        map_fetures[2] = map_closeness
+    if ('bfsmoments' in fetures_list):
+        map_bfsmoments = compute_specific_eav(gnx, outputDirectory, algo_name='bfsmoments')
+        map_fetures[3] = map_bfsmoments
+    if ('flow' in fetures_list):
+        map_flow = compute_specific_eav(gnx, outputDirectory, algo_name='flow')
+        map_fetures[4] = map_flow
+    if ('ab' in fetures_list):
+        map_ab = compute_specific_eav(gnx, outputDirectory, algo_name='ab')
+        map_fetures[5] = map_ab
+    if ('kcore' in fetures_list):
+        map_kcore = compute_specific_eav(gnx, outputDirectory, algo_name='kcore')
+        map_fetures[6] = map_kcore
+    if ('louvain' in fetures_list):
+        map_louvain = compute_specific_eav(gnx, outputDirectory, algo_name='louvain')
+        map_fetures[7] = map_louvain
+    if ('page_rank' in fetures_list):
+        map_page_rank = compute_specific_eav(gnx, outputDirectory, algo_name='page_rank')
+        map_fetures[8] = map_page_rank
+    if ('fiedler_vector' in fetures_list):
+        map_fiedler_vector = compute_specific_eav(gnx, outputDirectory, algo_name='fiedler_vector')
+        map_fetures[9] = map_fiedler_vector
+    if ('hierarchy_energy' in fetures_list):
+        map_hierarchy_energy = compute_specific_eav(gnx, outputDirectory, algo_name='hierarchy_energy')
+        map_fetures[10] = map_hierarchy_energy
+    if ('eccentricity' in fetures_list):
+        map_eccentricity = compute_specific_eav(gnx, outputDirectory, algo_name='eccentricity')
+        map_fetures[11] = map_eccentricity
+    if ('load_centrality' in fetures_list):
+        map_load_centrality = compute_specific_eav(gnx, outputDirectory, algo_name='load_centrality')
+        map_fetures[12] = map_load_centrality
+    if ('communicability_centrality' in fetures_list):
+        map_communicability_centrality = compute_specific_eav(gnx, outputDirectory, algo_name='communicability_centrality')
+        map_fetures[13] = map_communicability_centrality
+    if ('average_neighbor_degree' in fetures_list):
+        map_average_neighbor_degree = compute_specific_eav(gnx, outputDirectory, algo_name='average_neighbor_degree')
+        map_fetures[14] = map_average_neighbor_degree
