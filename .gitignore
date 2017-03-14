@@ -1,0 +1,10 @@
+*.pyc
+.idea/
+graph-fetures/.idea/
+graph-fetures/output/
+graph-fetures/times/
+data/output/
+data/times/
+data/roi/
+learning/machineLearning/roi-main.py
+learning/machineLearning/roi-main-future-learn.py
