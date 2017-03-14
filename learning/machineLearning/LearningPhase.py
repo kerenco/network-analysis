@@ -27,8 +27,8 @@ class learningPhase:
     def DivideToTrainAndTest(self, testSize):
         self.x_train, self.x_test, self.y_train, self.y_test = cross_validation.train_test_split(self.featuresMat, self.tagsVec, test_size=testSize)
 
-    def implementLearningMethod(self, algo):
-        self.DivideToTrainAndTest(0.3)
+    def implementLearningMethod(self, algo,test_size=0.3):
+        self.DivideToTrainAndTest(test_size)
         if algo == 'adaBoost':
             clf = AdaBoostClassifier(n_estimators=100)
         if algo == 'RF':
@@ -41,25 +41,6 @@ class learningPhase:
 
         return self.classifier
 
-
-
-        # print('----------Train----CONFUSION----MATRIX----------')
-        # print(confusion_matrix(self.y_train, train_pred))
-
-        # print('----------Test----CONFUSION----MATRIX----------')
-        # print(accuracy_score(self.y_test, predictions))
-        # print(confusion_matrix(self.y_test, predictions))
-        # print(classification_report(self.y_test, predictions))
-        # file = open('auc.txt', 'w')
-        # file.writelines(classification_report(self.y_test, predictions))
-        # file.close()
-        #
-        #
-        # print 'TrainAUC ' + str(aucTrain)
-        #
-        # print 'TestAUC ' + str(aucTest)
-        # #self.plotROCcurve(test_fpr,test_tpr,train_fpr,train_tpr,aucTest,aucTrain)
-        # return importantFeatures, aucTest, aucTrain
 
     def plotROCcurve(self,test_fpr,test_tpr,train_fpr,train_tpr,aucTest,aucTrain):
         lw = 2
@@ -90,20 +71,3 @@ class learningPhase:
         train_fpr, train_tpr, thresholds = metrics.roc_curve(y, score)
         aucTrain = np.trapz(train_tpr, train_fpr)
         return aucTrain
-
-    def evaluate_importance(self):
-        importantFeatures = None
-        importantFeatures = None
-        # if algo == 'adaBoost' or algo == 'RF':
-        #     print clf.feature_importances_
-        #     # importantFeatures = np.zeros(len(clf.feature_importances_))
-        #     # for i in range(len(clf.feature_importances_)):
-        #     #     if clf.feature_importances_[i] > 0:
-        #     #         importantFeatures[i] = 1
-        #     # print importantFeatures
-        #     importantFeatures = clf.feature_importances_
-        # elif algo == 'L-SVM':
-        #     importantFeatures = np.asarray(clf.coef_)[0]
-
-        return None
-
