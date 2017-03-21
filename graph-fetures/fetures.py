@@ -1,6 +1,6 @@
 import initGraph
 import ReadFeatureFile
-import os
+import os,sys
 from datetime import datetime
 
 from algo_vertices import general
@@ -53,72 +53,124 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
     map_fetures = {}
 
     if ('general' in fetures_list):
-        map_general = compute_specific_nav(gnx, outputDirectory,algo_name = 'general')
-        map_fetures[1] = map_general
+        try:
+            map_general = compute_specific_nav(gnx, outputDirectory,algo_name = 'general')
+            map_fetures[1] = map_general
+        except:
+            print 'error in general:',sys.exc_info()[0]
 
     if ('betweenness' in fetures_list):
-        map_betweenness = compute_specific_nav(gnx,outputDirectory,algo_name='betweenness')
-        map_fetures[2] = map_betweenness
+        try:
+            map_betweenness = compute_specific_nav(gnx,outputDirectory,algo_name='betweenness')
+            map_fetures[2] = map_betweenness
+        except:
+            print 'error in betweeenness:',sys.exc_info()[0]
 
     if ('closeness' in fetures_list):
-        map_closeness = compute_specific_nav(gnx, outputDirectory, algo_name='closeness')
-        map_fetures[3] = map_closeness
+        try:
+            map_closeness = compute_specific_nav(gnx, outputDirectory, algo_name='closeness')
+            map_fetures[3] = map_closeness
+        except:
+            print 'error in closeness:',sys.exc_info()[0]
 
     if('bfsmoments' in fetures_list):
-        map_bfs = compute_specific_nav(gnx, outputDirectory, algo_name='bfsmoments')
-        map_fetures[4] = map_bfs
+        try:
+            map_bfs = compute_specific_nav(gnx, outputDirectory, algo_name='bfsmoments')
+            map_fetures[4] = map_bfs
+        except:
+            print 'error in bfsmoments:',sys.exc_info()[0]
 
     if('flow' in fetures_list):
-        map_flow = compute_specific_nav(gnx, outputDirectory, algo_name='flow')
-        map_fetures[5] = map_flow
+        try:
+            map_flow = compute_specific_nav(gnx, outputDirectory, algo_name='flow')
+            map_fetures[5] = map_flow
+        except:
+            print 'error in flow:',sys.exc_info()[0]
 
     if('ab' in fetures_list):
-        map_attracttor = compute_specific_nav(gnx, outputDirectory, algo_name='ab')
-        map_fetures[6] = map_attracttor
+        try:
+            map_attracttor = compute_specific_nav(gnx, outputDirectory, algo_name='ab')
+            map_fetures[6] = map_attracttor
+        except:
+            print 'error in attractor basin:',sys.exc_info()[0]
 
     if('motif3' in fetures_list):
-        map_motif3 = compute_specific_nav(gnx, outputDirectory, algo_name='motifs3',motif_variations_path = motif_path)
-        map_fetures[7] = map_motif3
+        try:
+            map_motif3 = compute_specific_nav(gnx, outputDirectory, algo_name='motifs3',motif_variations_path = motif_path)
+            map_fetures[7] = map_motif3
+        except:
+            print 'error in motif3:',sys.exc_info()[0]
 
     if('motif4' in fetures_list):
-        map_motif4 = compute_specific_nav(gnx, outputDirectory, algo_name='motifs4', motif_variations_path = motif_path)
-        map_fetures[8] = map_motif4
+        try:
+            map_motif4 = compute_specific_nav(gnx, outputDirectory, algo_name='motifs4', motif_variations_path = motif_path)
+            map_fetures[8] = map_motif4
+        except:
+            print 'error in motif4:',sys.exc_info()[0]
 
     if('kcore' in fetures_list):
-        map_kcore = compute_specific_nav(gnx, outputDirectory, algo_name='kcore')
-        map_fetures[9] = map_kcore
+        try:
+            map_kcore = compute_specific_nav(gnx, outputDirectory, algo_name='kcore')
+            map_fetures[9] = map_kcore
+        except:
+            print 'error in kcore:',sys.exc_info()[0]
 
     if ('louvain' in fetures_list):
-        map_louvain = compute_specific_nav(gnx, outputDirectory, algo_name='louvain')
-        map_fetures[10] = map_louvain
+        try:
+            map_louvain = compute_specific_nav(gnx, outputDirectory, algo_name='louvain')
+            map_fetures[10] = map_louvain
+        except:
+            print 'error in louvain:',sys.exc_info()[0]
 
     if ('page_rank' in fetures_list):
-        map_pageRank = compute_specific_nav(gnx, outputDirectory, algo_name='page_rank')
-        map_fetures[11] = map_pageRank
+        try:
+            map_pageRank = compute_specific_nav(gnx, outputDirectory, algo_name='page_rank')
+            map_fetures[11] = map_pageRank
+        except:
+            print 'error in page_rank:',sys.exc_info()[0]
 
     if('fiedler_vector' in fetures_list):
-        map_fiedlerVector = compute_specific_nav(gnx, outputDirectory, algo_name='fiedler_vector')
-        map_fetures[12] = map_fiedlerVector
+        try:
+            map_fiedlerVector = compute_specific_nav(gnx, outputDirectory, algo_name='fiedler_vector')
+            map_fetures[12] = map_fiedlerVector
+        except:
+            print 'error in fiedler_vector:',sys.exc_info()[0]
 
     if('hierarchy_energy' in fetures_list):
-        map_hierarchyEnerg = compute_specific_nav(gnx, outputDirectory, algo_name='hierarchy_energy')
-        map_fetures[13] = map_hierarchyEnerg
+        try:
+            map_hierarchyEnerg = compute_specific_nav(gnx, outputDirectory, algo_name='hierarchy_energy')
+            map_fetures[13] = map_hierarchyEnerg
+        except:
+            print 'error in hierarchy energy:',sys.exc_info()[0]
 
     if('eccentricity' in fetures_list):
-        map_eccentricity = compute_specific_nav(gnx, outputDirectory, algo_name='eccentricity')
-        map_fetures[14] = map_eccentricity
+        try:
+            map_eccentricity = compute_specific_nav(gnx, outputDirectory, algo_name='eccentricity')
+            map_fetures[14] = map_eccentricity
+        except:
+            print 'error in eccentricity:',sys.exc_info()[0]
 
     if ('load_centrality' in fetures_list):
-        map_load_centrality = compute_specific_nav(gnx, outputDirectory, algo_name='load_centrality')
-        map_fetures[15] = map_load_centrality
+        try:
+            map_load_centrality = compute_specific_nav(gnx, outputDirectory, algo_name='load_centrality')
+            map_fetures[15] = map_load_centrality
+        except:
+            print 'error in load_centrality:',sys.exc_info()[0]
 
     if ('communicability_centrality' in fetures_list):
-        map_communicability_centrality = compute_specific_nav(gnx, outputDirectory, algo_name='communicability_centrality')
-        map_fetures[16] = map_communicability_centrality
+        try:
+            map_communicability_centrality = compute_specific_nav(gnx, outputDirectory, algo_name='communicability_centrality')
+            map_fetures[16] = map_communicability_centrality
+        except:
+            print 'error in communicability centrality:',sys.exc_info()[0]
 
     if ('average_neighbor_degree' in fetures_list):
-        map_average_neighbor_degree = compute_specific_nav(gnx, outputDirectory, algo_name='average_neighbor_degree')
-        map_fetures[17] = map_average_neighbor_degree
+        try:
+            map_average_neighbor_degree = compute_specific_nav(gnx, outputDirectory, algo_name='average_neighbor_degree')
+            map_fetures[17] = map_average_neighbor_degree
+        except:
+            print 'error in average neighbor:',sys.exc_info()[0]
+
 
     return gnx, map_fetures
 
