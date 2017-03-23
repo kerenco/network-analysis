@@ -81,9 +81,10 @@ if __name__ == "__main__":
             directed = True
             takeConnected = True
             fetures_list = [feature]
+            print fetures_list
             return_map = False
 
-            processes.append(multiprocessing.Process(target=f.calc_fetures_vertices,args=(file_input,motif_path,outputDirectory,directed,takeConnected,fast_directed_weighted,return_map)))
+            processes.append(multiprocessing.Process(target=f.calc_fetures_vertices,args=(file_input,motif_path,outputDirectory,directed,takeConnected,directed_features,return_map)))
 
         for pr in processes:
             pr.start()
