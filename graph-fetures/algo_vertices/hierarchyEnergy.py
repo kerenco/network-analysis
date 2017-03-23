@@ -6,12 +6,14 @@ def hierarchy_energy(gnx,f,ft):
     start = timer.start(ft, 'hierarchyEnergy')
     hierarchyEnergy_list, vet_index = calculate_hierarchyEnergy_index(gnx)
     timer.stop(ft, start)
-    map_hierarchy_energy = {}
+    hierarchyEnergy_map={}
     #writing the results in to file
-    for n in range (0,len(vet_index)):
-        map_hierarchy_energy[str(vet_index[n])] = hierarchyEnergy_list[n][0]
-        f.writelines(str(vet_index[n])+','+str(hierarchyEnergy_list[n][0]) + '\n')
-    return map_hierarchy_energy
+    num=0
+    for n in vet_index:
+        f.writelines(str(n)+','+str(hierarchyEnergy_list[num][0]) + '\n')
+        hierarchyEnergy_map[n]=hierarchyEnergy_list[num][0]
+        num+=1
+    return hierarchyEnergy_map
 
 
 def calculate_hierarchyEnergy_index(gnx):
@@ -30,7 +32,7 @@ def calculate_hierarchyEnergy_index(gnx):
 
 def build_graph_matrix (gnx):
     a=[]
-    vet_index=np.array(gnx.nodes()).astype(int)
+    vet_index=gnx.nodes()
     for i in vet_index:
         temp=[]
         for j in gnx.nodes():
