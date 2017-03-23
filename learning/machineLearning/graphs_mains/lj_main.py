@@ -74,7 +74,7 @@ if __name__ == "__main__":
         processes = []
         q = multiprocessing.Queue()
         lock = multiprocessing.Lock()
-        for feature in fast_directed_weighted:
+        for feature in directed_features:
             file_input = file_in
             motif_path = str(wdir) + r'/../../../graph-fetures/algo/motifVariations'
             outputDirectory = output_dir
