@@ -64,7 +64,7 @@ if __name__ == "__main__":
         output_dir = str(wdir) + r'/../../../data/undirected/firms/'+str(year)+r'/features'
 
         file_input = file_in
-        motif_path = str(wdir) + r'/../../../graph-fetures/algo/motifVariations'
+        motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
         outputDirectory = output_dir
         directed = False
         takeConnected = True
