@@ -109,7 +109,6 @@ klein91supporting,7
 462285,2
 kriegel00managing,1
 kuo00web,2
-nielsen00designing,1
 534720,1
 swindells00system,1
 apte01ai,3
@@ -191,7 +190,6 @@ french99effective,2
 turk98moving,1
 bongard00legion,1
 aha97learning,2
-weng95shoslifn,1
 lauzac01view,5
 flake02selforganization,2
 rehg99visionbased,4
@@ -234,7 +232,7 @@ lopesdeoliveira99framework,1
 escudero00portability,5
 vanlaerhoven01realtime,8
 moreno97how,2
-chen98learningbased,3
+chen98learningbased,2
 rosenfeld00two,1
 claypool01sangam,1
 245254,1
@@ -280,7 +278,6 @@ hawking01measuring,3
 white98towards,4
 343493,4
 tripathi99mobile,5
-gabbard97taxonomy,1
 biskup00constraints,2
 298012,2
 levison96connecting,1
@@ -317,7 +314,7 @@ schmidt99advanced,9
 roth00using,1
 williamson00approximating,2
 anastasi99reliable,2
-95786,1
+szummer01kernel,7
 30500,1
 hightower01survey,2
 63694,6
@@ -359,7 +356,7 @@ kon00flexible,2
 scheffer01active,6
 bates98state,1
 turner00improving,3
-ghani01hypertext,1
+slonim00document,5
 457459,1
 turk00perceptual,2
 papakonstantinou98query,2
@@ -427,7 +424,7 @@ busi01some,1
 distefano01coordinating,1
 sandholm01market,2
 529964,3
-296568,6
+296568,5
 fensel00workshop,2
 crescenzi01roadrunner,6
 187087,2
@@ -459,7 +456,6 @@ yang98extraction,2
 williams01searchable,1
 cabri98reactive,2
 438351,3
-han99automated,2
 mcroy95repair,5
 147739,2
 206655,14
@@ -571,7 +567,7 @@ liechti00digital,2
 454312,4
 oliveira00agents,2
 539922,4
-stocky02conveying,3
+stocky02conveying,2
 199764,1
 vanlaerhoven00teaching,2
 prodromidis99comparative,2
@@ -784,7 +780,7 @@ sheng99graph,1
 parsons98agents,15
 529980,1
 kendall00java,2
-ramampiaro00supporting,2
+ramampiaro00supporting,1
 helmer01automated,5
 namee01proposal,3
 250815,2
@@ -1066,7 +1062,7 @@ oliver99bayesian,7
 mankoff98bringing,1
 mankoff00providing,1
 535300,2
-kohrs99improving,2
+kohrs99improving,1
 455229,2
 beaudouin-lafon00instrumental,1
 sharma96speechgesture,1
@@ -1189,7 +1185,7 @@ bazzan99moral,1
 119174,2
 littman99solving,1
 thrun98map,6
-levene00computing,3
+prasad96distributed,1
 knublauch02extreme,2
 111340,2
 park01segmentbased,2
@@ -1297,7 +1293,6 @@ yangarber01scenario,4
 128773,2
 weng00incremental,1
 deutschmann98compressive,1
-293457,1
 125291,4
 crabbe01goal,5
 hollerer99situated,6
@@ -1421,7 +1416,7 @@ raskar01interacting,1
 wang98structure,2
 fjeld98graspable,1
 naumann00assessment,2
-lutz99complexity,3
+lutz99complexity,2
 hourcade99architecture,2
 paradiso99interactive,3
 458600,4
@@ -1436,7 +1431,7 @@ gabbard98usability,2
 satoh01network,2
 grolimund95integrating,2
 benerecetti97model,5
-flach99firstorder,3
+flach99firstorder,2
 kantarcioglu02privacypreserving,1
 mateer99highlyavailable,1
 114091,1
@@ -1450,7 +1445,6 @@ fjeld98build,1
 popescul00automatic,3
 amyot00extension,1
 olson98probabilistic,2
-tobies99pspace,1
 marquez00machine,19
 moizumi98mobile,2
 shan98introduction,2
@@ -1480,7 +1474,7 @@ zamir98web,15
 afrati02answering,1
 441105,1
 276915,2
-cumby00relational,4
+cumby00relational,3
 sparkman01automated,3
 borrajo93bounded,2
 yu99methodology,15
@@ -1617,7 +1611,7 @@ low01simulated,2
 marini00hemasl,4
 grundy01software,2
 crabbe01multiple,3
-38137,1
+mccallum00maximum,8
 23217,2
 sandholm01algorithm,6
 kallmann99behavioral,2
@@ -1758,7 +1752,6 @@ diao00comparative,1
 wijsen01query,1
 497508,2
 254597,5
-raisamo99evaluating,2
 brass99equivalence,4
 manolescu01microworkflow,2
 125615,1
@@ -1813,7 +1806,6 @@ ng98reconfiguring,2
 arkin98cooperative,1
 467320,2
 beetz98causal,1
-khardon99relational,1
 332050,3
 506324,5
 dyreson99capturing,2
@@ -1834,7 +1826,7 @@ lagoze01open,1
 weiss98intelligent,1
 roddick99towards,2
 531895,2
-schnattinger98qualitybased,2
+schnattinger98qualitybased,1
 271013,1
 bastert01landscapes,1
 rao94meansend,5
@@ -1857,7 +1849,7 @@ ghani01using,2
 witten01power,3
 421280,1
 wooldridge99methodology,16
-6875,7
+levene00computing,3
 mataric99making,1
 aha98feature,6
 glover99architecture,8
@@ -1902,7 +1894,7 @@ howell99gesture,1
 19461,2
 299008,1
 19462,1
-315153,3
+315153,2
 69807,2
 310437,1
 iglesias99survey,16
@@ -1927,7 +1919,7 @@ khudanpur99maximum,1
 joseph01why,5
 346876,1
 25225,3
-cassell02mack,4
+cassell02mack,3
 jr99identifying,1
 zelikovitz00improving,4
 527187,1
@@ -2006,7 +1998,6 @@ fox98active,7
 labrou99interoperability,2
 dey01distributed,3
 weiss98answer,2
-hahn98ontology,1
 brusilovsky98adaptive,1
 hellerstein00recognizing,3
 210930,1
@@ -2111,7 +2102,6 @@ nareyek00intelligent,1
 115971,4
 nrvag98analytical,5
 druin99role,4
-slonim00document,5
 374383,1
 kagal01highly,2
 elio00task,1
@@ -2230,7 +2220,6 @@ lim00comparison,1
 shanmugasundaram99efficient,7
 artale00expressivity,5
 eidenbenz00atomi,1
-prasad96distributed,1
 bates98using,2
 advani99integrating,1
 531526,2
@@ -2314,7 +2303,7 @@ shah99amdb,1
 rennie01improving,2
 36645,2
 timm01from,1
-282608,5
+282608,4
 539969,1
 athnes00human,2
 114563,7
@@ -2443,7 +2432,7 @@ peters02using,2
 finney02learning,2
 alvarez00web,7
 3733,1
-ware00reaching,4
+ware00reaching,2
 aylett00applying,1
 105684,1
 bailey95active,2
@@ -2472,7 +2461,6 @@ griffiths95concept,5
 491166,1
 aiken98abc,1
 440239,1
-wang01process,1
 201909,1
 jourlin99general,3
 grieser00unifying,7
@@ -2642,7 +2630,6 @@ ferguson95role,1
 livingston01closing,1
 meeden98trend,1
 schmalstieg99using,2
-kohrs99using,1
 373023,1
 315336,5
 cantu-paz00using,1
@@ -2686,7 +2673,7 @@ lawrence99searching,6
 thomas98wearable,6
 539420,3
 oliver98statistical,4
-197556,1
+ashri00paradigma,2
 brand00style,2
 meyer99constraint,1
 choi01probabilistic,1
@@ -2761,7 +2748,7 @@ lin02discovering,4
 445880,1
 liu00learning,2
 rao96agentspeakl,2
-szummer01kernel,7
+6875,7
 amer-yahia00boundingschemas,3
 arampatzis00evaluation,3
 hero99estimation,1
@@ -2909,7 +2896,7 @@ takahashi98mobile,1
 nehaniv99constructive,2
 104045,1
 surmann01learning,1
-bertelsen99dynamics,2
+bertelsen99dynamics,1
 ambroszkiewicz99agent,3
 horling99using,2
 plaisant99design,1
@@ -2922,7 +2909,7 @@ mann02testing,3
 diehl00vrml,1
 270469,4
 505987,1
-ashri00paradigma,2
+han99automated,2
 urhan01dynamic,1
 weber00unsupervised,2
 degiacomo99incremental,1
@@ -2939,7 +2926,6 @@ dey99conference,1
 415300,1
 kim00heterogeneous,5
 kononenko95induction,1
-flach99database,1
 454190,2
 junker98learning,1
 iglezakis00towards,2
@@ -3091,7 +3077,7 @@ sato01parameter,1
 drummond97using,1
 wijngaards01mas,4
 rao97unified,3
-haarslev99description,6
+haarslev99description,5
 haveliwala02evaluating,8
 obrst97constraints,1
 schulte99spontaneous,1
@@ -3154,7 +3140,6 @@ squire99improving,1
 arleo99neuromimetic,1
 granger02multiscale,2
 jantke97theoretical,7
-mccallum00maximum,8
 270678,1
 428001,1
 abraham00optimal,2

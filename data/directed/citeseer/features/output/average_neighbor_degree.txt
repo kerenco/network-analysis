@@ -7,7 +7,6 @@ tenhagen01continuous,0.0
 coetzee00feature,1.5
 neumann99constructing,1.0
 452308,0.0
-brown98utility,1.6
 rahwan00virtual,0.0
 306529,0.0
 bonchi01web,0.0
@@ -19,14 +18,14 @@ griffiths01query,0.0
 spoelder00man,1.0
 120432,1.0
 craswell01effective,0.0
-56231,5.66666666667
+56231,5.55555555556
 lam01overview,0.0
 martelli99specification,1.25
 311175,1.5
 56124,1.625
 253088,2.0
 279508,0.0
-51607,0.6
+51607,0.5
 muslea00selective,0.0
 60136,0.0
 ianni01intelligent,0.0
@@ -71,8 +70,7 @@ racine97maintaining,0.5
 klein91supporting,4.14285714286
 11264,5.0
 462285,0.0
-226124,0.0
-nielsen00designing,0.0
+kuo00web,0.0
 apte01ai,0.0
 528220,0.0
 stader98intelligent,0.0
@@ -216,7 +214,7 @@ rao94meansend,3.6
 zhu00incorporating,0.0
 scheffer01active,0.0
 turner00improving,0.333333333333
-ghani01hypertext,0.0
+slonim00document,0.5
 457459,0.0
 turk00perceptual,0.0
 papakonstantinou98query,8.0
@@ -263,7 +261,7 @@ slivinskas00foundation,0.0
 distefano01coordinating,0.0
 cicirello01wasp,2.0
 529964,0.0
-296568,0.5
+296568,1.0
 crescenzi01roadrunner,0.0
 187087,2.0
 vanlaerhoven00what,1.0
@@ -360,7 +358,6 @@ attardi99theseus,0.0
 445127,0.0
 30500,0.0
 roy99coastal,0.0
-tobies99pspace,0.0
 smola01regularized,0.0
 373986,0.0
 539922,0.0
@@ -449,11 +446,11 @@ rao95bdi,1.11764705882
 540501,0.0
 flake01towards,0.0
 226856,0.0
-kuo00web,0.0
+226124,0.0
 brandes01visual,0.0
 burkhard99bdi,0.0
 35592,2.0
-mcdonald00heterogeneous,7.0
+pagonis99evolving,0.0
 surmann00five,0.0
 makar01hierarchical,0.0
 langley95acquisition,0.0
@@ -492,7 +489,7 @@ erni98generic,0.0
 feiner99importance,0.0
 liu98statistical,3.1
 picco99lime,1.46666666667
-293457,0.0
+456508,0.0
 62580,0.333333333333
 jantke93types,9.66666666667
 resnik98parallel,1.0
@@ -691,7 +688,7 @@ schiele99attentional,0.0
 joslyn99levels,0.5
 leung01towards,0.0
 jalali-sohi01integrated,0.0
-yang00improving,1.5
+yang00improving,1.0
 eiter00data,0.0
 beigl00mediacups,1.25
 450284,0.0
@@ -827,7 +824,6 @@ amato98supporting,0.0
 459233,0.0
 128773,0.0
 weng00incremental,0.0
-456508,0.0
 125291,0.75
 493991,0.0
 hollerer99situated,0.5
@@ -986,7 +982,6 @@ inza99feature,0.0
 528932,0.0
 heinonen96www,1.0
 horling01using,0.0
-khardon99relational,1.0
 bilgic97system,0.0
 246390,1.0
 5234,0.0
@@ -1105,7 +1100,6 @@ diao00comparative,0.0
 332262,0.0
 wijsen01query,0.0
 254597,0.0
-raisamo99evaluating,0.5
 brass99equivalence,3.0
 moreno96limited,1.0
 andersson99intelligent,0.0
@@ -1117,7 +1111,7 @@ benitez98using,2.0
 64225,0.0
 ryu01application,0.0
 302729,0.0
-pagonis99evolving,0.0
+mcdonald00heterogeneous,7.0
 uhrmacher00plug,1.0
 bergamaschi98semantic,0.0
 bryce99coordination,0.0
@@ -1334,7 +1328,6 @@ kwok98automated,2.0
 nareyek00intelligent,0.0
 115971,4.0
 druin99role,1.0
-slonim00document,0.5
 horvitz99principles,0.666666666667
 elio00task,0.0
 munzner95visualizing,2.0
@@ -1361,7 +1354,7 @@ hoppenbrouwers98browsing,0.0
 441654,0.5
 11510,1.0
 prasad96cooperative,1.0
-murphy01bayes,0.0
+thomason00desires,0.0
 486097,0.0
 jagadish99querying,0.5
 eriksson98to,0.0
@@ -1466,7 +1459,6 @@ vogt00how,0.0
 ghavamzadeh01continuoustime,0.0
 417409,0.0
 chen00websail,0.333333333333
-gabbard97taxonomy,0.0
 88449,0.0
 18832,0.0
 timm01from,0.0
@@ -1555,7 +1547,7 @@ peters02using,0.0
 1894,0.875
 alvarez00web,0.0
 3733,0.0
-ware00reaching,0.75
+ware00reaching,1.5
 carr01conceptual,0.0
 bailey95active,1.5
 thompson99active,1.25
@@ -1678,7 +1670,7 @@ calvanese01description,0.0
 srinivasan02target,0.0
 dempski99augmented,0.0
 prasad96offline,0.0
-schapire98boosting,0.666666666667
+schapire98boosting,0.583333333333
 329899,0.428571428571
 huang01programmability,1.0
 mundell99towards,0.0
@@ -1860,7 +1852,6 @@ schadler97connectionist,2.0
 grandi00generalized,0.0
 dey99conference,0.0
 kim00heterogeneous,0.0
-flach99database,0.0
 454190,0.0
 iglezakis00towards,0.0
 buffet02adaptive,0.0
@@ -1982,7 +1973,7 @@ wisneski98ambient,0.5
 448486,0.0
 vandertorre99violation,3.0
 hannebauer99dynamic,0.0
-thomason00desires,0.0
+murphy01bayes,0.0
 mayol02designing,0.0
 najork01highperformance,1.0
 benitez98contentbased,0.0
@@ -1998,7 +1989,6 @@ ricci97extending,0.5
 rao95formal,2.6
 509024,0.0
 jantke97theoretical,2.0
-38137,0.0
 270678,0.0
 brazier02agent,0.5
 quek95eyes,16.0
@@ -2092,7 +2082,7 @@ filliat00active,0.0
 liechti99nonobtrusive,0.5
 rintanen98planning,1.0
 cal02expressive,0.0
-95786,3.0
+brown98utility,1.6
 muller01cube,0.0
 472783,0.0
 530815,0.0
