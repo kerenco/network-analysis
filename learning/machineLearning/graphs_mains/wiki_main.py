@@ -126,7 +126,7 @@ if __name__ == "__main__":
 
         gnx = result[0]
         map_fetures = result[1]
-        number_of_learning_for_mean = 2.0
+        number_of_learning_for_mean = 10.0
 
         auc_file_name = result_path+'auc.csv'
         auc_file = open(auc_file_name, 'w')
