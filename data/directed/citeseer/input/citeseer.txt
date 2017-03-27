@@ -229,7 +229,6 @@
 196686	shankar00weight	1
 197022	goldstein00creating	1
 197022	goldstein99automatic	1
-197556	282608	1
 198191	broersen00leveled	1
 198731	236597	1
 199764	453469	1
@@ -491,7 +490,6 @@
 295535	531549	1
 295535	giorgini01multiagent	1
 296568	454876	1
-296568	ghani01hypertext	1
 298782	279508	1
 298782	375424	1
 298782	472783	1
@@ -660,7 +658,6 @@
 376961	510071	1
 376961	bruckner01managing	1
 37804	202510	1
-38137	315153	1
 382181	brass98semantics	1
 382181	brass99computation	1
 382181	wang00argumentationbased	1
@@ -1165,7 +1162,6 @@
 9546	oyama01keyword	1
 9546	pal02web	1
 9576	312028	1
-95786	haarslev99description	1
 95810	mudgal00bilateral	1
 95810	zunino01representing	1
 95871	315336	1
@@ -1453,7 +1449,6 @@ bernstein00vision	bernstein00data	1
 bernstein00vision	bernstein00panel	1
 bernstein00vision	bernstein00vision	1
 bertelsen99dynamics	bertelsen99augmenting	1
-bertelsen99dynamics	nielsen00designing	1
 bertino01measuring	bertino01measuring	1
 bertino98definition	bertino98definition	1
 bertino99approach	bertino01measuring	1
@@ -2385,7 +2380,6 @@ flach00abduction	kakas01abduction	1
 flach98strongly	164953	1
 flach98strongly	7980	1
 flach98strongly	flach99firstorder	1
-flach99database	flach99firstorder	1
 flake00agents	flake01towards	1
 flake00efficient	456508	1
 flake00efficient	532128	1
@@ -2973,7 +2967,6 @@ khaled98gado	bourdeau99three	1
 khaled98gado	davison98applying	1
 khaled98gado	rasheed97guided	1
 khaled98gado	rasheed98adaptive	1
-khardon99relational	cumby00relational	1
 khudanpur99maximum	rosenfeld00two	1
 killijian01towards	meier01towards	1
 killijian01towards	reijers01requirements	1
@@ -3047,8 +3040,6 @@ koch00integrating	lacher01facilitating	1
 koch99simple	249633	1
 kodratoff00comparing	311589	1
 kohrs99improving	503542	1
-kohrs99improving	kohrs99using	1
-kohrs99using	kohrs99improving	1
 koller98probabilistic	265990	1
 koller98probabilistic	friedman99learning	1
 koller98probabilistic	noh99uncertain	1
@@ -3902,10 +3893,7 @@ racine97maintaining	452192	1
 raghavan01crawling	476601	1
 raghavan01crawling	raghavan01crawling	1
 raghavan01crawling	shkapenyuk01design	1
-raisamo99evaluating	cassell02mack	1
-raisamo99evaluating	stocky02conveying	1
 ram90incremental	157013	1
-ramampiaro00supporting	wang01process	1
 randell00shopping	362156	1
 randell00shopping	randell02well	1
 rao94meansend	460784	1
@@ -4175,7 +4163,6 @@ schmidt99advanced	vanlaerhoven00what	1
 schmidt99advanced	vanlaerhoven01realtime	1
 schmill99learned	373966	1
 schmitt98relating	131669	1
-schnattinger98qualitybased	hahn98ontology	1
 schndelbach01augurscope	539227	1
 schneider00disseminating	438351	1
 schneider99distributed	483769	1
@@ -4426,7 +4413,6 @@ tieu00boosting	ultis01adaboost	1
 timm00multiagent	timm01synthesis	1
 timm01synthesis	timm01enterprise	1
 tino98finite	7785	1
-tobies99pspace	lutz99complexity	1
 toenshoff01flexible	timm01synthesis	1
 tong00restricted	szummer01kernel	1
 torp99effective	510071	1
@@ -4525,9 +4511,7 @@ wang99discovering	lin02discovering	1
 wang99hierarchical	buffet02adaptive	1
 wang99hierarchical	ghavamzadeh01continuoustime	1
 wang99hierarchical	makar01hierarchical	1
-ware00reaching	293457	1
 ware00reaching	bowman99interaction	1
-ware00reaching	gabbard97taxonomy	1
 ware00reaching	jacob99software	1
 ware96evaluating	meng98data	1
 warshaw98monitoring	484682	1
@@ -4543,7 +4527,6 @@ weiss98intelligent	weiss01predicting	1
 weiss98learning	509713	1
 weiss98learning	weiss01predicting	1
 wendler98cbr	485557	1
-weng95shoslifn	chen98learningbased	1
 weng98visionguided	208646	1
 weng98visionguided	chen98learningbased	1
 werger00ayllu	390217	1

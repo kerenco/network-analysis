@@ -1,0 +1,5 @@
+Start average_neighbor_degree at: 
+2017-03-23 18:26:04.205521
+2017-03-23 18:26:13.563860
+finish! 
+It Took: 9.35683393478

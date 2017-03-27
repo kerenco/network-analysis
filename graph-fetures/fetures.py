@@ -2,6 +2,7 @@ import initGraph
 import ReadFeatureFile
 import os,sys
 from datetime import datetime
+import traceback
 
 from algo_vertices import general
 import ReadFeatureFile
@@ -28,7 +29,7 @@ from algo_edges import edge_current_flow_betweenness_centrality
 from algo_edges import edge_betweenness_centrality
 
 
-def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected = False, fetures_list=[]):
+def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list,return_map=True):
     ######
     # 1 - Degrees
     # 2 - betweenes
@@ -58,6 +59,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[1] = map_general
         except:
             print 'error in general:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if ('betweenness' in fetures_list):
         try:
@@ -65,6 +68,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[2] = map_betweenness
         except:
             print 'error in betweeenness:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if ('closeness' in fetures_list):
         try:
@@ -72,6 +77,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[3] = map_closeness
         except:
             print 'error in closeness:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('bfsmoments' in fetures_list):
         try:
@@ -79,6 +86,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[4] = map_bfs
         except:
             print 'error in bfsmoments:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('flow' in fetures_list):
         try:
@@ -86,6 +95,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[5] = map_flow
         except:
             print 'error in flow:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('ab' in fetures_list):
         try:
@@ -93,6 +104,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[6] = map_attracttor
         except:
             print 'error in attractor basin:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('motif3' in fetures_list):
         try:
@@ -100,6 +113,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[7] = map_motif3
         except:
             print 'error in motif3:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('motif4' in fetures_list):
         try:
@@ -107,6 +122,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[8] = map_motif4
         except:
             print 'error in motif4:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('kcore' in fetures_list):
         try:
@@ -114,6 +131,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[9] = map_kcore
         except:
             print 'error in kcore:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if ('louvain' in fetures_list):
         try:
@@ -121,6 +140,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[10] = map_louvain
         except:
             print 'error in louvain:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if ('page_rank' in fetures_list):
         try:
@@ -128,6 +149,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[11] = map_pageRank
         except:
             print 'error in page_rank:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('fiedler_vector' in fetures_list):
         try:
@@ -135,6 +158,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[12] = map_fiedlerVector
         except:
             print 'error in fiedler_vector:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('hierarchy_energy' in fetures_list):
         try:
@@ -142,6 +167,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[13] = map_hierarchyEnerg
         except:
             print 'error in hierarchy energy:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if('eccentricity' in fetures_list):
         try:
@@ -149,6 +176,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[14] = map_eccentricity
         except:
             print 'error in eccentricity:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if ('load_centrality' in fetures_list):
         try:
@@ -156,6 +185,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[15] = map_load_centrality
         except:
             print 'error in load_centrality:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if ('communicability_centrality' in fetures_list):
         try:
@@ -163,6 +194,8 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[16] = map_communicability_centrality
         except:
             print 'error in communicability centrality:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
     if ('average_neighbor_degree' in fetures_list):
         try:
@@ -170,9 +203,11 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[17] = map_average_neighbor_degree
         except:
             print 'error in average neighbor:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
 
-
-    return gnx, map_fetures
+    if(return_map):
+        return [gnx,map_fetures]
 
 
 def compute_specific_nav(gnx, outputDirectory,algo_name, motif_variations_path = None):
