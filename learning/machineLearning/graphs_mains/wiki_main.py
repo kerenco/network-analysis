@@ -1,10 +1,11 @@
 import os
 import sys
-# from machineLearing import LearningPhase
+# import LearningPhase
 # import FeturesMatrix
-# import numpy as np
+import numpy as np
 # from TagsLoader import TagsLoader
 import multiprocessing
+from operator import itemgetter
 
 
 
@@ -23,7 +24,7 @@ def import_path(fullpath):
 
 
 currentDirectory = str(os.getcwd())
-f = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
+features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
 
 # 1 - Degrees
 # 2 - betweenes
@@ -52,10 +53,12 @@ undirected = ['general','betweenness','closeness','bfsmoments','kcore','louvain'
     'motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector,'hierarchy_energy'
 edges = ['edge_flow', 'edge_betweenness']
 
+directed_features.remove('flow')
+directed_features.remove('eccentricity')
+directed_wiki = directed_features
 
 if __name__ == "__main__":
 
-        # snap = '0001'
         file_in = str(wdir) + r'/../../../data/directed/wiki-rfa/input/wiki.txt'
 
         output_dir = str(wdir) + r'/../../../data/directed/wiki-rfa/features'
@@ -76,7 +79,7 @@ if __name__ == "__main__":
             print fetures_list
             return_map = False
 
-            processes.append(multiprocessing.Process(target=f.calc_fetures_vertices,args=(file_input,motif_path,outputDirectory,directed,takeConnected,fetures_list,return_map)))
+            processes.append(multiprocessing.Process(target=features.calc_fetures_vertices, args=(file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list, return_map)))
 
         for pr in processes:
             pr.start()
@@ -84,6 +87,82 @@ if __name__ == "__main__":
         for pr in processes:
             pr.join()
 
-        result = f.calc_fetures_vertices(file_input,motif_path,outputDirectory,directed,takeConnected,directed_features,return_map=True)
+        result = features.calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected, directed_features, return_map=True)
+        place = 0
+        features_importance_dict = {}
 
-        print result[1].keys()
+        for k,v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
+            if k not in directed_wiki:
+                continue
+            if k not in features.vertices_algo_feature_directed_length_dict:
+                features_importance_dict[place] = k
+                place +=1
+            else:
+                for i in range(features.vertices_algo_feature_directed_length_dict[k]):
+                    features_importance_dict[place] = k + '[' + str(i) + ']'
+                    place += 1
+
+        print features_importance_dict
+
+        for k in directed_wiki:
+            print k
+            if not features.vertices_algo_feature_directed_length_dict.has_key(k):
+                place += 1
+            else:
+                print k
+                place += features.vertices_algo_feature_directed_length_dict[k]
+        print place
+
+        LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
+        TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
+        FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+
+        classification_wiki_result = ['wiki-tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
+        ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
+        directory_tags_path = str(wdir) + r'/../../../data/directed/wiki-rfa/tags/'
+        result_path = str(wdir) + r'/../../../data/directed/wiki-rfa/results/'
+        tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_wiki_result)
+        tagsLoader.Load()
+
+        gnx = result[0]
+        map_fetures = result[1]
+        number_of_learning_for_mean = 2.0
+
+        auc_file_name = result_path+'auc.txt'
+        auc_file = open(auc_file_name, 'w')
+        features_importance_file_name = result_path + 'features_importance.txt'
+        features_importance_file = open(features_importance_file_name,'w')
+
+        for classification in classification_wiki_result:
+            vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
+            result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
+            feature_matrix = result[0]
+            tags_vector = np.squeeze(np.asarray(result[1]))
+            l = LearningPhase.learningPhase(feature_matrix, tags_vector)
+            for algo in ml_algos:
+                print algo
+                sum_auc_test = 0
+                sum_auc_train = 0
+                sum_feature_importance = 0
+                for i in range(int(number_of_learning_for_mean)):
+                    cls = l.implementLearningMethod(algo)
+                    if(algo == 'RF'):
+                        sum_feature_importance += cls.feature_importances_
+                        print len(cls.feature_importances_)
+                        print cls.feature_importances_
+                    auc_test = l.evaluate_AUC_test()
+                    print 'auc_test', auc_test
+                    sum_auc_test += auc_test
+                    auc_train = l.evaluate_AUC_train()
+                    print 'auc_train', auc_train
+                    sum_auc_train += auc_train
+                auc_file.writelines(algo + ',' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
+                print 'mean_feature_importance', sum_feature_importance / number_of_learning_for_mean
+                print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
+                print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
+                if algo == 'RF':
+                    for fi in features_importance_dict:
+                        feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
+                        features_importance_file.writelines(features_importance_dict[fi] + ','+str(feature_importance_value)+'\n')
+        features_importance_file.close()
+        auc_file.close()

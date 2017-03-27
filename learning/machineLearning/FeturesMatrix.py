@@ -14,12 +14,12 @@ def z_scoring(matrix):
             new_matrix[:,i] = (new_matrix[:,i]-new_matrix[:,i].min())/new_matrix[:,i].std()
     return new_matrix
 
-def build_matrix_from_fetures(gnx,map_fetures):
+def build_matrix_from_fetures(vertex_to_tag,map_fetures):
     node_to_fetures = {}
-    for n in gnx.nodes():
+    for n in vertex_to_tag.keys():
         node_to_fetures[n] = []
     for fm in map_fetures:
-        for k in map_fetures[fm]:
+        for k in node_to_fetures:
             if fm == 7:
                 for i in range(len(map_fetures[fm][k])):
                     if sum(map_fetures[fm][k]) != 0:
@@ -35,9 +35,9 @@ def build_matrix_from_fetures(gnx,map_fetures):
 
 
 def build_matrix_with_tags(gnx,map_fetures,vertex_to_tag,zscoring = True):
-    node_to_fetures = build_matrix_from_fetures(gnx,map_fetures)
-    [[node_to_fetures[node].insert(0,vertex_to_tag[node]) for node in node_to_fetures]]
-    matrix_with_tags = np.asmatrix([node_to_fetures[node] for node in node_to_fetures])
+    nodeWithTags_to_features = build_matrix_from_fetures(vertex_to_tag,map_fetures)
+    [[nodeWithTags_to_features[node].insert(0,vertex_to_tag[node]) for node in nodeWithTags_to_features]]
+    matrix_with_tags = np.asmatrix([nodeWithTags_to_features[node] for node in nodeWithTags_to_features])
     if(zscoring):
         feature_matrix = z_scoring(matrix_with_tags[:,1:])
     else:
