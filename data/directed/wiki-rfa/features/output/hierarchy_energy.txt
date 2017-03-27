@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Someoneanother,0.526207174257
 Mkamensek,0.664312925342
 Dcheagle,0.389061960418
