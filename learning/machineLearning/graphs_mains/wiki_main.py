@@ -128,9 +128,9 @@ if __name__ == "__main__":
         map_fetures = result[1]
         number_of_learning_for_mean = 2.0
 
-        auc_file_name = result_path+'auc.txt'
+        auc_file_name = result_path+'auc.csv'
         auc_file = open(auc_file_name, 'w')
-        features_importance_file_name = result_path + 'features_importance.txt'
+        features_importance_file_name = result_path + 'features_importance.csv'
         features_importance_file = open(features_importance_file_name,'w')
 
         for classification in classification_wiki_result:
