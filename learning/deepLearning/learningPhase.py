@@ -30,7 +30,7 @@ class learningPhase:
         self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
         # Fit the model
-        self.model.fit(self.x_train, self.y_train, nb_epoch=500, batch_size=10, verbose=0)
+        self.model.fit(self.x_train, self.y_train, epochs=200, batch_size=100, verbose=1)
 
         return self.model
 

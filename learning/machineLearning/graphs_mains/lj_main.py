@@ -64,6 +64,75 @@ directed_features.remove('load_centrality')
 directed_features.remove('hierarchy_energy')
 directed_lj = directed_features
 
+def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
+    for classification in classifications:
+        auc_file_name = result_path + classification + '_auc.csv'
+        auc_file = open(auc_file_name, 'a')
+        features_importance_file_name = result_path + classification + '_features_importance.csv'
+        features_importance_file = open(features_importance_file_name, 'w')
+
+        vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
+        result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
+        feature_matrix = result[0]
+        tags_vector = np.squeeze(np.asarray(result[1]))
+        l = LearningPhase.learningPhase(feature_matrix, tags_vector)
+        for algo in ml_algos:
+            print algo
+            sum_auc_test = 0
+            sum_auc_train = 0
+            sum_feature_importance = 0
+            for i in range(int(number_of_learning_for_mean)):
+                cls = l.implementLearningMethod(algo)
+                if (algo == 'RF'):
+                    sum_feature_importance += cls.feature_importances_
+                    print len(cls.feature_importances_)
+                    print cls.feature_importances_
+                auc_test = l.evaluate_AUC_test()
+                print 'auc_test', auc_test
+                sum_auc_test += auc_test
+                auc_train = l.evaluate_AUC_train()
+                print 'auc_train', auc_train
+                sum_auc_train += auc_train
+            auc_file.writelines(algo + ',' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
+            print 'mean_feature_importance', sum_feature_importance / number_of_learning_for_mean
+            print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
+            print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
+            if algo == 'RF':
+                for fi in features_importance_dict:
+                    feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
+                    features_importance_file.writelines(
+                        features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
+        features_importance_file.close()
+        auc_file.close()
+
+
+def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
+    deep = import_path(currentDirectory + r'/../../deepLearning/learningPhase.py')
+    for classification in classifications:
+        print classification
+        auc_file_name = result_path + classification + '_auc_d.csv'
+        auc_file = open(auc_file_name, 'a')
+
+        vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
+        result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
+        feature_matrix = result[0]
+        tags_vector = np.squeeze(np.asarray(result[1]))
+        deepL = deep.learningPhase(feature_matrix, tags_vector)
+        sum_auc_test = 0
+        sum_auc_train = 0
+        for i in range(int(number_of_learning_for_mean)):
+            cls = deepL.runNetwork(0.2)
+            auc_test = deepL.evaluate_AUC_test()
+            print 'auc_test', auc_test
+            sum_auc_test += auc_test
+            auc_train = deepL.evaluate_AUC_train()
+            print 'auc_train', auc_train
+            sum_auc_train += auc_train
+        auc_file.writelines('deep ,' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
+        print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
+        print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
+        auc_file.close()
+
 if __name__ == "__main__":
 
     for i in range(1,2):
@@ -195,45 +264,17 @@ if __name__ == "__main__":
 
         gnx = result[0]
         map_fetures = result[1]
-        number_of_learning_for_mean = 4
+        #number_of_learning_for_mean = 4
+
+        deep = True
+        if (deep):
+            deepLearning(gnx, map_fetures, number_of_learning_for_mean=1.0, result_path=result_path,
+                         classifications=classification_lj_result)
+        else:
+            machineLearning(gnx, map_fetures, number_of_learning_for_mean=4.0, result_path=result_path,
+                            classifications=classification_lj_result)
 
 
-        for classification in classification_lj_result:
-            auc_file_name = result_path + classification+'_auc.csv'
-            auc_file = open(auc_file_name, 'w')
-            features_importance_file_name = result_path + classification+'_features_importance.csv'
-            features_importance_file = open(features_importance_file_name, 'w')
 
-            vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
-            result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
-            feature_matrix = result[0]
-            tags_vector = np.squeeze(np.asarray(result[1]))
-            l = LearningPhase.learningPhase(feature_matrix, tags_vector)
-            for algo in ml_algos:
-                print algo
-                sum_auc_test = 0
-                sum_auc_train = 0
-                sum_feature_importance = 0
-                for i in range(int(number_of_learning_for_mean)):
-                    cls = l.implementLearningMethod(algo)
-                    if (algo == 'RF'):
-                        sum_feature_importance += cls.feature_importances_
-                        print len(cls.feature_importances_)
-                        print cls.feature_importances_
-                    auc_test = l.evaluate_AUC_test()
-                    print 'auc_test', auc_test
-                    sum_auc_test += auc_test
-                    auc_train = l.evaluate_AUC_train()
-                    print 'auc_train', auc_train
-                    sum_auc_train += auc_train
-                auc_file.writelines(algo + ',' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
-                print 'mean_feature_importance', sum_feature_importance / number_of_learning_for_mean
-                print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
-                print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
-                if algo == 'RF':
-                    for fi in features_importance_dict:
-                        feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
-                        features_importance_file.writelines(
-                            features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
-            features_importance_file.close()
-            auc_file.close()
+
+
