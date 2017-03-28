@@ -16,6 +16,9 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import SGDClassifier
+import seaborn as sn
+import pandas as pd
+import matplotlib.pyplot as plt
 
 
 class learningPhase:
@@ -56,6 +59,23 @@ class learningPhase:
         plt.legend(loc="lower right")
         plt.show()
 
+    def plot_confusion_matrix(self, cm, classes,
+                              normalize=False,
+                              title='Confusion matrix',
+                              plot_file_name='confusion matrix.png'):
+
+        df_cm = pd.DataFrame(cm, index=[i for i in classes],
+                             columns=[i for i in classes])
+
+        print normalize
+        if (normalize):
+            cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
+        plt.figure()
+        sn.heatmap(df_cm, annot=True)
+        plt.title(title)
+        plt.savefig(plot_file_name)
+
     def evaluate_AUC_test(self):
         predictions = self.classifier.predict(self.x_test)
         y = [int(i) for i in self.y_test]
@@ -71,3 +91,22 @@ class learningPhase:
         train_fpr, train_tpr, thresholds = metrics.roc_curve(y, score)
         aucTrain = np.trapz(train_tpr, train_fpr)
         return aucTrain
+
+    def evaluate_confusion_metric_test(self):
+        y_pred = self.classifier.predict(self.x_test)
+        y_true = [int(i) for i in self.y_test]
+        confusion_matrix_result = metrics.confusion_matrix(y_true,y_pred)
+        confusion_matrix_result = confusion_matrix_result.astype('float') / confusion_matrix_result.sum(axis=1)[:, np.newaxis]
+        return confusion_matrix_result
+
+    def evaluate_confusion_metric_train(self):
+        y_pred = self.classifier.predict(self.x_train)
+        y_true = [int(i) for i in self.y_train]
+        confusion_matrix_result = metrics.confusion_matrix(y_true, y_pred)
+        print confusion_matrix_result
+        return confusion_matrix_result
+
+
+
+
+
