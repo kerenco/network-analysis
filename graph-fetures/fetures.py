@@ -51,6 +51,10 @@ vertices_algo_feature_directed_length_dict = {'general':2,
                                               'bfsmoments':2,
                                               'motif3':14}
 
+vertices_algo_feature_undirected_length_dict = {'general':1,
+                                              'bfsmoments':2,
+                                              'motif3':2}
+
 def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list,return_map=True):
     ######
     # 1 - Degrees

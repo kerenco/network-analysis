@@ -164,24 +164,16 @@ if __name__ == "__main__":
         for k, v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
             if k not in undirected:
                 continue
-            if k not in features.vertices_algo_feature_directed_length_dict:
+            if k not in features.vertices_algo_feature_undirected_length_dict:
                 features_importance_dict[place] = k
                 place += 1
             else:
-                for i in range(features.vertices_algo_feature_directed_length_dict[k]):
+                for i in range(features.vertices_algo_feature_undirected_length_dict[k]):
                     features_importance_dict[place] = k + '[' + str(i) + ']'
                     place += 1
 
         print features_importance_dict
 
-        for k in undirected:
-            print k
-            if not features.vertices_algo_feature_directed_length_dict.has_key(k):
-                place += 1
-            else:
-                print k
-                place += features.vertices_algo_feature_directed_length_dict[k]
-        print place
 
         LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
         TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
