@@ -64,12 +64,13 @@ class learningPhase:
                               title='Confusion matrix',
                               plot_file_name='confusion matrix.png'):
 
-        df_cm = pd.DataFrame(cm, index=[i for i in classes],
-                             columns=[i for i in classes])
-
         print normalize
         if (normalize):
             cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
+
+        df_cm = pd.DataFrame(cm, index=[i for i in classes],
+                             columns=[i for i in classes])
 
         plt.figure()
         sn.heatmap(df_cm, annot=True)
