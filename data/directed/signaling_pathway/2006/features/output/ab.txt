@@ -359,7 +359,6 @@ MAP1A,0.0
 SKY,-1
 CARM1,-1
 dATP,-1
-Source,0.0
 CRE,-1
 SORCIN,0.0
 CRK,-1

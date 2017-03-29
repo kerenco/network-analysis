@@ -29,6 +29,28 @@ from algo_edges import edge_current_flow_betweenness_centrality
 from algo_edges import edge_betweenness_centrality
 
 
+vertices_algo_dict = {'general' :1,
+                      'betweenness':2,
+                      'closeness':3,
+                      'bfsmoments':4,
+                      'flow':5,
+                      'ab':6,
+                      'motif3':7,
+                      'motif4':8,
+                      'kcore':9,
+                      'louvain':10,
+                      'page_rank':11,
+                      'fiedler_vector':12,
+                      'hierarchy_energy':13,
+                      'eccentricity':14,
+                      'load_centrality':15,
+                      'communicability_centrality':16,
+                      'average_neighbor_degree':17}
+
+vertices_algo_feature_directed_length_dict = {'general':2,
+                                              'bfsmoments':2,
+                                              'motif3':14}
+
 def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list,return_map=True):
     ######
     # 1 - Degrees
@@ -209,7 +231,6 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
     if(return_map):
         return [gnx,map_fetures]
 
-
 def compute_specific_nav(gnx, outputDirectory,algo_name, motif_variations_path = None):
     file_name = str(outputDirectory) + '/output/' + algo_name + '.txt'
     if (not os.path.isfile(file_name) or os.stat(file_name).st_size == 0):
@@ -222,7 +243,6 @@ def compute_specific_nav(gnx, outputDirectory,algo_name, motif_variations_path =
         map_nav = ReadFeatureFile.fileToMap_vertices(file_name)
     print (str(datetime.now()) + ' finish ' + algo_name + ' information')
     return map_nav
-
 
 def run_specific_algo_vertices(f, ft, gnx, algo_name, motif_variations_path = None):
 
@@ -266,7 +286,6 @@ def run_specific_algo_vertices(f, ft, gnx, algo_name, motif_variations_path = No
     elif ('average_neighbor_degree' == algo_name):
         return averageNeighborDegree.average_neighbor_degree(gnx, f, ft)
 
-
 def compute_specific_eav(gnx, outputDirectory,algo_name, motif_variations_path = None):
     file_name_edges = str(outputDirectory) + r'/output_edges/' + algo_name + '_edges.txt'
     file_name_vertex = str(outputDirectory) + '/output/' + algo_name + '.txt'
@@ -308,7 +327,6 @@ def run_specific_algo_edges(f, ft, gnx, algo_name,map_algo):
 
     elif ('edge_betweenness' == algo_name):
         return edge_betweenness_centrality.edge_betweenness_centrality(f, ft, gnx)
-
 
 
 def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeConnected = False, fetures_list=[]):

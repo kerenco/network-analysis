@@ -1,4 +1,4 @@
-Start hierarchyEnergy at: 
+Start hierarchyEnergy at:
 2017-03-26 18:49:46.945514
 2017-03-26 18:56:19.510900
 finish! 
