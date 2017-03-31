@@ -94,6 +94,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, 
             print 'mean_feature_importance', sum_feature_importance / number_of_learning_for_mean
             print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
             print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
+
             if algo == 'RF':
                 for fi in features_importance_dict:
                     feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
@@ -196,7 +197,7 @@ if __name__ == "__main__":
     takeConnected = False
     motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
     result = features.calc_fetures_vertices(file_in, motif_path, output_dir, directed, takeConnected,
-                                            undirected_diseases, return_map=True)
+                                            ['motif4'], return_map=True)
     place = 0
     features_importance_dict = {}
 
@@ -227,10 +228,10 @@ if __name__ == "__main__":
     gnx = result[0]
     map_fetures = result[1]
 
-    deep = False
-    if (deep):
-        deepLearning(gnx, map_fetures, number_of_learning_for_mean=1.0, result_path=result_path,
-                     classifications=classification_diseases_result)
-    else:
-        machineLearning(gnx, map_fetures, number_of_learning_for_mean=4.0, result_path=result_path,
-                        classifications=classification_diseases_result)
+    # deep = False
+    # if (deep):
+    #     deepLearning(gnx, map_fetures, number_of_learning_for_mean=1.0, result_path=result_path,
+    #                  classifications=classification_diseases_result)
+    # else:
+    #     machineLearning(gnx, map_fetures, number_of_learning_for_mean=4.0, result_path=result_path,
+    #                     classifications=classification_diseases_result)
