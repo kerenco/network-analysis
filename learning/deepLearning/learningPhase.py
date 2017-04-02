@@ -6,7 +6,9 @@ import numpy
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from keras.regularizers import l2
-
+import pandas as pd
+import seaborn as sn
+import keras
 
 class learningPhase:
 
@@ -17,7 +19,7 @@ class learningPhase:
     def DivideToTrainAndTest(self, testSize):
         self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.featuresMat, self.tagsVec, test_size=testSize)
 
-    def runNetwork(self,test_size = 0.3):
+    def runNetwork(self,test_size = 0.3, output_activation='sigmoid', output_size=1):
         self.DivideToTrainAndTest(test_size)
         # create model
         self.model = Sequential()
@@ -25,11 +27,18 @@ class learningPhase:
         self.model.add(Dropout(0.2))
         self.model.add(Dense(35, init='he_normal', activation='relu', W_regularizer=l2(0.01)))
         self.model.add(Dropout(0.2))
-        self.model.add(Dense(1, init='uniform', activation='sigmoid', W_regularizer=l2(0.01)))
+        self.model.add(Dense(output_size, init='uniform', activation=output_activation, W_regularizer=l2(0.01)))
 
-        self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+        # self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
         # Fit the model
+        if(output_activation == 'softmax'):
+            self.model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+            self.y_train = keras.utils.to_categorical(self.y_train, num_classes=max(self.y_train)+1)
+            self.y_test = keras.utils.to_categorical(self.y_test, num_classes=max(self.y_test)+1)
+        else:
+            self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
         self.model.fit(self.x_train, self.y_train, epochs=200, batch_size=100, verbose=1)
 
         return self.model
@@ -61,6 +70,38 @@ class learningPhase:
         aucVal = numpy.trapz(tprVal, fprVal)
         return aucVal
 
+    def evaluate_confusion_metric_test(self):
+        y_pred = self.model.predict(self.x_test)
+        y_pred = [np.argmax(lst) for lst in y_pred]
+        y_true = [np.argmax(lst) for lst in self.y_test]
+        confusion_matrix_result = metrics.confusion_matrix(y_true,y_pred)
+        confusion_matrix_result = confusion_matrix_result.astype('float') / confusion_matrix_result.sum(axis=1)[:, np.newaxis]
+        return confusion_matrix_result
+
+    def evaluate_confusion_metric_train(self):
+        y_pred = self.classifier.predict(self.x_train)
+        y_true = [int(i) for i in self.y_train]
+        confusion_matrix_result = metrics.confusion_matrix(y_true, y_pred)
+        print confusion_matrix_result
+        return confusion_matrix_result
+
+    def plot_confusion_matrix(self, cm, classes,
+                              normalize=False,
+                              title='Confusion matrix',
+                              plot_file_name='confusion matrix.png'):
+
+        if (normalize):
+            cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
+        df_cm = pd.DataFrame(cm, index=[i for i in classes],
+                             columns=[i for i in classes])
+
+        print normalize
+
+        plt.figure()
+        sn.heatmap(df_cm, annot=True)
+        plt.title(title)
+        plt.savefig(plot_file_name)
 
 
 

@@ -56,6 +56,65 @@ edges = ['edge_flow', 'edge_betweenness']
 directed_features.remove('eccentricity')
 directed_cora = directed_features
 
+
+def machineLearning(gnx, map_fetures, number_of_learning_for_mean, confusion_matrix_file_name, classifications):
+    confusion_matrix_file = open(confusion_matrix_file_name, 'a')
+    features_importance_file_name = result_path + 'features_importance.csv'
+    features_importance_file = open(features_importance_file_name, 'w')
+
+    for classification in classifications:
+        vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
+        result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
+        feature_matrix = result[0]
+        tags_vector = np.squeeze(np.asarray(result[1]))
+        l = LearningPhase.learningPhase(feature_matrix, tags_vector)
+        for algo in ml_algos:
+            print algo
+            sum_confusion_matrix_test = 0
+            sum_feature_importance = 0
+            for i in range(int(number_of_learning_for_mean)):
+                cls = l.implementLearningMethod(algo)
+                if (algo == 'RF'):
+                    sum_feature_importance += cls.feature_importances_
+                    print len(cls.feature_importances_)
+                    print cls.feature_importances_
+                cm = l.evaluate_confusion_metric_test()
+                sum_confusion_matrix_test += cm
+            confusion_matrix_file.writelines(algo + ',' + str(sum_confusion_matrix_test))
+            plot_file_name = result_path + '//' + algo + '_confusion_matrix.png'
+            l.plot_confusion_matrix(sum_confusion_matrix_test, ['0', '1', '2', '3', '4', '5', '6'], True,
+                                    title='Confusion Matrix', plot_file_name=plot_file_name)
+
+            if algo == 'RF':
+                for fi in features_importance_dict:
+                    feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
+                    features_importance_file.writelines(
+                        features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
+    features_importance_file.close()
+    confusion_matrix_file.close()
+
+
+def deepLearning(gnx, map_fetures, number_of_learning_for_mean, confusion_matrix_file_name, classifications):
+    confusion_matrix_file = open(confusion_matrix_file_name, 'a')
+    deep = import_path(currentDirectory + r'/../../deepLearning/learningPhase.py')
+    for classification in classifications:
+        vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
+        result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
+        feature_matrix = result[0]
+        tags_vector = np.squeeze(np.asarray(result[1]))
+        deepL = deep.learningPhase(feature_matrix, tags_vector)
+        sum_confusion_matrix_test = 0
+        for i in range(int(number_of_learning_for_mean)):
+            cls = deepL.runNetwork(0.2,output_activation='softmax',output_size=7)
+            cm = deepL.evaluate_confusion_metric_test()
+            sum_confusion_matrix_test += cm
+        confusion_matrix_file.writelines('deep,' + str(sum_confusion_matrix_test))
+        plot_file_name = result_path + '//deep_confusion_matrix.png'
+        deepL.plot_confusion_matrix(sum_confusion_matrix_test, ['0', '1', '2', '3', '4', '5', '6'], True,
+                                title='Confusion Matrix', plot_file_name=plot_file_name)
+    confusion_matrix_file.close()
+
+
 if __name__ == "__main__":
 
         file_in = str(wdir) + r'/../../../data/directed/cora/input/cora.txt'
@@ -131,35 +190,17 @@ if __name__ == "__main__":
         number_of_learning_for_mean = 10.0
 
         confusion_matrix_file_name = result_path + 'confusion_matrix.txt'
-        confusion_matrix_file = open(confusion_matrix_file_name, 'w')
-        features_importance_file_name = result_path + 'features_importance.csv'
-        features_importance_file = open(features_importance_file_name,'w')
+        # confusion_matrix_file = open(confusion_matrix_file_name, 'w')
+        # features_importance_file_name = result_path + 'features_importance.csv'
+        # features_importance_file = open(features_importance_file_name,'w')
 
-        for classification in classification_wiki_result:
-            vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
-            result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
-            feature_matrix = result[0]
-            tags_vector = np.squeeze(np.asarray(result[1]))
-            l = LearningPhase.learningPhase(feature_matrix, tags_vector)
-            for algo in ml_algos:
-                print algo
-                sum_confusion_matrix_test = 0
-                sum_feature_importance = 0
-                for i in range(int(number_of_learning_for_mean)):
-                    cls = l.implementLearningMethod(algo)
-                    if(algo == 'RF'):
-                        sum_feature_importance += cls.feature_importances_
-                        print len(cls.feature_importances_)
-                        print cls.feature_importances_
-                    cm = l.evaluate_confusion_metric_test()
-                    sum_confusion_matrix_test += cm
-                confusion_matrix_file.writelines(algo + ','+str(sum_confusion_matrix_test))
-                plot_file_name = result_path + '//'+algo+'_confusion_matrix.png'
-                l.plot_confusion_matrix(sum_confusion_matrix_test ,['0' , '1','2','3','4','5','6'],True,title='Confusion Matrix',plot_file_name= plot_file_name)
+        deep = True
+        if (deep):
+            deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0,
+                         confusion_matrix_file_name=confusion_matrix_file_name,
+                         classifications=classification_wiki_result)
+        else:
+            machineLearning(gnx, map_fetures, number_of_learning_for_mean=10.0,
+                            confusion_matrix_file_name=confusion_matrix_file_name,
+                            classifications=classification_wiki_result)
 
-                if algo == 'RF':
-                    for fi in features_importance_dict:
-                        feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
-                        features_importance_file.writelines(features_importance_dict[fi] + ','+str(feature_importance_value)+'\n')
-        features_importance_file.close()
-        confusion_matrix_file.close()

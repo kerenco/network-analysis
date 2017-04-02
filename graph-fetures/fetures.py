@@ -380,3 +380,5 @@ def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeCo
     if ('average_neighbor_degree' in fetures_list):
         map_average_neighbor_degree = compute_specific_eav(gnx, outputDirectory, algo_name='average_neighbor_degree')
         map_fetures[14] = map_average_neighbor_degree
+
+    return [gnx,map_fetures]
