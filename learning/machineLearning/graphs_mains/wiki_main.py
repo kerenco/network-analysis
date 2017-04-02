@@ -154,7 +154,7 @@ if __name__ == "__main__":
         for pr in processes:
             pr.join()
 
-        result = features.calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected, directed_features, return_map=True)
+        result = features.calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected, ['motif4'], return_map=True)
         place = 0
         features_importance_dict = {}
 
@@ -196,10 +196,10 @@ if __name__ == "__main__":
         number_of_learning_for_mean = 10.0
 
         auc_file_name = result_path+'auc.csv'
-        deep = True
-        if(deep):
-            deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
-        else:
-            machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+        # deep = True
+        # if(deep):
+        #     deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+        # else:
+        #     machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
 
 
