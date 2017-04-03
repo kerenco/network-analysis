@@ -1,18 +1,7 @@
 import numpy as np
-from sklearn import cross_validation
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.calibration import CalibratedClassifierCV
-from sklearn.metrics import log_loss
-import pandas
-from pandas.tools.plotting import scatter_matrix
-import matplotlib.pyplot as plt
 from sklearn import cross_validation
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import accuracy_score
 from sklearn import metrics
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import SGDClassifier
@@ -40,6 +29,11 @@ class learningPhase:
             clf = SVC(kernel='linear', class_weight="balanced", C=0.01)
         if algo == 'RBF-SVM':
             clf = SVC(class_weight="balanced", C=0.01)
+        if algo == 'SGD':
+            clf = SGDClassifier(alpha=0.0001, average=False, class_weight=None, epsilon=0.1,eta0=0.0,
+                                fit_intercept=True, l1_ratio=0.15,learning_rate='optimal', loss='hinge',
+                                n_iter=5, n_jobs=1,penalty='l2', power_t=0.5, random_state=None, shuffle=True,
+                                verbose=0, warm_start=False)
         self.classifier = clf.fit(self.x_train, self.y_train)
 
         return self.classifier
@@ -64,12 +58,13 @@ class learningPhase:
                               title='Confusion matrix',
                               plot_file_name='confusion matrix.png'):
 
-        df_cm = pd.DataFrame(cm, index=[i for i in classes],
-                             columns=[i for i in classes])
-
         print normalize
         if (normalize):
             cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
+        df_cm = pd.DataFrame(cm, index=[i for i in classes],
+                             columns=[i for i in classes])
+
 
         plt.figure()
         sn.heatmap(df_cm, annot=True)

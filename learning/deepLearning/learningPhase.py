@@ -23,10 +23,12 @@ class learningPhase:
         self.DivideToTrainAndTest(test_size)
         # create model
         self.model = Sequential()
-        self.model.add(Dense(35, activation="relu", kernel_initializer="he_normal", input_dim=self.x_train.shape[1]))
+        self.model.add(Dense(90, activation="relu", kernel_initializer="he_normal", input_dim=self.x_train.shape[1]))
         self.model.add(Dropout(0.2))
-        self.model.add(Dense(35, init='he_normal', activation='relu', W_regularizer=l2(0.01)))
-        self.model.add(Dropout(0.2))
+        self.model.add(Dense(30, init='he_normal', activation='relu', W_regularizer=l2(0.2)))
+        self.model.add(Dropout(0.5))
+        # self.model.add(Dense(20, init='he_normal', activation='relu', W_regularizer=l2(0.01)))
+        # self.model.add(Dropout(0.2))
         self.model.add(Dense(output_size, init='uniform', activation=output_activation, W_regularizer=l2(0.01)))
 
         # self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -39,12 +41,21 @@ class learningPhase:
         else:
             self.model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-        self.model.fit(self.x_train, self.y_train, epochs=200, batch_size=100, verbose=1)
+        self.model.fit(self.x_train, self.y_train, epochs=1000, batch_size=100, verbose=1)
 
         return self.model
 
 
-    def plotROCcurve(self,test_fpr,test_tpr,train_fpr,train_tpr,aucTest,aucTrain):
+    def plotROCcurve(self, plot_file_name='ROC_curve.png'):
+        scores = self.model.predict(self.x_test)
+        test_fpr, test_tpr, thresholds = metrics.roc_curve(self.y_test, scores)
+        aucTest = numpy.trapz(test_tpr, test_fpr)
+
+        scores = self.model.predict(self.x_train)
+        train_fpr, train_tpr, thresholds = metrics.roc_curve(self.y_train, scores)
+        aucTrain = numpy.trapz(train_tpr, train_fpr)
+
+
         lw = 2
         plt.plot(test_fpr, test_tpr, color='darkorange',
                  lw=lw, label='test (area = %0.2f)' % aucTest)
@@ -57,6 +68,7 @@ class learningPhase:
         plt.title('ROC curve')
         plt.legend(loc="lower right")
         plt.show()
+        plt.savefig(plot_file_name)
 
     def evaluate_AUC_test(self):
         scores = self.model.predict(self.x_test)
@@ -86,16 +98,18 @@ class learningPhase:
         return confusion_matrix_result
 
     def plot_confusion_matrix(self, cm, classes,
-                              normalize=False,
+                              normalize=True,
                               title='Confusion matrix',
                               plot_file_name='confusion matrix.png'):
+
+        if (normalize):
+            cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
 
         df_cm = pd.DataFrame(cm, index=[i for i in classes],
                              columns=[i for i in classes])
 
         print normalize
-        if (normalize):
-            cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+
 
         plt.figure()
         sn.heatmap(df_cm, annot=True)

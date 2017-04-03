@@ -13,7 +13,8 @@ def edge_based_degree_directed(gnx, f, ft):
     nodes_dict = ReadFeatureFile.fileToMap_vertices('general.txt')
     edge_dict = {}
     for edge in gnx.edges():
-        f.write(str(edge) + ',')
+        f.write(edge[0]+','+edge[1] + ' ')
+        # f.write(str(edge) + ',')
         edge_dict[edge] = []
         sub_out = float(nodes_dict[edge[0]][0]) - nodes_dict[edge[1]][0]
         sub_in = float(nodes_dict[edge[0]][1]) - nodes_dict[edge[1]][1]
@@ -21,10 +22,10 @@ def edge_based_degree_directed(gnx, f, ft):
         mean_in = float(nodes_dict[edge[0]][1]) + nodes_dict[edge[1]][1] / 2
         f.write(str(sub_out) + ',' + str(mean_out) + ',')
         f.write(str(sub_in) + ',' + str(mean_in) + '\n')
-        edge_dict[edge].append(sub_out)
-        edge_dict[edge].append(mean_out)
-        edge_dict[edge].append(sub_in)
-        edge_dict[edge].append(mean_in)
+        edge_dict[(edge[0], edge[1])].append(sub_out)
+        edge_dict[(edge[0], edge[1])].append(mean_out)
+        edge_dict[(edge[0], edge[1])].append(sub_in)
+        edge_dict[(edge[0], edge[1])].append(mean_in)
     timer.stop(ft, start)
     return edge_dict
 
@@ -33,7 +34,7 @@ def edge_based_degree_undirected(gnx, f, ft):
     nodes_dict = ReadFeatureFile.fileToMap_vertices('general.txt')
     edge_dict = {}
     for edge in gnx.edges():
-        f.write(str(edge) + ',')
+        f.write(edge[0] + ',' + edge[1] + ' ')
         edge_dict[edge] = []
         sub = float(nodes_dict[edge[0]][0]) - nodes_dict[edge[1]][0]
         mean = float(nodes_dict[edge[0]][0]) + nodes_dict[edge[1]][0] / 2
@@ -47,7 +48,7 @@ def edge_based_node_feature(f,gnx, map_algo):
     nodes_dict = map_algo
     edge_dict = {}
     for edge in gnx.edges():
-        f.write(str(edge))
+        f.write(edge[0] + ',' + edge[1] + ' ')
         edge_dict[edge] = []
         if (type(nodes_dict[edge[0]]) is not list):
             sub = float(nodes_dict[edge[0]]) - nodes_dict[edge[1]]

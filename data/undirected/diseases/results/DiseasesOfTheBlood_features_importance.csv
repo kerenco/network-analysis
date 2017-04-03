@@ -1,0 +1,15 @@
+general,0.126023946193
+betweenness,0.109754656549
+closeness,0.123504390103
+bfsmoments[0],0.0
+bfsmoments[1],0.0462210558122
+motif3[0],0.052145151046
+motif3[1],0.0606255086
+kcore,0.00388123191273
+louvain,0.000132557985164
+page_rank,0.0800765007705
+fiedler_vector,0.0383762490962
+eccentricity,1.59798317402e-06
+load_centrality,0.0839360033541
+communicability_centrality,0.153645283923
+average_neighbor_degree,0.120675866672
