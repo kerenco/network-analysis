@@ -333,7 +333,7 @@ def run_specific_algo_edges(f, ft, gnx, algo_name,map_algo):
         return edge_betweenness_centrality.edge_betweenness_centrality(f, ft, gnx)
 
 
-def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeConnected = False, fetures_list=[]):
+def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeConnected = False, fetures_list=[], return_map=True):
     print (str(datetime.now()) + ' start reload graph')
     # [ggt,   gnx] = initGraph.init_graph(draw = False);
     gnx = initGraph.init_graph(draw=False, file_name=file_input, directed=directed, Connected=takeConnected);
@@ -385,4 +385,5 @@ def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeCo
         map_average_neighbor_degree = compute_specific_eav(gnx, outputDirectory, algo_name='average_neighbor_degree')
         map_fetures[14] = map_average_neighbor_degree
 
-    return [gnx,map_fetures]
+    if(return_map):
+        return [gnx,map_fetures]

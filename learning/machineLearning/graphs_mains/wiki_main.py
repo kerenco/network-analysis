@@ -6,6 +6,8 @@ import numpy as np
 # from TagsLoader import TagsLoader
 import multiprocessing
 from operator import itemgetter
+from features_calculator import featuresCalculator
+import featuresList
 
 
 
@@ -129,32 +131,15 @@ if __name__ == "__main__":
         file_in = str(wdir) + r'/../../../data/directed/wiki-rfa/input/wiki.txt'
 
         output_dir = str(wdir) + r'/../../../data/directed/wiki-rfa/features'
-        # os.mkdir(output_dir+'//output')
-        # os.mkdir(output_dir+'//times')
 
-
-        processes = []
-        q = multiprocessing.Queue()
-        lock = multiprocessing.Lock()
-        for feature in directed_features:
-            file_input = file_in
-            motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
-            outputDirectory = output_dir
-            directed = True
-            takeConnected = True
-            fetures_list = [feature]
-            print fetures_list
-            return_map = False
-
-            processes.append(multiprocessing.Process(target=features.calc_fetures_vertices, args=(file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list, return_map)))
-
-        for pr in processes:
-            pr.start()
-
-        for pr in processes:
-            pr.join()
-
-        result = features.calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected, ['motif4'], return_map=True)
+        calculator = featuresCalculator()
+        features_list = featuresList.featuresList(True, 'nodes').getFeatures()
+        features_list.remove('motif4')
+        features_list.remove('flow')
+        result = calculator.calculateFeatures(features_list,
+                                          str(os.getcwd()) + r'/../../../data/directed/wiki-rfa/input/wiki.txt',
+                                          str(os.getcwd()) + r'/../../../data/directed/wiki-rfa/features',
+                                          True, 'nodes')
         place = 0
         features_importance_dict = {}
 
@@ -196,10 +181,10 @@ if __name__ == "__main__":
         number_of_learning_for_mean = 10.0
 
         auc_file_name = result_path+'auc.csv'
-        # deep = True
-        # if(deep):
-        #     deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
-        # else:
-        #     machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+        deep = True
+        if(deep):
+            deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+        else:
+            machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
 
 
