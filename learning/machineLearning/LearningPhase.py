@@ -1,6 +1,5 @@
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from sklearn import cross_validation
 from sklearn import metrics
 from sklearn.svm import SVC
 from sklearn.ensemble import AdaBoostClassifier
@@ -8,16 +7,16 @@ from sklearn.linear_model import SGDClassifier
 import seaborn as sn
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 
 class learningPhase:
-
     def __init__(self, featuresMat, tagsVec):
         self.featuresMat = np.asmatrix(featuresMat, dtype=float)
         self.tagsVec = tagsVec
 
     def DivideToTrainAndTest(self, testSize):
-        self.x_train, self.x_test, self.y_train, self.y_test = cross_validation.train_test_split(self.featuresMat, self.tagsVec, test_size=testSize)
+        self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.featuresMat, self.tagsVec, test_size=testSize)
 
     def implementLearningMethod(self, algo,test_size=0.3):
         self.DivideToTrainAndTest(test_size)
@@ -34,8 +33,7 @@ class learningPhase:
                                 fit_intercept=True, l1_ratio=0.15,learning_rate='optimal', loss='hinge',
                                 n_iter=5, n_jobs=1,penalty='l2', power_t=0.5, random_state=None, shuffle=True,
                                 verbose=0, warm_start=False)
-        self.classifier = clf.fit(self.x_train, self.y_train)
-
+        self.classifier = clf.fit(self.x_train, np.array(self.y_train).reshape(-1,))
         return self.classifier
 
 

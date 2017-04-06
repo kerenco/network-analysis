@@ -61,7 +61,7 @@ def build_matrix_with_tags(gnx, map_features, vertex_to_tag, zscoring = True):
         feature_matrix = matrix_with_tags[:,1:]
 
     tags_vector = matrix_with_tags[:,:1]
-    return [feature_matrix, tags_vector]
+    return [feature_matrix, tags_vector,nodeWithTags_to_features]
 
 def build_matrix_with_tags_edges(gnx, map_features, edge_to_tag, zscoring = True):
     edgeWithTags_to_features = build_matrix_from_edges_fetures(edge_to_tag, map_features)
