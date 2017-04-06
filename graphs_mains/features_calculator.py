@@ -6,8 +6,8 @@ import featuresList
 class featuresCalculator:
     def __init__(self):
         self.wdir = os.getcwd()
-        self.featuresFile = self.import_path(str(self.wdir) + r'/../../../graph-fetures/fetures.py')
-        self.motif_path = str(self.wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
+        self.featuresFile = self.import_path(str(self.wdir) + r'/../graph-fetures/fetures.py')
+        self.motif_path = str(self.wdir) + r'/../graph-fetures/algo_vertices/motifVariations'
 
     def import_path(self, fullpath):
         """
@@ -24,11 +24,9 @@ class featuresCalculator:
 
     def calculateFeatures(self, features_list, file_in, output_dir, directed, analysisType):
         processes = []
-        q = multiprocessing.Queue()
-        lock = multiprocessing.Lock()
         for feature in features_list:
             file_input = file_in
-            motif_path = str(self.wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
+            motif_path = str(self.wdir) + r'/../graph-fetures/algo_vertices/motifVariations'
             outputDirectory = output_dir
             takeConnected = True
             fetures_list = [feature]

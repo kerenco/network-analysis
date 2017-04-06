@@ -1,9 +1,11 @@
 import os
 import sys
-import numpy as np
 from operator import itemgetter
-from features_calculator import featuresCalculator
+
+import numpy as np
+
 import featuresList
+from features_calculator import featuresCalculator
 
 
 def import_path(fullpath):
@@ -21,7 +23,7 @@ def import_path(fullpath):
 
 
 currentDirectory = str(os.getcwd())
-features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
+features = import_path(currentDirectory + r'/../graph-fetures/fetures.py')
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
@@ -35,7 +37,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, 
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        l = LearningPhase.learningPhase(feature_matrix, tags_vector)
+        l = LearningPhase.SimpleMachineLearning(feature_matrix, tags_vector)
         for algo in ml_algos:
             print algo
             sum_auc_test = 0
@@ -68,7 +70,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, 
 
 
 def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
-    deep = import_path(currentDirectory + r'/../../deepLearning/learningPhase.py')
+    deep = import_path(currentDirectory + r'/../learning/deep_learning.py')
     for classification in classifications:
         print classification
         auc_file_name = result_path + classification + '_auc_d.csv'
@@ -78,7 +80,7 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, cla
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        deepL = deep.learningPhase(feature_matrix, tags_vector)
+        deepL = deep.DeepLearning(feature_matrix, tags_vector)
         sum_auc_test = 0
         sum_auc_train = 0
         for i in range(int(number_of_learning_for_mean)):
@@ -98,12 +100,13 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, cla
 if __name__ == "__main__":
 
     wdir = os.getcwd()
-    file_in = str(wdir) + r'/../../../data/undirected/diseases/input/diseases_graph_with_weights.txt'
-    output_dir = str(wdir) + r'/../../../data/undirected/diseases/features'
+    file_in = str(wdir) + r'/../data/undirected/diseases/input/diseases_graph_with_weights.txt'
+    output_dir = str(wdir) + r'/../data/undirected/diseases/features'
 
     calculator = featuresCalculator()
     features_list = featuresList.featuresList(directed=False, analysisType='nodes').getFeatures()
     features_list.remove('fiedler_vector')
+    # features_list.remove('motif4')
     result = calculator.calculateFeatures(features_list, file_in, output_dir, directed=False, analysisType='nodes')
 
     diseases_tags = ['ConnectiveTissue',
@@ -139,9 +142,10 @@ if __name__ == "__main__":
 
     directed = False
     takeConnected = False
-    motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
-    result = features.calc_fetures_vertices(file_in, motif_path, output_dir, directed, takeConnected,
-                                            ['motif4'], return_map=True)
+    motif_path = str(wdir) + r'/../graph-fetures/algo_vertices/motifVariations'
+    # result = features.calc_fetures_vertices(file_in, motif_path, output_dir, directed, takeConnected,
+    # result = features.calc_fetures_vertices(file_in, motif_path, output_dir, directed, takeConnected,
+    #                                         ['motif4'], return_map=True)
     place = 0
     features_importance_dict = {}
 
@@ -158,14 +162,14 @@ if __name__ == "__main__":
 
     print features_importance_dict
 
-    LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
-    TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
-    FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+    LearningPhase = import_path(currentDirectory + r'/../learning/simple_machine_learning.py')
+    TagsLoader = import_path(currentDirectory + r'/../learning/TagsLoader.py')
+    FeturesMatrix = import_path(currentDirectory + r'/../learning/FeturesMatrix.py')
 
     classification_diseases_result = diseases_tags  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
     ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
-    directory_tags_path = str(wdir) + r'/../../../data/undirected/diseases/tags/'
-    result_path = str(wdir) + r'/../../../data/undirected/diseases/results/'
+    directory_tags_path = str(wdir) + r'/../data/undirected/diseases/tags/'
+    result_path = str(wdir) + r'/../data/undirected/diseases/results/'
     tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_diseases_result)
     tagsLoader.Load()
 

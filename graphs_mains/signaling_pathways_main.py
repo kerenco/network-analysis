@@ -1,9 +1,9 @@
 import os
 import sys
-import numpy as np
 from operator import itemgetter
-from features_calculator import featuresCalculator
+import numpy as np
 import featuresList
+from features_calculator import featuresCalculator
 
 
 def import_path(fullpath):
@@ -21,41 +21,16 @@ def import_path(fullpath):
 
 
 currentDirectory = str(os.getcwd())
-features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
+features = import_path(currentDirectory + r'/../graph-fetures/fetures.py')
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classifications, directory_tags_path, result_path):
     ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
-    LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
-    TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
-    FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+    LearningPhase = import_path(currentDirectory + r'/../learning/simple_machine_learning.py')
+    TagsLoader = import_path(currentDirectory + r'/../learning/TagsLoader.py')
+    FeturesMatrix = import_path(currentDirectory + r'/../learning/FeturesMatrix.py')
     tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classifications)
     tagsLoader.Load()
-
-    place = 0
-    features_importance_dict = {}
-
-    for k, v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
-        if k not in directed_signaling:
-            continue
-        if k not in features.vertices_algo_feature_directed_length_dict:
-            features_importance_dict[place] = k
-            place += 1
-        else:
-            for i in range(features.vertices_algo_feature_directed_length_dict[k]):
-                features_importance_dict[place] = k + '[' + str(i) + ']'
-                place += 1
-
-    print features_importance_dict
-
-    for k in directed_signaling:
-        print k
-        if not features.vertices_algo_feature_directed_length_dict.has_key(k):
-            place += 1
-        else:
-            print k
-            place += features.vertices_algo_feature_directed_length_dict[k]
-    print place
 
     for classification in classifications:
         auc_file_name = result_path + classification + '_auc.csv'
@@ -67,7 +42,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        l = LearningPhase.learningPhase(feature_matrix, tags_vector)
+        l = LearningPhase.SimpleMachineLearning(feature_matrix, tags_vector)
         for algo in ml_algos:
             print algo
             sum_auc_test = 0
@@ -99,12 +74,12 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
 
 
 def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications, directory_tags_path, result_path):
-    TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
-    FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+    TagsLoader = import_path(currentDirectory + r'/../learning/TagsLoader.py')
+    FeturesMatrix = import_path(currentDirectory + r'/../learning/FeturesMatrix.py')
     tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classifications)
     tagsLoader.Load()
 
-    deep = import_path(currentDirectory + r'/../../deepLearning/learningPhase.py')
+    deep = import_path(currentDirectory + r'/../learning/deep_learning.py')
     for classification in classifications:
         auc_file_name = result_path + classification +'_auc.csv'
         auc_file = open(auc_file_name, 'a')
@@ -112,7 +87,7 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        deepL = deep.learningPhase(feature_matrix, tags_vector)
+        deepL = deep.DeepLearning(feature_matrix, tags_vector)
         sum_auc_test = 0
         sum_auc_train = 0
         for i in range(int(number_of_learning_for_mean)):
@@ -132,21 +107,45 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,
 def resultAnalysis(year, classifications, tags_type):
     wdir = os.getcwd()
     file_in = str(
-        wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/input/signaling_pathways_' + year + '.txt'
-    output_dir = str(wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/features'
+        wdir) + r'/../data/directed/signaling_pathway/' + year + '/input/signaling_pathways_' + year + '.txt'
+    output_dir = str(wdir) + r'/../data/directed/signaling_pathway/' + year + '/features'
 
     calculator = featuresCalculator()
     features_list = featuresList.featuresList(True, 'nodes').getFeatures()
     features_list.remove('eccentricity')
     result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
 
-    directory_tags_path = str(wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/tags/'+tags_type+'/signaling_pathways_tags_'
-    result_path = str(wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/results/'
+    directory_tags_path = str(wdir) + r'/../data/directed/signaling_pathway/' + year + '/tags/'+tags_type+'/signaling_pathways_tags_'
+    result_path = str(wdir) + r'/../data/directed/signaling_pathway/' + year + '/results/'
+
+    place = 0
+    features_importance_dict = {}
+    for k, v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
+        if k not in features_list:
+            continue
+        if k not in features.vertices_algo_feature_directed_length_dict:
+            features_importance_dict[place] = k
+            place += 1
+        else:
+            for i in range(features.vertices_algo_feature_directed_length_dict[k]):
+                features_importance_dict[place] = k + '[' + str(i) + ']'
+                place += 1
+
+    print features_importance_dict
+
+    for k in features_list:
+        print k
+        if not features.vertices_algo_feature_directed_length_dict.has_key(k):
+            place += 1
+        else:
+            print k
+            place += features.vertices_algo_feature_directed_length_dict[k]
+    print place
 
     gnx = result[0]
     map_fetures = result[1]
 
-    deep = True
+    deep = False
     if (deep):
         deepLearning(gnx=gnx, map_fetures=map_fetures, number_of_learning_for_mean=1.0,
                      classifications=classifications, directory_tags_path=directory_tags_path, result_path=result_path)

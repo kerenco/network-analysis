@@ -1,11 +1,11 @@
 import os
 import sys
 from operator import itemgetter
+
 import numpy as np
-from features_calculator import featuresCalculator
+
 import featuresList
-
-
+from features_calculator import featuresCalculator
 
 
 def import_path(fullpath):
@@ -23,7 +23,7 @@ def import_path(fullpath):
 
 
 currentDirectory = str(os.getcwd())
-features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
+features = import_path(currentDirectory + r'/../graph-fetures/fetures.py')
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
     for classification in classifications:
@@ -36,7 +36,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, 
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        l = LearningPhase.learningPhase(feature_matrix, tags_vector)
+        l = LearningPhase.SimpleMachineLearning(feature_matrix, tags_vector)
         for algo in ml_algos:
             print algo
             sum_auc_test = 0
@@ -68,7 +68,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, 
 
 
 def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
-    deep = import_path(currentDirectory + r'/../../deepLearning/learningPhase.py')
+    deep = import_path(currentDirectory + r'/../learning/deep_learning.py')
     for classification in classifications:
         print classification
         auc_file_name = result_path + classification + '_auc_d.csv'
@@ -78,7 +78,7 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, cla
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        deepL = deep.learningPhase(feature_matrix, tags_vector)
+        deepL = deep.DeepLearning(feature_matrix, tags_vector)
         sum_auc_test = 0
         sum_auc_train = 0
         for i in range(int(number_of_learning_for_mean)):
@@ -105,9 +105,9 @@ if __name__ == "__main__":
         print snap
 
         # snap = '0001'
-        file_in = str(wdir) + r'/../../../data/directed/live_journal/'+snap+r'/input/graph.txt'
+        file_in = str(wdir) + r'/../data/directed/live_journal/'+snap+r'/input/graph.txt'
 
-        output_dir = str(wdir) + r'/../../../data/directed/live_journal/'+snap+r'/features'
+        output_dir = str(wdir) + r'/../data/directed/live_journal/'+snap+r'/features'
         calculator = featuresCalculator()
         features_list = featuresList.featuresList(True, 'nodes').getFeatures()
         features_list.remove('flow')
@@ -117,7 +117,7 @@ if __name__ == "__main__":
         features_list.remove('hierarchy_energy')
         result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
 
-        motif_path = str(wdir) + r'/../../../graph-fetures/algo/motifVariations'
+        motif_path = str(wdir) + r'/../graph-fetures/algo/motifVariations'
         result = features.calc_fetures_vertices(file_in, motif_path, output_dir, directed=True, takeConnected=True, fetures_list=directed_lj, return_map=True)
 
         print result[1].keys()
@@ -147,9 +147,9 @@ if __name__ == "__main__":
                 place += features.vertices_algo_feature_directed_length_dict[k]
         print place
 
-        LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
-        TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
-        FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+        LearningPhase = import_path(currentDirectory + r'/../learning/simple_machine_learning.py')
+        TagsLoader = import_path(currentDirectory + r'/../learning/TagsLoader.py')
+        FeturesMatrix = import_path(currentDirectory + r'/../learning/FeturesMatrix.py')
 
         doi = ['summer'
             , 'the beatles'
@@ -204,8 +204,8 @@ if __name__ == "__main__":
             , 'writing']
         classification_lj_result = doi
         ml_algos = ['adaBoost', 'RF', 'L-SVM']#, 'RBF-SVM']
-        directory_tags_path = str(wdir) + r'/../../../data/directed/live_journal/0001/tags/doi/'
-        result_path = str(wdir) + r'/../../../data/directed/live_journal/'+snap+r'/results/'
+        directory_tags_path = str(wdir) + r'/../data/directed/live_journal/0001/tags/doi/'
+        result_path = str(wdir) + r'/../data/directed/live_journal/'+snap+r'/results/'
         tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_lj_result)
         tagsLoader.Load()
 

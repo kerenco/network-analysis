@@ -1,10 +1,9 @@
 import os
 import sys
-import numpy as np
 from operator import itemgetter
-from features_calculator import featuresCalculator
+import numpy as np
 import featuresList
-
+from features_calculator import featuresCalculator
 
 
 def import_path(fullpath):
@@ -22,7 +21,7 @@ def import_path(fullpath):
 
 
 currentDirectory = str(os.getcwd())
-features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
+features = import_path(currentDirectory + r'/../graph-fetures/fetures.py')
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name, classifications):
@@ -35,7 +34,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        l = LearningPhase.learningPhase(feature_matrix, tags_vector)
+        l = LearningPhase.SimpleMachineLearning(feature_matrix, tags_vector)
         for algo in ml_algos:
             print algo
             sum_auc_test = 0
@@ -68,13 +67,13 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name
 
 def deepLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name, classifications):
     auc_file = open(auc_file_name, 'a')
-    deep = import_path(currentDirectory + r'/../../deepLearning/learningPhase.py')
+    deep = import_path(currentDirectory + r'/../learning/deep_learning.py')
     for classification in classifications:
         vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        deepL = deep.learningPhase(feature_matrix, tags_vector)
+        deepL = deep.DeepLearning(feature_matrix, tags_vector)
         sum_auc_test = 0
         sum_auc_train = 0
         for i in range(int(number_of_learning_for_mean)):
@@ -94,9 +93,9 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name, c
 if __name__ == "__main__":
 
     wdir = os.getcwd()
-    file_in = str(wdir) + r'/../../../data/directed/wiki-rfa/input/wiki.txt'
+    file_in = str(wdir) + r'/../data/directed/wiki-rfa/input/wiki.txt'
 
-    output_dir = str(wdir) + r'/../../../data/directed/wiki-rfa/features'
+    output_dir = str(wdir) + r'/../data/directed/wiki-rfa/features'
 
     calculator = featuresCalculator()
     features_list = featuresList.featuresList(True, 'nodes').getFeatures()
@@ -128,14 +127,14 @@ if __name__ == "__main__":
             place += features.vertices_algo_feature_directed_length_dict[k]
     print place
 
-    LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
-    TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
-    FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+    LearningPhase = import_path(currentDirectory + r'/../learning/simple_machine_learning.py')
+    TagsLoader = import_path(currentDirectory + r'/../learning/TagsLoader.py')
+    FeturesMatrix = import_path(currentDirectory + r'/../learning/FeturesMatrix.py')
 
     classification_wiki_result = ['wiki-tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
     ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
-    directory_tags_path = str(wdir) + r'/../../../data/directed/wiki-rfa/tags/'
-    result_path = str(wdir) + r'/../../../data/directed/wiki-rfa/results/'
+    directory_tags_path = str(wdir) + r'/../data/directed/wiki-rfa/tags/'
+    result_path = str(wdir) + r'/../data/directed/wiki-rfa/results/'
     tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_wiki_result)
     tagsLoader.Load()
 
@@ -144,7 +143,7 @@ if __name__ == "__main__":
     number_of_learning_for_mean = 10.0
 
     auc_file_name = result_path+'auc.csv'
-    deep = True
+    deep = False
     if(deep):
         deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
     else:
