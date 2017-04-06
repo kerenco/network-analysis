@@ -1,8 +1,9 @@
 import os
 import sys
 import numpy as np
-import multiprocessing
 from operator import itemgetter
+from features_calculator import featuresCalculator
+import featuresList
 
 
 def import_path(fullpath):
@@ -21,44 +22,6 @@ def import_path(fullpath):
 
 currentDirectory = str(os.getcwd())
 features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
-
-# 1 - Degrees
-# 2 - betweenes
-# 3 - closeness
-# 4 - bfs moments
-# 5 - flow
-# 6 - A.B
-# 7 - motif3
-# 8 - motif4
-# 9 - k-core
-# 10 - louvain
-# 11 - page_rank
-# 12 - fiedler_vector
-
-wdir = os.getcwd()
-
-directed_weighted = ['general', 'closeness', 'bfsmoments', 'flow', 'ab', 'kcore', 'page_rank', 'hierarchy_energ',
-                     'motif3', 'load_centrality',
-                     'average_neighbor_degree']  # no betweenness,motif4,eccentricity,communicability_centrality
-undirected_weighted = ['general', 'betweenness', 'closeness', 'bfsmoments', 'kcore', 'louvain', 'page_rank',
-                       'hierarchy_energ', 'motif3', 'eccentricity', 'load_centrality', 'communicability_centrality',
-                       'average_neighbor_degree']  # no motif4, flow, ab, fiedler_vector
-directed_unweighted = ['general', 'betweenness', 'closeness', 'bfsmoments', 'flow', 'ab', 'kcore', 'louvain',
-                       'page_rank', 'fiedler_vector', 'hierarchy_energ', 'motif3', 'load_centrality',
-                       'average_neighbor_degree']  # no motif4,eccentricity,communicability_centrality
-undirected_unweighted = ['general', 'betweenness', 'closeness', 'bfsmoments', 'kcore', 'louvain', 'page_rank',
-                         'hierarchy_energ', 'motif3', 'eccentricity', 'load_centrality', 'communicability_centrality',
-                         'average_neighbor_degree']  # no motif4, flow, ab, fiedler_vector
-
-directed_features = ['general', 'betweenness', 'closeness', 'bfsmoments', 'flow', 'ab', 'kcore', 'page_rank', 'motif3'
-    , 'load_centrality', 'average_neighbor_degree', 'hierarchy_energy',
-                     'eccentricity']  # no motif4,'hierarchy_energy','eccentricity'
-undirected = ['general', 'betweenness', 'closeness', 'bfsmoments', 'kcore', 'louvain', 'page_rank', 'fiedler_vector',
-              'motif3', 'eccentricity', 'load_centrality', 'communicability_centrality',
-              'average_neighbor_degree']  # no motif4, flow, ab, fiedler_vector,'hierarchy_energy'
-edges = ['edge_flow', 'edge_betweenness']
-
-undirected_diseases = undirected
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
@@ -134,33 +97,14 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, cla
 
 if __name__ == "__main__":
 
+    wdir = os.getcwd()
     file_in = str(wdir) + r'/../../../data/undirected/diseases/input/diseases_graph_with_weights.txt'
-
     output_dir = str(wdir) + r'/../../../data/undirected/diseases/features'
-    # os.mkdir(output_dir+'//output')
-    # os.mkdir(output_dir+'//times')
 
-
-    # processes = []
-    # q = multiprocessing.Queue()
-    # lock = multiprocessing.Lock()
-    # for feature in directed_features:
-    #     file_input = file_in
-    #     motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
-    #     outputDirectory = output_dir
-    #     directed = True
-    #     takeConnected = True
-    #     fetures_list = [feature]
-    #     print fetures_list
-    #     return_map = False
-    #
-    #     processes.append(multiprocessing.Process(target=features.calc_fetures_vertices, args=(file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list, return_map)))
-    #
-    # for pr in processes:
-    #     pr.start()
-    #
-    # for pr in processes:
-    #     pr.join()
+    calculator = featuresCalculator()
+    features_list = featuresList.featuresList(directed=False, analysisType='nodes').getFeatures()
+    features_list.remove('fiedler_vector')
+    result = calculator.calculateFeatures(features_list, file_in, output_dir, directed=False, analysisType='nodes')
 
     diseases_tags = ['ConnectiveTissue',
                      'ImmunityDisorders',
@@ -202,7 +146,7 @@ if __name__ == "__main__":
     features_importance_dict = {}
 
     for k, v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
-        if k not in undirected_diseases:
+        if k not in features_list:
             continue
         if k not in features.vertices_algo_feature_undirected_length_dict:
             features_importance_dict[place] = k
@@ -228,10 +172,10 @@ if __name__ == "__main__":
     gnx = result[0]
     map_fetures = result[1]
 
-    # deep = False
-    # if (deep):
-    #     deepLearning(gnx, map_fetures, number_of_learning_for_mean=1.0, result_path=result_path,
-    #                  classifications=classification_diseases_result)
-    # else:
-    #     machineLearning(gnx, map_fetures, number_of_learning_for_mean=4.0, result_path=result_path,
-    #                     classifications=classification_diseases_result)
+    deep = False
+    if (deep):
+        deepLearning(gnx, map_fetures, number_of_learning_for_mean=1.0, result_path=result_path,
+                     classifications=classification_diseases_result)
+    else:
+        machineLearning(gnx, map_fetures, number_of_learning_for_mean=4.0, result_path=result_path,
+                        classifications=classification_diseases_result)

@@ -1,11 +1,9 @@
 import os
 import sys
-# import LearningPhase
-# import FeturesMatrix
 import numpy as np
-# from TagsLoader import TagsLoader
-import multiprocessing
 from operator import itemgetter
+from features_calculator import featuresCalculator
+import featuresList
 
 
 
@@ -25,37 +23,6 @@ def import_path(fullpath):
 
 currentDirectory = str(os.getcwd())
 features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
-
-# 1 - Degrees
-# 2 - betweenes
-# 3 - closeness
-# 4 - bfs moments
-# 5 - flow
-# 6 - A.B
-# 7 - motif3
-# 8 - motif4
-# 9 - k-core
-# 10 - louvain
-# 11 - page_rank
-# 12 - fiedler_vector
-
-wdir = os.getcwd()
-
-directed_weighted = ['general','closeness','bfsmoments','flow','ab','kcore','page_rank','hierarchy_energ','motif3','load_centrality','average_neighbor_degree'] #no betweenness,motif4,eccentricity,communicability_centrality
-undirected_weighted = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','hierarchy_energ','motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector
-directed_unweighted = ['general','betweenness','closeness','bfsmoments','flow','ab','kcore','louvain','page_rank','fiedler_vector','hierarchy_energ','motif3','load_centrality','average_neighbor_degree'] #no motif4,eccentricity,communicability_centrality
-undirected_unweighted = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','hierarchy_energ','motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector
-
-
-directed_features = ['general','betweenness','closeness','bfsmoments','flow','ab','kcore','page_rank','motif3'
-    ,'load_centrality','average_neighbor_degree','hierarchy_energy','eccentricity'] #no motif4,'hierarchy_energy','eccentricity'
-undirected = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','fiedler_vector',
-    'motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector,'hierarchy_energy'
-edges = ['edge_flow', 'edge_betweenness']
-
-directed_features.remove('eccentricity')
-directed_cora = directed_features
-
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, confusion_matrix_file_name, classifications):
     confusion_matrix_file = open(confusion_matrix_file_name, 'a')
@@ -116,91 +83,66 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, confusion_matrix
 
 
 if __name__ == "__main__":
+    wdir = os.getcwd()
+    file_in = str(wdir) + r'/../../../data/directed/cora/input/cora.txt'
+    output_dir = str(wdir) + r'/../../../data/directed/cora/features'
 
-        file_in = str(wdir) + r'/../../../data/directed/cora/input/cora.txt'
+    calculator = featuresCalculator()
+    features_list = featuresList.featuresList(directed=True, analysisType='nodes').getFeatures()
+    result = calculator.calculateFeatures(features_list, file_in, output_dir, directed=True, analysisType='nodes')
 
-        output_dir = str(wdir) + r'/../../../data/directed/cora/features'
-        # os.mkdir(output_dir+'//output')
-        # os.mkdir(output_dir+'//times')
+    place = 0
+    features_importance_dict = {}
 
-
-        # processes = []
-        # q = multiprocessing.Queue()
-        # lock = multiprocessing.Lock()
-        # for feature in directed_features:
-        #     file_input = file_in
-        #     motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
-        #     outputDirectory = output_dir
-        #     directed = True
-        #     takeConnected = True
-        #     fetures_list = [feature]
-        #     print fetures_list
-        #     return_map = False
-        #
-        #     processes.append(multiprocessing.Process(target=features.calc_fetures_vertices, args=(file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list, return_map)))
-        #
-        # for pr in processes:
-        #     pr.start()
-        #
-        # for pr in processes:
-        #     pr.join()
-
-        directed = True
-        takeConnected = False
-        motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
-        result = features.calc_fetures_vertices(file_in, motif_path, output_dir, directed, takeConnected, directed_cora, return_map=True)
-        place = 0
-        features_importance_dict = {}
-
-        for k,v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
-            if k not in directed_cora:
-                continue
-            if k not in features.vertices_algo_feature_directed_length_dict:
-                features_importance_dict[place] = k
-                place +=1
-            else:
-                for i in range(features.vertices_algo_feature_directed_length_dict[k]):
-                    features_importance_dict[place] = k + '[' + str(i) + ']'
-                    place += 1
-
-        print features_importance_dict
-
-        for k in directed_cora:
-            print k
-            if not features.vertices_algo_feature_directed_length_dict.has_key(k):
-                place += 1
-            else:
-                print k
-                place += features.vertices_algo_feature_directed_length_dict[k]
-        print place
-
-        LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
-        TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
-        FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
-
-        classification_wiki_result = ['cora_tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
-        ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
-        directory_tags_path = str(wdir) + r'/../../../data/directed/cora/tags/'
-        result_path = str(wdir) + r'/../../../data/directed/cora/results/'
-        tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_wiki_result)
-        tagsLoader.Load()
-
-        gnx = result[0]
-        map_fetures = result[1]
-        number_of_learning_for_mean = 10.0
-
-        confusion_matrix_file_name = result_path + 'confusion_matrix.txt'
-        # confusion_matrix_file = open(confusion_matrix_file_name, 'w')
-        # features_importance_file_name = result_path + 'features_importance.csv'
-        # features_importance_file = open(features_importance_file_name,'w')
-
-        deep = True
-        if (deep):
-            deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0,
-                         confusion_matrix_file_name=confusion_matrix_file_name,
-                         classifications=classification_wiki_result)
+    for k,v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
+        if k not in features_list:
+            continue
+        if k not in features.vertices_algo_feature_directed_length_dict:
+            features_importance_dict[place] = k
+            place +=1
         else:
-            machineLearning(gnx, map_fetures, number_of_learning_for_mean=10.0,
-                            confusion_matrix_file_name=confusion_matrix_file_name,
-                            classifications=classification_wiki_result)
+            for i in range(features.vertices_algo_feature_directed_length_dict[k]):
+                features_importance_dict[place] = k + '[' + str(i) + ']'
+                place += 1
+
+    print features_importance_dict
+
+    for k in features_list:
+        print k
+        if not features.vertices_algo_feature_directed_length_dict.has_key(k):
+            place += 1
+        else:
+            print k
+            place += features.vertices_algo_feature_directed_length_dict[k]
+    print place
+
+    LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
+    TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
+    FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+
+    classification_wiki_result = ['cora_tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
+    ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
+    directory_tags_path = str(wdir) + r'/../../../data/directed/cora/tags/'
+    result_path = str(wdir) + r'/../../../data/directed/cora/results/'
+    tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_wiki_result)
+    tagsLoader.Load()
+
+    gnx = result[0]
+    map_fetures = result[1]
+    number_of_learning_for_mean = 10.0
+
+    confusion_matrix_file_name = result_path + 'confusion_matrix.txt'
+    # confusion_matrix_file = open(confusion_matrix_file_name, 'w')
+    # features_importance_file_name = result_path + 'features_importance.csv'
+    # features_importance_file = open(features_importance_file_name,'w')
+
+    deep = True
+    if (deep):
+        deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0,
+                     confusion_matrix_file_name=confusion_matrix_file_name,
+                     classifications=classification_wiki_result)
+    else:
+        machineLearning(gnx, map_fetures, number_of_learning_for_mean=10.0,
+                        confusion_matrix_file_name=confusion_matrix_file_name,
+                        classifications=classification_wiki_result)
 

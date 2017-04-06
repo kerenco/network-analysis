@@ -49,7 +49,8 @@ vertices_algo_dict = {'general' :1,
 
 vertices_algo_feature_directed_length_dict = {'general':2,
                                               'bfsmoments':2,
-                                              'motif3':14}
+                                              'motif3':14,
+                                              'motif4':199}
 
 vertices_algo_feature_undirected_length_dict = {'bfsmoments':2,
                                               'motif3':2,

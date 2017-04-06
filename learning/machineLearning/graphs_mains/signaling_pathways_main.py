@@ -1,12 +1,9 @@
 import os
 import sys
-# import LearningPhase
-# import FeturesMatrix
 import numpy as np
-# from TagsLoader import TagsLoader
-import multiprocessing
 from operator import itemgetter
-
+from features_calculator import featuresCalculator
+import featuresList
 
 
 def import_path(fullpath):
@@ -25,36 +22,6 @@ def import_path(fullpath):
 
 currentDirectory = str(os.getcwd())
 features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
-
-# 1 - Degrees
-# 2 - betweenes
-# 3 - closeness
-# 4 - bfs moments
-# 5 - flow
-# 6 - A.B
-# 7 - motif3
-# 8 - motif4
-# 9 - k-core
-# 10 - louvain
-# 11 - page_rank
-# 12 - fiedler_vector
-
-wdir = os.getcwd()
-
-directed_weighted = ['general','closeness','bfsmoments','flow','ab','kcore','page_rank','hierarchy_energ','motif3','load_centrality','average_neighbor_degree'] #no betweenness,motif4,eccentricity,communicability_centrality
-undirected_weighted = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','hierarchy_energ','motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector
-directed_unweighted = ['general','betweenness','closeness','bfsmoments','flow','ab','kcore','louvain','page_rank','fiedler_vector','hierarchy_energ','motif3','load_centrality','average_neighbor_degree'] #no motif4,eccentricity,communicability_centrality
-undirected_unweighted = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','hierarchy_energ','motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector
-
-
-directed_features = ['general','betweenness','closeness','bfsmoments','flow','ab','kcore','page_rank','motif3'
-    ,'load_centrality','average_neighbor_degree','hierarchy_energy','eccentricity'] #no motif4,'hierarchy_energy','eccentricity'
-undirected = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','fiedler_vector',
-    'motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector,'hierarchy_energy'
-edges = ['edge_flow', 'edge_betweenness']
-
-directed_features.remove('eccentricity')
-directed_signaling = directed_features
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classifications, directory_tags_path, result_path):
@@ -163,47 +130,29 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,
 
 
 def resultAnalysis(year, classifications, tags_type):
+    wdir = os.getcwd()
     file_in = str(
         wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/input/signaling_pathways_' + year + '.txt'
     output_dir = str(wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/features'
-    processes = []
-    q = multiprocessing.Queue()
-    lock = multiprocessing.Lock()
-    for feature in directed_signaling:
-        file_input = file_in
-        motif_path = str(wdir) + r'/../../../graph-fetures/algo_vertices/motifVariations'
-        outputDirectory = output_dir
-        directed = True
-        takeConnected = False
-        fetures_list = [feature]
-        print fetures_list
-        return_map = False
 
-        processes.append(multiprocessing.Process(target=features.calc_fetures_vertices, args=(
-            file_input, motif_path, outputDirectory, directed, takeConnected, fetures_list, return_map)))
-
-    for pr in processes:
-        pr.start()
-
-    for pr in processes:
-        pr.join()
-
-    result = features.calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, takeConnected,
-                                            directed_signaling, return_map=True)
+    calculator = featuresCalculator()
+    features_list = featuresList.featuresList(True, 'nodes').getFeatures()
+    features_list.remove('eccentricity')
+    result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
 
     directory_tags_path = str(wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/tags/'+tags_type+'/signaling_pathways_tags_'
     result_path = str(wdir) + r'/../../../data/directed/signaling_pathway/' + year + '/results/'
 
     gnx = result[0]
     map_fetures = result[1]
-    # auc_file_name = result_path + 'auc.csv'
+
     deep = True
     if (deep):
-        deepLearning(gnx=gnx, map_fetures=map_fetures, number_of_learning_for_mean=5.0,
-                     classifications=classifications, directory_tags_path= directory_tags_path, result_path=result_path)
+        deepLearning(gnx=gnx, map_fetures=map_fetures, number_of_learning_for_mean=1.0,
+                     classifications=classifications, directory_tags_path=directory_tags_path, result_path=result_path)
     else:
         machineLearning(gnx, map_fetures, number_of_learning_for_mean=10.0,
-                    classifications=classifications, directory_tags_path= directory_tags_path, result_path=result_path)
+                    classifications=classifications, directory_tags_path=directory_tags_path, result_path=result_path)
 
 
 if __name__ == "__main__":

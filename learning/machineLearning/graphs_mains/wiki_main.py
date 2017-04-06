@@ -1,10 +1,6 @@
 import os
 import sys
-# import LearningPhase
-# import FeturesMatrix
 import numpy as np
-# from TagsLoader import TagsLoader
-import multiprocessing
 from operator import itemgetter
 from features_calculator import featuresCalculator
 import featuresList
@@ -27,37 +23,6 @@ def import_path(fullpath):
 
 currentDirectory = str(os.getcwd())
 features = import_path(currentDirectory + r'/../../../graph-fetures/fetures.py')
-
-# 1 - Degrees
-# 2 - betweenes
-# 3 - closeness
-# 4 - bfs moments
-# 5 - flow
-# 6 - A.B
-# 7 - motif3
-# 8 - motif4
-# 9 - k-core
-# 10 - louvain
-# 11 - page_rank
-# 12 - fiedler_vector
-
-wdir = os.getcwd()
-
-directed_weighted = ['general','closeness','bfsmoments','flow','ab','kcore','page_rank','hierarchy_energ','motif3','load_centrality','average_neighbor_degree'] #no betweenness,motif4,eccentricity,communicability_centrality
-undirected_weighted = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','hierarchy_energ','motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector
-directed_unweighted = ['general','betweenness','closeness','bfsmoments','flow','ab','kcore','louvain','page_rank','fiedler_vector','hierarchy_energ','motif3','load_centrality','average_neighbor_degree'] #no motif4,eccentricity,communicability_centrality
-undirected_unweighted = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','hierarchy_energ','motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector
-
-
-directed_features = ['general','betweenness','closeness','bfsmoments','flow','ab','kcore','page_rank','motif3'
-    ,'load_centrality','average_neighbor_degree','hierarchy_energy','eccentricity'] #no motif4,'hierarchy_energy','eccentricity'
-undirected = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','fiedler_vector',
-    'motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree'] #no motif4, flow, ab, fiedler_vector,'hierarchy_energy'
-edges = ['edge_flow', 'edge_betweenness']
-
-directed_features.remove('flow')
-directed_features.remove('eccentricity')
-directed_wiki = directed_features
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name, classifications):
@@ -128,63 +93,61 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name, c
 
 if __name__ == "__main__":
 
-        file_in = str(wdir) + r'/../../../data/directed/wiki-rfa/input/wiki.txt'
+    wdir = os.getcwd()
+    file_in = str(wdir) + r'/../../../data/directed/wiki-rfa/input/wiki.txt'
 
-        output_dir = str(wdir) + r'/../../../data/directed/wiki-rfa/features'
+    output_dir = str(wdir) + r'/../../../data/directed/wiki-rfa/features'
 
-        calculator = featuresCalculator()
-        features_list = featuresList.featuresList(True, 'nodes').getFeatures()
-        features_list.remove('motif4')
-        features_list.remove('flow')
-        result = calculator.calculateFeatures(features_list,
-                                          str(os.getcwd()) + r'/../../../data/directed/wiki-rfa/input/wiki.txt',
-                                          str(os.getcwd()) + r'/../../../data/directed/wiki-rfa/features',
-                                          True, 'nodes')
-        place = 0
-        features_importance_dict = {}
+    calculator = featuresCalculator()
+    features_list = featuresList.featuresList(True, 'nodes').getFeatures()
+    features_list.remove('motif4')
+    features_list.remove('flow')
+    result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
+    place = 0
+    features_importance_dict = {}
 
-        for k,v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
-            if k not in directed_wiki:
-                continue
-            if k not in features.vertices_algo_feature_directed_length_dict:
-                features_importance_dict[place] = k
-                place +=1
-            else:
-                for i in range(features.vertices_algo_feature_directed_length_dict[k]):
-                    features_importance_dict[place] = k + '[' + str(i) + ']'
-                    place += 1
-
-        print features_importance_dict
-
-        for k in directed_wiki:
-            print k
-            if not features.vertices_algo_feature_directed_length_dict.has_key(k):
-                place += 1
-            else:
-                print k
-                place += features.vertices_algo_feature_directed_length_dict[k]
-        print place
-
-        LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
-        TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
-        FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
-
-        classification_wiki_result = ['wiki-tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
-        ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
-        directory_tags_path = str(wdir) + r'/../../../data/directed/wiki-rfa/tags/'
-        result_path = str(wdir) + r'/../../../data/directed/wiki-rfa/results/'
-        tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_wiki_result)
-        tagsLoader.Load()
-
-        gnx = result[0]
-        map_fetures = result[1]
-        number_of_learning_for_mean = 10.0
-
-        auc_file_name = result_path+'auc.csv'
-        deep = True
-        if(deep):
-            deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+    for k,v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
+        if k not in features_list:
+            continue
+        if k not in features.vertices_algo_feature_directed_length_dict:
+            features_importance_dict[place] = k
+            place +=1
         else:
-            machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+            for i in range(features.vertices_algo_feature_directed_length_dict[k]):
+                features_importance_dict[place] = k + '[' + str(i) + ']'
+                place += 1
+
+    print features_importance_dict
+
+    for k in features_list:
+        print k
+        if not features.vertices_algo_feature_directed_length_dict.has_key(k):
+            place += 1
+        else:
+            print k
+            place += features.vertices_algo_feature_directed_length_dict[k]
+    print place
+
+    LearningPhase = import_path(currentDirectory + r'/../LearningPhase.py')
+    TagsLoader = import_path(currentDirectory + r'/../TagsLoader.py')
+    FeturesMatrix = import_path(currentDirectory + r'/../FeturesMatrix.py')
+
+    classification_wiki_result = ['wiki-tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
+    ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
+    directory_tags_path = str(wdir) + r'/../../../data/directed/wiki-rfa/tags/'
+    result_path = str(wdir) + r'/../../../data/directed/wiki-rfa/results/'
+    tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_wiki_result)
+    tagsLoader.Load()
+
+    gnx = result[0]
+    map_fetures = result[1]
+    number_of_learning_for_mean = 10.0
+
+    auc_file_name = result_path+'auc.csv'
+    deep = True
+    if(deep):
+        deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+    else:
+        machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
 
 
