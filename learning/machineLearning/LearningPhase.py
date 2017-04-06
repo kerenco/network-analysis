@@ -100,6 +100,25 @@ class learningPhase:
         return confusion_matrix_result
 
 
+    def write_coloring_file(self, node_to_zscoringfeatures, vertex_to_tags, file_name = None):
+        if(file_name != None):
+            f = open(file_name,'w')
+
+        coloring_node = []
+        for n in node_to_zscoringfeatures:
+            node_features = node_to_zscoringfeatures[n]
+            prob = self.classifier.predict_proba(node_features)
+            coloring_node.append((n ,prob))
+            if(file_name != None):
+                line = n +' ' + str(vertex_to_tags[n])
+                for p in prob:
+                    line += ',' + str(p)
+                f.writelines(line + '\n')
+
+        if (file_name != None):
+            f.close()
+        return coloring_node
+
 
 
 

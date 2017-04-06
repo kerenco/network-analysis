@@ -61,7 +61,9 @@ def build_matrix_with_tags(gnx, map_features, vertex_to_tag, zscoring = True):
         feature_matrix = matrix_with_tags[:,1:]
 
     tags_vector = matrix_with_tags[:,:1]
-    return [feature_matrix, tags_vector,nodeWithTags_to_features]
+
+    node_to_features = build_node_to_features(nodeWithTags_to_features,zscoring)
+    return [feature_matrix, tags_vector,node_to_features]
 
 def build_matrix_with_tags_edges(gnx, map_features, edge_to_tag, zscoring = True):
     edgeWithTags_to_features = build_matrix_from_edges_fetures(edge_to_tag, map_features)
@@ -75,3 +77,22 @@ def build_matrix_with_tags_edges(gnx, map_features, edge_to_tag, zscoring = True
     tags_vector = matrix_with_tags[:, :1]
     return [feature_matrix, tags_vector]
 
+
+def build_node_to_features(nodeWithTags_to_features, zscoring=True):
+    vertex_to_row = {}
+    vertex_to_matrix = []
+    row_index = 0
+    for n in nodeWithTags_to_features:
+        vertex_to_matrix.append(nodeWithTags_to_features[n])
+        vertex_to_row[n] = row_index
+        row_index += 1
+    matrix = np.asmatrix(vertex_to_matrix)
+    if(zscoring):
+        z_matrix = z_scoring(matrix[:, 1:])
+    else:
+        z_matrix = matrix[:, 1:]
+    vertex_to_zscoringfeatures = {}
+    for n in nodeWithTags_to_features:
+        row_index = vertex_to_row[n]
+        vertex_to_zscoringfeatures[n] = np.asarray(z_matrix[row_index, :])
+    return vertex_to_zscoringfeatures
