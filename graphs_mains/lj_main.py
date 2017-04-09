@@ -1,4 +1,6 @@
 import os
+import sys
+sys.path.append( os.getcwd() +"//..")
 import featuresList
 from features_calculator import featuresCalculator
 from graph_features import features as features
