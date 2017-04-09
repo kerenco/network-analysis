@@ -1,8 +1,6 @@
 *.pyc
 .idea/
-graph-fetures/.idea/
-graph-fetures/output/
-graph-fetures/times/
+graphs_mains/mails_main.py
 data/output/
 data/times/
 data/roi/
