@@ -4,5 +4,5 @@ need to install:
     * python-louvain
     * community
     * sklearn
-    *
+    * seaborn
 
