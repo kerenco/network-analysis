@@ -1,6 +1,6 @@
-import ReadFeatureFile
+from graph_features import ReadFeatureFile
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 
 def edge_based_degree(f,ft,gnx):
     if (gnx.is_directed()):

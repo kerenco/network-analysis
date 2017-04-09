@@ -1,5 +1,5 @@
 import networkx.linalg.algebraicconnectivity as nx
-from utils import timer
+from graph_features.utils import timer
 
 def fiedlerVector(gnx, f, ft):
     start = timer.start(ft,'fiedler_vector')

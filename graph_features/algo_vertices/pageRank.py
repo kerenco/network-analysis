@@ -1,5 +1,5 @@
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 
 def page_rank(gnx, f, ft):
     start = timer.start(ft,'Page Rank')

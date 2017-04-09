@@ -1,5 +1,5 @@
 import graph_tool as gt
-from utils import timer
+from graph_features.utils import timer
 from datetime import datetime
 import os
 

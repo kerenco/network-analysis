@@ -1,4 +1,4 @@
-from utils import timer
+from graph_features.utils import timer
 
 def general_information(gnx, f, ft):
     if(gnx.is_directed()):

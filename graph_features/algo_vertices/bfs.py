@@ -1,5 +1,5 @@
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 import numpy as np
 
 def bfs_distance_distribution(f,ft,gnx):

@@ -1,5 +1,5 @@
 import graph_tool
-from utils import timer
+from graph_features.utils import timer
 
 def find_all_circuits(f, ft, ggt):
     start = timer.start(ft, 'Find Cycles')

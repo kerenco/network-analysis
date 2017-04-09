@@ -1,5 +1,5 @@
 import community
-from utils import timer
+from graph_features.utils import timer
 
 
 def louvainCommunityDetection(f,ft,gnx):

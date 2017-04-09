@@ -1,5 +1,5 @@
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 
 def communicability_centrality(gnx, f, ft):
     start = timer.start(ft,'load_centrality')

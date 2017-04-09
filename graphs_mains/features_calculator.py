@@ -1,26 +1,12 @@
 import os
-import sys
 import multiprocessing
-import featuresList
+from graph_features import fetures as features
 
 class featuresCalculator:
     def __init__(self):
         self.wdir = os.getcwd()
-        self.featuresFile = self.import_path(str(self.wdir) + r'/../graph-fetures/fetures.py')
+        self.featuresFile = features
         self.motif_path = str(self.wdir) + r'/../graph-fetures/algo_vertices/motifVariations'
-
-    def import_path(self, fullpath):
-        """
-        Import a file with full path specification. Allows one to
-        import from anywhere, something __import__ does not do.
-        """
-        path, filename = os.path.split(fullpath)
-        filename, ext = os.path.splitext(filename)
-        sys.path.append(path)
-        module = __import__(filename)
-        reload(module)  # Might be out of date
-        del sys.path[-1]
-        return module
 
     def calculateFeatures(self, features_list, file_in, output_dir, directed, analysisType):
         processes = []

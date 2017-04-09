@@ -1,13 +1,9 @@
-import networkx as nx
-import initGraph
-import os
 from datetime import datetime
-import math
 import sys
 import time
 import itertools
 from itertools import izip
-from utils import timer
+from graph_features.utils import timer
 import matplotlib.pyplot as plt
 from timeit import default_timer as timerp
 from operator import itemgetter

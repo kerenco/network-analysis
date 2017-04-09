@@ -1,5 +1,5 @@
 import numpy as np
-from utils import timer
+from graph_features.utils import timer
 
 
 def hierarchy_energy(gnx,f,ft):

@@ -1,6 +1,3 @@
-
-
-
 class TagsLoader:
 
     def __init__(self, directory_full_path, calssifcation_files_name):

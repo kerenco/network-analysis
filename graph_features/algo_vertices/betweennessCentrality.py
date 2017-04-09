@@ -1,6 +1,6 @@
 #from graph_tool.all import *
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 
 def betweenness_centrality(gnx, f, ft, normalized=False):
     start = timer.start(ft, 'Betweenness Centrality')

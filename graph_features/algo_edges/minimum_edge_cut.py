@@ -1,5 +1,5 @@
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 
 def minimum_edge_cut(f, ft, gnx):
     start = timer.start(ft, 'Minimum Edge Cut')

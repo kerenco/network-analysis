@@ -1,5 +1,5 @@
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 from networkx.algorithms.shortest_paths import weighted as weight
 
 

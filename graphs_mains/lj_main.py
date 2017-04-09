@@ -1,29 +1,16 @@
 import os
-import sys
 from operator import itemgetter
-
 import numpy as np
-
 import featuresList
 from features_calculator import featuresCalculator
-
-
-def import_path(fullpath):
-    """
-    Import a file with full path specification. Allows one to
-    import from anywhere, something __import__ does not do.
-    """
-    path, filename = os.path.split(fullpath)
-    filename, ext = os.path.splitext(filename)
-    sys.path.append(path)
-    module = __import__(filename)
-    reload(module) # Might be out of date
-    del sys.path[-1]
-    return module
+from graph_features import fetures as features
+from learning import simple_machine_learning as ml
+from learning.TagsLoader import TagsLoader
+from learning import FeturesMatrix
 
 
 currentDirectory = str(os.getcwd())
-features = import_path(currentDirectory + r'/../graph-fetures/fetures.py')
+
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
     for classification in classifications:
@@ -36,7 +23,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, 
         result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
         feature_matrix = result[0]
         tags_vector = np.squeeze(np.asarray(result[1]))
-        l = LearningPhase.SimpleMachineLearning(feature_matrix, tags_vector)
+        l = ml.SimpleMachineLearning(feature_matrix, tags_vector)
         for algo in ml_algos:
             print algo
             sum_auc_test = 0
@@ -68,7 +55,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, 
 
 
 def deepLearning(gnx, map_fetures, number_of_learning_for_mean, result_path, classifications):
-    deep = import_path(currentDirectory + r'/../learning/deep_learning.py')
+    from learning import deep_learning as deep
     for classification in classifications:
         print classification
         auc_file_name = result_path + classification + '_auc_d.csv'
@@ -147,10 +134,6 @@ if __name__ == "__main__":
                 place += features.vertices_algo_feature_directed_length_dict[k]
         print place
 
-        LearningPhase = import_path(currentDirectory + r'/../learning/simple_machine_learning.py')
-        TagsLoader = import_path(currentDirectory + r'/../learning/TagsLoader.py')
-        FeturesMatrix = import_path(currentDirectory + r'/../learning/FeturesMatrix.py')
-
         doi = ['summer'
             , 'the beatles'
             , 'cars'
@@ -206,7 +189,7 @@ if __name__ == "__main__":
         ml_algos = ['adaBoost', 'RF', 'L-SVM']#, 'RBF-SVM']
         directory_tags_path = str(wdir) + r'/../data/directed/live_journal/0001/tags/doi/'
         result_path = str(wdir) + r'/../data/directed/live_journal/'+snap+r'/results/'
-        tagsLoader = TagsLoader.TagsLoader(directory_tags_path, classification_lj_result)
+        tagsLoader = TagsLoader(directory_tags_path, classification_lj_result)
         tagsLoader.Load()
 
         gnx = result[0]

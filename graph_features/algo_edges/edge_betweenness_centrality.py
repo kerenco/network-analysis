@@ -1,5 +1,5 @@
 import networkx as nx
-from utils import timer
+from graph_features.utils import timer
 
 def edge_betweenness_centrality(f, ft, gnx):
     start = timer.start(ft, 'Edge Betweenness Centrality')
