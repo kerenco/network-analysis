@@ -46,21 +46,21 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
 
     for classification in classifications:
         vertex_to_tags = tags_loader.calssification_to_vertex_to_tag[classification]
-        result = features_matrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
-        feature_matrix = result[0]
-        tags_vector = np.squeeze(np.asarray(result[1]))
+        [feature_matrix, tags_vector, node_to_zscoringfeatures] = features_matrix.build_matrix_with_tags\
+                                                                        (gnx, map_fetures, vertex_to_tags, zscoring=True)
+        tags_vector = np.squeeze(np.asarray(tags_vector))
         l = ml.SimpleMachineLearning(feature_matrix, tags_vector)
         if len(set(vertex_to_tags.values())) != 2:
-            run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos, number_of_learning_for_mean,
-                                            result_path)
+            run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
+                                            node_to_zscoringfeatures, number_of_learning_for_mean, result_path)
 
         else:
-            run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, number_of_learning_for_mean,
-                                        result_path)
+            run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, vertex_to_tags,
+                                        node_to_zscoringfeatures, number_of_learning_for_mean, result_path)
 
 
-def run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos, number_of_learning_for_mean,
-                                    result_path):
+def run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
+                                    node_to_zscoringfeatures, number_of_learning_for_mean, result_path):
     confusion_matrix_file_name = result_path + classification + '_confusion_matrix.txt'
     confusion_matrix_file = open(confusion_matrix_file_name, 'a')
     features_importance_file_name = result_path + 'features_importance.csv'
@@ -71,6 +71,9 @@ def run_multiclass_machine_learning(classification, features_importance_dict, l,
         sum_feature_importance = 0
         for i in range(int(number_of_learning_for_mean)):
             cls = l.implementLearningMethod(algo)
+            if i < 2:
+                coloring_file_name = result_path + algo +'_coloring.txt'
+                l.write_coloring_file(node_to_zscoringfeatures, vertex_to_tags, coloring_file_name)
             if (algo == 'RF'):
                 sum_feature_importance += cls.feature_importances_
                 print len(cls.feature_importances_)
@@ -91,8 +94,8 @@ def run_multiclass_machine_learning(classification, features_importance_dict, l,
     confusion_matrix_file.close()
 
 
-def run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, number_of_learning_for_mean,
-                                result_path):
+def run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, vertex_to_tags,
+                                node_to_zscoringfeatures, number_of_learning_for_mean, result_path):
     output_file_name = result_path + classification + '_auc.csv'
     auc_file = open(output_file_name, 'a')
     features_importance_file_name = result_path + classification + '_features_importance.csv'
@@ -104,6 +107,9 @@ def run_binary_machine_learning(classification, features_importance_dict, l, ml_
         sum_feature_importance = 0
         for i in range(int(number_of_learning_for_mean)):
             cls = l.implementLearningMethod(algo)
+            if i < 2:
+                coloring_file_name = result_path + algo +'_coloring.txt'
+                l.write_coloring_file(node_to_zscoringfeatures, vertex_to_tags, coloring_file_name)
             if (algo == 'RF'):
                 sum_feature_importance += cls.feature_importances_
                 print len(cls.feature_importances_)

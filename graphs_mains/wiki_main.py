@@ -10,6 +10,7 @@ currentDirectory = str(os.getcwd())
 
 if __name__ == "__main__":
 
+    #step 1: features calculate
     wdir = os.getcwd()
     file_in = str(wdir) + r'/../data/directed/wiki-rfa/input/wiki.txt'
 
@@ -22,7 +23,8 @@ if __name__ == "__main__":
     result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
 
 
-    classification_wiki_result = ['wiki-tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
+    #step 2: learning phase
+    classification_wiki_result = ['wiki-tags']
     ml_algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM']
     directory_tags_path = str(wdir) + r'/../data/directed/wiki-rfa/tags/'
     result_path = str(wdir) + r'/../data/directed/wiki-rfa/results/'
@@ -43,5 +45,10 @@ if __name__ == "__main__":
                            ml_algos=ml_algos,
                            tags_loader=tagsLoader,
                            result_path=result_path)
+
+
+    #step 3: vizualization
+
+
 
 
