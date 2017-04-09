@@ -1,82 +1,10 @@
 import os
-from operator import itemgetter
-import numpy as np
 import featuresList
 from features_calculator import featuresCalculator
-from graph_features import fetures as features
-from learning import simple_machine_learning as ml
 from learning.TagsLoader import TagsLoader
-from learning import FeturesMatrix
-
+import main_manager as mm
 
 currentDirectory = str(os.getcwd())
-
-
-def machineLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name, classifications):
-    auc_file = open(auc_file_name, 'a')
-    features_importance_file_name = result_path + 'features_importance.csv'
-    features_importance_file = open(features_importance_file_name, 'w')
-
-    for classification in classifications:
-        vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
-        result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
-        feature_matrix = result[0]
-        tags_vector = np.squeeze(np.asarray(result[1]))
-        l = ml.SimpleMachineLearning(feature_matrix, tags_vector)
-        for algo in ml_algos:
-            print algo
-            sum_auc_test = 0
-            sum_auc_train = 0
-            sum_feature_importance = 0
-            for i in range(int(number_of_learning_for_mean)):
-                cls = l.implementLearningMethod(algo)
-                if (algo == 'RF'):
-                    sum_feature_importance += cls.feature_importances_
-                    print len(cls.feature_importances_)
-                    print cls.feature_importances_
-                auc_test = l.evaluate_AUC_test()
-                print 'auc_test', auc_test
-                sum_auc_test += auc_test
-                auc_train = l.evaluate_AUC_train()
-                print 'auc_train', auc_train
-                sum_auc_train += auc_train
-            auc_file.writelines(algo + ',' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
-            print 'mean_feature_importance', sum_feature_importance / number_of_learning_for_mean
-            print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
-            print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
-            if algo == 'RF':
-                for fi in features_importance_dict:
-                    feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
-                    features_importance_file.writelines(
-                        features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
-    features_importance_file.close()
-    auc_file.close()
-
-
-def deepLearning(gnx, map_fetures, number_of_learning_for_mean, auc_file_name, classifications):
-    from learning import deep_learning as deep
-    auc_file = open(auc_file_name, 'a')
-    for classification in classifications:
-        vertex_to_tags = tagsLoader.calssification_to_vertex_to_tag[classification]
-        result = FeturesMatrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
-        feature_matrix = result[0]
-        tags_vector = np.squeeze(np.asarray(result[1]))
-        deepL = deep.DeepLearning(feature_matrix, tags_vector)
-        sum_auc_test = 0
-        sum_auc_train = 0
-        for i in range(int(number_of_learning_for_mean)):
-            cls = deepL.runNetwork(0.2)
-            auc_test = deepL.evaluate_AUC_test()
-            print 'auc_test', auc_test
-            sum_auc_test += auc_test
-            auc_train = deepL.evaluate_AUC_train()
-            print 'auc_train', auc_train
-            sum_auc_train += auc_train
-        auc_file.writelines('deep ,' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
-        print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
-        print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
-    auc_file.close()
-
 
 if __name__ == "__main__":
 
@@ -90,30 +18,6 @@ if __name__ == "__main__":
     features_list.remove('motif4')
     features_list.remove('flow')
     result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
-    place = 0
-    features_importance_dict = {}
-
-    for k,v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
-        if k not in features_list:
-            continue
-        if k not in features.vertices_algo_feature_directed_length_dict:
-            features_importance_dict[place] = k
-            place +=1
-        else:
-            for i in range(features.vertices_algo_feature_directed_length_dict[k]):
-                features_importance_dict[place] = k + '[' + str(i) + ']'
-                place += 1
-
-    print features_importance_dict
-
-    for k in features_list:
-        print k
-        if not features.vertices_algo_feature_directed_length_dict.has_key(k):
-            place += 1
-        else:
-            print k
-            place += features.vertices_algo_feature_directed_length_dict[k]
-    print place
 
 
     classification_wiki_result = ['wiki-tags']  # , 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
@@ -123,6 +27,7 @@ if __name__ == "__main__":
     tagsLoader = TagsLoader(directory_tags_path, classification_wiki_result)
     tagsLoader.Load()
 
+
     gnx = result[0]
     map_fetures = result[1]
     number_of_learning_for_mean = 10.0
@@ -130,8 +35,12 @@ if __name__ == "__main__":
     auc_file_name = result_path+'auc.csv'
     deep = False
     if(deep):
-        deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+        mm.deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,classifications=classification_wiki_result,tags_loader=tagsLoader,result_path=result_path)
     else:
-        machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,auc_file_name=auc_file_name,classifications=classification_wiki_result)
+        mm.machineLearning(gnx,map_fetures,number_of_learning_for_mean=10.0,
+                           classifications=classification_wiki_result,
+                           ml_algos=ml_algos,
+                           tags_loader=tagsLoader,
+                           result_path=result_path)
 
 

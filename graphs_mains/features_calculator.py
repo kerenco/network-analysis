@@ -1,6 +1,6 @@
 import os
 import multiprocessing
-from graph_features import fetures as features
+from graph_features import features as features
 
 class featuresCalculator:
     def __init__(self):
