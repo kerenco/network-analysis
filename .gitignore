@@ -6,5 +6,7 @@ graph-fetures/times/
 data/output/
 data/times/
 data/roi/
-learning/machineLearning/roi-main.py
-learning/machineLearning/roi-main-future-learn.py
+learning/roi-main.py
+learning/roi-main-future-learn.py
+data/directed/mails/input/rafael-graph.txt
+data/directed/mails/tags/rafael-tags.txt
