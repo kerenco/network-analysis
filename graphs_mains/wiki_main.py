@@ -32,7 +32,6 @@ if __name__ == "__main__":
     map_fetures = result[1]
     number_of_learning_for_mean = 10.0
 
-    auc_file_name = result_path+'auc.csv'
     deep = False
     if(deep):
         mm.deepLearning(gnx,map_fetures,number_of_learning_for_mean=3.0,classifications=classification_wiki_result,tags_loader=tagsLoader,result_path=result_path)

@@ -6,5 +6,4 @@ data/times/
 data/roi/
 learning/roi-main.py
 learning/roi-main-future-learn.py
-data/directed/mails/input/rafael-graph.txt
-data/directed/mails/tags/rafael-tags.txt
+data/directed/mails/
