@@ -1,25 +1,12 @@
-import os, sys
+import os
 import graphs_drawing
-
-def import_path(fullpath):
-    """
-    Import a file with full path specification. Allows one to
-    import from anywhere, something __import__ does not do.
-    """
-    path, filename = os.path.split(fullpath)
-    filename, ext = os.path.splitext(filename)
-    sys.path.append(path)
-    module = __import__(filename)
-    reload(module) # Might be out of date
-    del sys.path[-1]
-    return module
+from graph_features import initGraph
 
 currentDirectory = str(os.getcwd())
 #examples for drawing roi-graph.txt
-graph_init = import_path(currentDirectory + r'/../graph-fetures/initGraph.py')
 
 graph_file = currentDirectory + r'/../data/roi-graph.txt'
-gnx = graph_init.init_graph(draw=False,file_name = graph_file,directed=True,Connected =True);
+gnx = initGraph.init_graph(draw=False,file_name = graph_file,directed=True,Connected =True);
 
 #the tags needs to be number 0-4
 node_to_tag = {}
