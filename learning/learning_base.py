@@ -21,17 +21,17 @@ class LearningBase:
 
     def evaluate_AUC_test(self):
         predictions = self.classifier.predict(self.x_test)
-        y = [int(i) for i in self.y_test]
-        score = [int(i) for i in predictions]
-        test_fpr, test_tpr, thresholds = metrics.roc_curve(y, score)
+        #y = [int(i) for i in self.y_test]
+        #score = [int(i) for i in predictions]
+        test_fpr, test_tpr, thresholds = metrics.roc_curve(self.y_test, predictions)
         aucTest = np.trapz(test_tpr, test_fpr)
         return aucTest
 
     def evaluate_AUC_train(self):
         train_pred = self.classifier.predict(self.x_train)
-        y = [int(i) for i in self.y_train]
-        score = [int(i) for i in train_pred]
-        train_fpr, train_tpr, thresholds = metrics.roc_curve(y, score)
+        #y = [int(i) for i in self.y_train]
+        #score = [int(i) for i in train_pred]
+        train_fpr, train_tpr, thresholds = metrics.roc_curve(self.y_train, train_pred)
         aucTrain = np.trapz(train_tpr, train_fpr)
         return aucTrain
 
@@ -50,6 +50,14 @@ class LearningBase:
         confusion_matrix_result = metrics.confusion_matrix(y_true, y_pred)
         print confusion_matrix_result
         return confusion_matrix_result
+
+    def evaluate_f1_score(self):
+        y_pred = self.classifier.predict_proba(self.x_test)
+        y_true = self.y_test
+        precision, recall, thresholds = metrics.precision_recall_curve(y_true,y_pred)
+        x = np.multiply(precision, recall) / np.sum([precision, recall], axis=0)
+        score =2*np.amax(x[np.logical_not(np.isnan(x))])
+        return score
 
     def write_coloring_file(self, node_to_zscoringfeatures, vertex_to_tags, file_name = None):
         if(file_name != None):
