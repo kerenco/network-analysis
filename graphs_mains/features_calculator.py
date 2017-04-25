@@ -6,13 +6,13 @@ class featuresCalculator:
     def __init__(self):
         self.wdir = os.getcwd()
         self.featuresFile = features
-        self.motif_path = str(self.wdir) + r'/../graph-fetures/algo_vertices/motifVariations'
+        self.motif_path = str(self.wdir) + r'/../graph_features/algo_vertices/motifVariations'
 
     def calculateFeatures(self, features_list, file_in, output_dir, directed, analysisType):
         processes = []
         for feature in features_list:
             file_input = file_in
-            motif_path = str(self.wdir) + r'/../graph-fetures/algo_vertices/motifVariations'
+            motif_path = str(self.wdir) + r'/../graph_features/algo_vertices/motifVariations'
             outputDirectory = output_dir
             takeConnected = True
             fetures_list = [feature]

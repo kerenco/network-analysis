@@ -1,6 +1,6 @@
 
 directed_features = ['general','betweenness','closeness','bfsmoments','flow','ab','kcore','page_rank','motif3', 'motif4'
-    ,'load_centrality','average_neighbor_degree','hierarchy_energy','eccentricity']
+    ,'load_centrality','average_neighbor_degree','hierarchy_energy']
 
 undirected = ['general','betweenness','closeness','bfsmoments','kcore','louvain','page_rank','fiedler_vector',
     'motif3','eccentricity','load_centrality','communicability_centrality','average_neighbor_degree']
