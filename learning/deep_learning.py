@@ -10,23 +10,20 @@ import pandas as pd
 import seaborn as sn
 import keras
 from learning_base import LearningBase
+from keras.callbacks import EarlyStopping
 
 class DeepLearning(LearningBase):
 
     def runNetwork(self,test_size = 0.3, output_activation='sigmoid', output_size=1):
         self.DivideToTrainAndTest(test_size)
         # create model
+        print self.x_train.shape[1]
+        early_stopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=50,mode='min', verbose=1)
         self.classifier = Sequential()
         self.classifier.add(Dense(300, activation="relu", kernel_initializer="he_normal", input_dim=self.x_train.shape[1]))
         self.classifier.add(Dropout(0.2))
-        self.classifier.add(Dense(250, init='he_normal', activation='relu', W_regularizer=l2(0.1)))
+        self.classifier.add(Dense(100, init='he_normal', activation='relu', W_regularizer=l2(0.1)))
         self.classifier.add(Dropout(0.2))
-        # self.classifier.add(Dense(100, init='he_normal', activation='relu', W_regularizer=l2(0.01)))
-        # self.classifier.add(Dropout(0.2))
-        # self.classifier.add(Dense(50, init='he_normal', activation='relu', W_regularizer=l2(0.01)))
-        # self.classifier.add(Dropout(0.2))
-        # self.classifier.add(Dense(30, init='he_normal', activation='relu', W_regularizer=l2(0.01)))
-        # self.classifier.add(Dropout(0.2))
         self.classifier.add(Dense(output_size, init='uniform', activation=output_activation, W_regularizer=l2(0.01)))
 
         # self.classifier.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -39,7 +36,7 @@ class DeepLearning(LearningBase):
         else:
             self.classifier.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-        self.classifier.fit(self.x_train, self.y_train, epochs=1, batch_size=10, verbose=1)
+        self.classifier.fit(self.x_train, self.y_train,validation_split=0.1 ,callbacks=[early_stopping], epochs=1000, batch_size=10, verbose=2)
 
         return self.classifier
 

@@ -167,6 +167,7 @@ def run_multiclass_deep_learning(classification, deepL, number_of_learning_for_m
 def run_binary_deep_learning(classification, deepL, number_of_learning_for_mean, result_path):
     sum_auc_test = 0
     sum_auc_train = 0
+    sum_f1_test = 0
     output_file_name = result_path + classification + '_auc.csv'
     auc_file = open(output_file_name, 'a')
     for i in range(int(number_of_learning_for_mean)):
@@ -177,7 +178,12 @@ def run_binary_deep_learning(classification, deepL, number_of_learning_for_mean,
         auc_train = deepL.evaluate_AUC_train()
         print 'auc_train', auc_train
         sum_auc_train += auc_train
+        f1_score = deepL.evaluate_f1_score()
+        print 'f1_score', f1_score
+        sum_f1_test += f1_score
     auc_file.writelines('deep ,' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
+    auc_file.writelines('deep f1,' + str(sum_f1_test/number_of_learning_for_mean) + '\n')
     print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
     print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
+    print 'mean_f1_test', sum_f1_test/number_of_learning_for_mean
     auc_file.close()
