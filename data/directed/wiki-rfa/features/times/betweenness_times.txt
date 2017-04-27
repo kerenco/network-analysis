@@ -1,5 +1,0 @@
-Start Betweenness Centrality at: 
-2017-03-21 11:45:09.464000
-2017-03-21 11:54:19.925000
-finish! 
-It Took: 550.460999966
