@@ -1,9 +1,9 @@
 from datetime import datetime
 import sys
 import itertools
-from graph_features.utils import timer
 # from timeit import default_timer as timerp
 from operator import itemgetter
+from graph_features.utils import timer
 
 debug = False
 
@@ -151,89 +151,105 @@ def get_sub_tree(g,root,veriation,motifs_veriations,motifsHist,edges_dict, visit
     if (veriation == (1,1,1)):
         neighbors_first_deg = neighbor(g, root)
         neighbors_first_deg, visited_neighbors,len_a = itertools.tee(neighbors_first_deg,3)
+        neighbors_first_deg = list(neighbors_first_deg)
         for n in visited_neighbors:
-            visited_vertices[n] = visited_index
-            visited_index += 1
-        print visited_vertices
-        # first_deg = len(list(len_a));
-        # print 'neighbors_first_deg:  ',first_deg
+            visited_vertices[n] = 1
+        for comb in itertools.combinations(list(neighbors_first_deg), 3):
+            # print '3,0,0'
+            s = [root, comb[0], comb[1], comb[2]]
+            combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
+
         for n1 in neighbors_first_deg:
+            # print 'n1:',n1
             neighbors_sec_deg = neighbor(g,n1)
             neighbors_sec_deg, visited_neighbors, len_b = itertools.tee(neighbors_sec_deg,3)
+            neighbors_sec_deg =list(neighbors_sec_deg)
             for n in visited_neighbors:
                 if(not visited_vertices.has_key(n)):
-                    visited_vertices[n] = visited_index
-                    visited_index += 1
-            # first_deg -= 1
-            # print str(first_deg) + ':neighbors_sec_deg:  ', len(list(len_b))
+                    visited_vertices[n] = 2
             for n2 in neighbors_sec_deg:
-                e1 = root + ',' + n2
-                e2 = n2 + ',' + root
-                if(edges_dict.has_key(e1) or edges_dict.has_key(e2)):
-                    for n3 in neighbors_first_deg:
-                        if (visited_vertices[root] < visited_vertices[n1] < visited_vertices[n2] < visited_vertices[n3]):
-                            s = [root, n1, n2, n3]
-                            combination_calc(edges_dict, g, motifsHist, motifs_veriations, s,calculate_edges)
-                else:
-                    for n3 in neighbor(g,n2):
-                        if (visited_vertices.has_key(n3)):
-                            if (visited_vertices[root] < visited_vertices[n1] < visited_vertices[n2] < visited_vertices[n3]):
-                                s = [root, n1, n2, n3]
-                                combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
-                        else:
-                            visited_vertices[n3] = visited_index
-                            visited_index += 1
-                            s = [root, n1, n2, n3]
-                            combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
-
-        return [visited_vertices, visited_index]
-    if (veriation == (1,2,0)):
-        for n1 in neighbor(g, root):
-            neighbors = neighbor(g,n1)
-            for comb in itertools.combinations(neighbors, 2):
-                if (visited_vertices[root] < visited_vertices[n1] < visited_vertices[comb[0]] < visited_vertices[comb[1]]):
-                    e1 = comb[0] + ',' + comb[1]
-                    e2 = comb[1] + ',' + comb[0]
-                    e3 = comb[0] + ',' + root
-                    e4 = root + ',' + comb[0]
-                    e5 = root + ',' + comb[1]
-                    e6 = comb[1] + ',' + root
-                    if(not(edges_dict.has_key(e1) or edges_dict.has_key(e2) or
-                           edges_dict.has_key(e3) or edges_dict.has_key(e4)
-                       or edges_dict.has_key(e5) or edges_dict.has_key(e6))):
-                        s = [root,n1, comb[0], comb[1]]
+                # print 'n2:',n2
+                for n11 in neighbors_first_deg:
+                    # print 'n11:',n11
+                    # print 'visited_vertices[n2]:',visited_vertices[n2]
+                    if(visited_vertices[n2] == 2 and n1 != n11):
+                        # print '2,1,0'
+                        s = [root, n1, n11, n2]
                         combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
-    if (veriation == (3,0,0)):
-        neighbors = neighbor(g, root)
-        for comb in itertools.combinations(neighbors, 3):
-            if(visited_vertices[root] < visited_vertices[comb[0]] < visited_vertices[comb[1]] < visited_vertices[comb[2]]):
-                # print 'dddd'
-                e1 = comb[0] + ',' + comb[1]
-                e2 = comb[1] + ',' + comb[0]
-                e3 = comb[0] + ',' + comb[2]
-                e4 = comb[2] + ',' + comb[0]
-                e5 = comb[2] + ',' + comb[1]
-                e6 = comb[1] + ',' + comb[2]
-                # print e1,e2,e3,e4,e5,e6
-                if (not (edges_dict.has_key(e1) or edges_dict.has_key(e2) or
-                             edges_dict.has_key(e3) or edges_dict.has_key(e4)
-                         or edges_dict.has_key(e5) or edges_dict.has_key(e6))):
-                    s = [root, comb[0], comb[1], comb[2]]
+
+            for comb in itertools.combinations(neighbors_sec_deg,2):
+                if(visited_vertices[comb[0]] == 2 and visited_vertices[comb[1]] == 2):
+                    # print '1,2,0'
+                    s = [root, n1, comb[0], comb[1]]
                     combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
-    if (veriation == (2,1,0)):
-        neighbors = neighbor(g, root)
-        for comb in itertools.combinations(neighbors, 2):
-            e1 = comb[0] + ',' + comb[1]
-            if not edges_dict.has_key(e1):
-                e2 = comb[1] + ',' + comb[0]
-                if not edges_dict.has_key(e2):
-                    neighbors_l = [neighbor(g, x) for x in comb]
-                    for l in tuple(set(itertools.chain(*neighbors_l))):
-                        if (visited_vertices[root] < visited_vertices[comb[0]] < visited_vertices[comb[1]] < visited_vertices[l]):
-                            s = (root, comb[0], comb[1], l)
+
+            for n2 in neighbors_sec_deg:
+                for n3 in neighbor(g,n2):
+                    if (not visited_vertices.has_key(n3)):
+                        visited_vertices[n3] = 3
+                        if(visited_vertices[n2] == 2):
+                            # print 'a1,1,1'
+                            s = [root, n1, n2, n3]
                             combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
+                    else:
+                        if(visited_vertices[n3] == 3 and visited_vertices[n2] == 2):
+                            # print 'b1,1,1'
+                            s = [root, n1, n2, n3]
+                            combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
+        return [visited_vertices, visited_index]
+    # if (veriation == (1,2,0)):
+    #     for n1 in neighbor(g, root):
+    #         neighbors = neighbor(g,n1)
+    #         for comb in itertools.combinations(neighbors, 2):
+    #             if (visited_vertices[n1] < visited_vertices[comb[0]] < visited_vertices[comb[1]]):
+    #                 e1 = comb[0] + ',' + comb[1]
+    #                 e2 = comb[1] + ',' + comb[0]
+    #                 e3 = comb[0] + ',' + root
+    #                 e4 = root + ',' + comb[0]
+    #                 e5 = root + ',' + comb[1]
+    #                 e6 = comb[1] + ',' + root
+    #                 if(not(edges_dict.has_key(e1) or edges_dict.has_key(e2) or
+    #                        edges_dict.has_key(e3) or edges_dict.has_key(e4)
+    #                    or edges_dict.has_key(e5) or edges_dict.has_key(e6))):
+    #                     s = [root,n1, comb[0], comb[1]]
+    #                     print veriation
+    #                     combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
+    # if (veriation == (3,0,0)):
+    #     neighbors = neighbor(g, root)
+    #     print root,list(neighbors)
+    #     for comb in itertools.combinations(neighbors, 3):
+    #         if(visited_vertices[root] < visited_vertices[comb[0]] < visited_vertices[comb[1]] < visited_vertices[comb[2]]):
+    #             # print 'dddd'
+    #             e1 = comb[0] + ',' + comb[1]
+    #             e2 = comb[1] + ',' + comb[0]
+    #             e3 = comb[0] + ',' + comb[2]
+    #             e4 = comb[2] + ',' + comb[0]
+    #             e5 = comb[2] + ',' + comb[1]
+    #             e6 = comb[1] + ',' + comb[2]
+    #             # print e1,e2,e3,e4,e5,e6
+    #             if (not (edges_dict.has_key(e1) or edges_dict.has_key(e2) or
+    #                          edges_dict.has_key(e3) or edges_dict.has_key(e4)
+    #                      or edges_dict.has_key(e5) or edges_dict.has_key(e6))):
+    #                 s = [root, comb[0], comb[1], comb[2]]
+    #                 print veriation
+    #                 combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
+    # if (veriation == (2,1,0)):
+    #     neighbors = neighbor(g, root)
+    #     for comb in itertools.combinations(neighbors, 2):
+    #         e1 = comb[0] + ',' + comb[1]
+    #         if not edges_dict.has_key(e1):
+    #             e2 = comb[1] + ',' + comb[0]
+    #             if not edges_dict.has_key(e2):
+    #                 neighbors_l = [neighbor(g, x) for x in comb]
+    #                 for l in tuple(set(itertools.chain(*neighbors_l))):
+    #                     print root,comb[0],comb[1],l
+    #                     if (visited_vertices[root] < visited_vertices[comb[0]] < visited_vertices[comb[1]] < visited_vertices[l]):
+    #                         s = (root, comb[0], comb[1], l)
+    #                         print veriation
+    #                         combination_calc(edges_dict, g, motifsHist, motifs_veriations, s, calculate_edges)
 
 def combination_calc(edges_dict,g, motifsHist, motifs_veriations, comb, calculate_edges):
+    # print 'comb',comb
     # start_comb = timerp()
     #if(debug): start_sub = timerp()
     subg = mySubgraphStr(edges_dict,g, comb)
@@ -337,22 +353,12 @@ def find_motifs_4(g,motif_path,calculate_edges):
         visited_vertices[n] = 0
         visited_index += 1
         p = str(index) + ',' + str(len_nodes) + ': ' + str(index / len_nodes)
-        #if (not debug):
-            #sys.stdout.write('\r' + p)
+        if (not debug):
+            sys.stdout.write('\r' + p)
         start_node = datetime.now()
         [visited_vertices, visited_index] = get_sub_tree(g, n, (1, 1, 1),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index,calculate_edges)
         if(debug):
             print 'finish (1,1,1)  ' + str(datetime.now())
-        get_sub_tree(g, n, (2, 1, 0),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index,calculate_edges)
-        if(debug):
-            print 'finish (2,1,0)  ' + str(datetime.now())
-        get_sub_tree(g, n, (1, 2, 0),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index,calculate_edges)
-        if(debug):
-            print 'finish (1,2,0)  ' + str(datetime.now())
-        get_sub_tree(g, n, (3, 0, 0),motifs_veriations, motifsHist,edges_dict,visited_vertices, visited_index,calculate_edges)
-        if(debug):
-            print 'finish (3,0,0)  ' + str(datetime.now())
-        print n +',' +str(degree[1]) +','+ str(datetime.now() - start_node)
         g.remove_node(n)
         index = index + 1.0
 
@@ -375,7 +381,7 @@ def init_edges_dict(g):
             edges_dict[t2] = True
     return edges_dict
 
-def find_all_motifs(f, ft, gnx, motif_path, motifs_number= 3,calculate_edges = True):
+def find_all_motifs(f, ft, gnx, motif_path, motifs_number= 3,calculate_edges = False):
     gnx_copy = gnx.copy()
     start = timer.start(ft, 'Find Motifs ' + str(motifs_number) + ' ')
 
