@@ -16,7 +16,7 @@ def resultAnalysis(year, classifications, tags_type):
 
     calculator = featuresCalculator()
     features_list = featuresList.featuresList(True, 'nodes').getFeatures()
-    features_list.remove('eccentricity')
+    # features_list.remove('eccentricity')
     result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
 
     directory_tags_path = str(wdir) + r'/../data/directed/signaling_pathway/' + year + '/tags/'+tags_type+'/signaling_pathways_tags_'
@@ -31,7 +31,7 @@ def resultAnalysis(year, classifications, tags_type):
     gnx = result[0]
     map_fetures = result[1]
 
-    deep = False
+    deep = True
     if (deep):
         mm.deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0, classifications=classifications,
                         tags_loader=tagsLoader, result_path=result_path)
@@ -45,7 +45,7 @@ def resultAnalysis(year, classifications, tags_type):
 
 
 if __name__ == "__main__":
-    location_classifications = ['Cytosol', 'Nucleus', 'Membrane', 'Vesicles', 'Ribosomes', 'Extracellular']
+    location_classifications = ['Cytosol', 'Nucleus', 'Membrane', 'Vesicles','Ribosomes','Extracellular']
     function_classifications = ['Adapter', 'Kinase', 'Receptor', 'TF', 'Ligand']
     resultAnalysis(year='2004', classifications=location_classifications, tags_type='location')
     resultAnalysis(year='2004', classifications=function_classifications, tags_type='function')

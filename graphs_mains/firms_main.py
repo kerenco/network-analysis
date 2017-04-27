@@ -11,14 +11,21 @@ currentDirectory = str(os.getcwd())
 if __name__ == "__main__":
     wdir = os.getcwd()
 
-    for year in range(1999,2000):
+    for year in range(1996,2013):
 
         print str(year)
         file_in = str(wdir) + r'/../data/undirected/firms/'+str(year)+r'/input/firms_'+str(year)+'.txt'
         output_dir = str(wdir) + r'/../data/undirected/firms/'+str(year)+r'/features'
         calculator = featuresCalculator()
         features_list = featuresList.featuresList(directed=False, analysisType='nodes').getFeatures()
-        features_list.remove('fiedler_vector')
+        if 'motif4' not in features_list:
+            features_list.append('motif4')
+        if 'hierarchy_energy' not in features_list:
+            features_list.append('hierarchy_energy')
+        if 'fiedler_vector' in features_list:
+            features_list.remove('fiedler_vector')
+        if 'communicability_centrality' in features_list:
+            features_list.remove('communicability_centrality')
         result = calculator.calculateFeatures(features_list, file_in, output_dir, directed=False, analysisType='nodes')
 
 
@@ -32,7 +39,7 @@ if __name__ == "__main__":
         gnx = result[0]
         map_fetures = result[1]
 
-        deep = False
+        deep = True
         if (deep):
             mm.deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0, classifications=classification_firms_result,
                             tags_loader=tagsLoader, result_path=result_path)
