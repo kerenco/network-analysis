@@ -26,7 +26,7 @@ def buid_features_importance_dict(map_fetures):
                 features_importance_dict[place] = k + '[' + str(i) + ']'
                 place += 1
 
-    print features_importance_dict
+    # print features_importance_dict
 
     for k in features_list:
         print k
@@ -39,24 +39,39 @@ def buid_features_importance_dict(map_fetures):
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classifications, ml_algos, tags_loader,
-                result_path):
+                result_path,edges=False):
 
     features_importance_dict = buid_features_importance_dict(map_fetures)
 
+    if(edges):
+        for classification in classifications:
+            edges_to_tags = tags_loader.calssification_to_edge_to_tag[classification]
+            [feature_matrix, tags_vector, node_to_zscoringfeatures] = features_matrix.build_matrix_with_tags_edges \
+                (gnx, map_fetures, edges_to_tags, zscoring=True)
+            tags_vector = np.squeeze(np.asarray(tags_vector))
+            l = ml.SimpleMachineLearning(feature_matrix, tags_vector)
+            if len(set(edges_to_tags.values())) != 2:
+                run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos, edges_to_tags,
+                                                node_to_zscoringfeatures, number_of_learning_for_mean, result_path)
 
-    for classification in classifications:
-        vertex_to_tags = tags_loader.calssification_to_vertex_to_tag[classification]
-        [feature_matrix, tags_vector, node_to_zscoringfeatures] = features_matrix.build_matrix_with_tags\
-                                                                        (gnx, map_fetures, vertex_to_tags, zscoring=True)
-        tags_vector = np.squeeze(np.asarray(tags_vector))
-        l = ml.SimpleMachineLearning(feature_matrix, tags_vector)
-        if len(set(vertex_to_tags.values())) != 2:
-            run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
+            else:
+                run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, edges_to_tags,
                                             node_to_zscoringfeatures, number_of_learning_for_mean, result_path)
 
-        else:
-            run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, vertex_to_tags,
-                                        node_to_zscoringfeatures, number_of_learning_for_mean, result_path)
+    else:
+        for classification in classifications:
+            vertex_to_tags = tags_loader.calssification_to_vertex_to_tag[classification]
+            [feature_matrix, tags_vector, node_to_zscoringfeatures] = features_matrix.build_matrix_with_tags\
+                                                                            (gnx, map_fetures, vertex_to_tags, zscoring=True)
+            tags_vector = np.squeeze(np.asarray(tags_vector))
+            l = ml.SimpleMachineLearning(feature_matrix, tags_vector)
+            if len(set(vertex_to_tags.values())) != 2:
+                run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
+                                                node_to_zscoringfeatures, number_of_learning_for_mean, result_path)
+
+            else:
+                run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, vertex_to_tags,
+                                            node_to_zscoringfeatures, number_of_learning_for_mean, result_path)
 
 
 def run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
@@ -74,10 +89,10 @@ def run_multiclass_machine_learning(classification, features_importance_dict, l,
             if i < 2:
                 coloring_file_name = result_path + algo +'_coloring.txt'
                 l.write_coloring_file(node_to_zscoringfeatures, vertex_to_tags, coloring_file_name)
-            if (algo == 'RF'):
-                sum_feature_importance += cls.feature_importances_
-                print len(cls.feature_importances_)
-                print cls.feature_importances_
+            # if (algo == 'RF'):
+            #     sum_feature_importance += cls.feature_importances_
+            #     print len(cls.feature_importances_)
+            #     print cls.feature_importances_
             cm = l.evaluate_confusion_metric_test()
             sum_confusion_matrix_test += cm
         confusion_matrix_file.writelines(algo + ',' + str(sum_confusion_matrix_test))
@@ -85,11 +100,11 @@ def run_multiclass_machine_learning(classification, features_importance_dict, l,
         l.plot_confusion_matrix(sum_confusion_matrix_test, ['0', '1', '2', '3', '4', '5', '6'], True,
                                 title='Confusion Matrix', plot_file_name=plot_file_name)
 
-        if algo == 'RF':
-            for fi in features_importance_dict:
-                feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
-                features_importance_file.writelines(
-                    features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
+        # if algo == 'RF':
+        #     for fi in features_importance_dict:
+        #         feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
+        #         features_importance_file.writelines(
+        #             features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
     features_importance_file.close()
     confusion_matrix_file.close()
 
@@ -107,13 +122,13 @@ def run_binary_machine_learning(classification, features_importance_dict, l, ml_
         sum_feature_importance = 0
         for i in range(int(number_of_learning_for_mean)):
             cls = l.implementLearningMethod(algo)
-            if i < 2:
-                coloring_file_name = result_path + algo +'_coloring.txt'
-                l.write_coloring_file(node_to_zscoringfeatures, vertex_to_tags, coloring_file_name)
-            if (algo == 'RF'):
-                sum_feature_importance += cls.feature_importances_
-                print len(cls.feature_importances_)
-                print cls.feature_importances_
+            # if i < 2:
+            #     coloring_file_name = result_path + algo +'_coloring.txt'
+            #     l.write_coloring_file(node_to_zscoringfeatures, vertex_to_tags, coloring_file_name)
+            # if (algo == 'RF'):
+            #     sum_feature_importance += cls.feature_importances_
+            #     print len(cls.feature_importances_)
+            #     print cls.feature_importances_
             auc_test = l.evaluate_AUC_test()
             print 'auc_test', auc_test
             sum_auc_test += auc_test
@@ -124,30 +139,42 @@ def run_binary_machine_learning(classification, features_importance_dict, l, ml_
         print 'mean_feature_importance', sum_feature_importance / number_of_learning_for_mean
         print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
         print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
-        if algo == 'RF':
-            for fi in features_importance_dict:
-                feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
-                features_importance_file.writelines(
-                    features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
+        # if algo == 'RF':
+        #     for fi in features_importance_dict:
+        #         feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
+        #         features_importance_file.writelines(
+        #             features_importance_dict[fi] + ',' + str(feature_importance_value) + '\n')
     features_importance_file.close()
     auc_file.close()
 
 
-def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,tags_loader, result_path):
+def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,tags_loader, result_path,edges=False):
     from learning import deep_learning as deep
+    if(edges):
+        for classification in classifications:
+            edge_to_tags = tags_loader.calssification_to_edge_to_tag[classification]
+            result = features_matrix.build_matrix_with_tags(gnx, map_fetures, edge_to_tags, zscoring=True)
+            feature_matrix = result[0]
+            tags_vector = np.squeeze(np.asarray(result[1]))
+            deepL = deep.DeepLearning(feature_matrix, tags_vector)
 
-    for classification in classifications:
+            if len(set(edge_to_tags.values())) != 2:
+                run_multiclass_deep_learning(classification, deepL, number_of_learning_for_mean, result_path)
+            else:
+                run_binary_deep_learning(classification, deepL, number_of_learning_for_mean, result_path)
+    else:
+        for classification in classifications:
 
-        vertex_to_tags = tags_loader.calssification_to_vertex_to_tag[classification]
-        result = features_matrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
-        feature_matrix = result[0]
-        tags_vector = np.squeeze(np.asarray(result[1]))
-        deepL = deep.DeepLearning(feature_matrix, tags_vector)
+            vertex_to_tags = tags_loader.calssification_to_vertex_to_tag[classification]
+            result = features_matrix.build_matrix_with_tags(gnx, map_fetures, vertex_to_tags, zscoring=True)
+            feature_matrix = result[0]
+            tags_vector = np.squeeze(np.asarray(result[1]))
+            deepL = deep.DeepLearning(feature_matrix, tags_vector)
 
-        if len(set(vertex_to_tags.values())) != 2:
-            run_multiclass_deep_learning(classification, deepL, number_of_learning_for_mean, result_path)
-        else:
-            run_binary_deep_learning(classification, deepL, number_of_learning_for_mean, result_path)
+            if len(set(vertex_to_tags.values())) != 2:
+                run_multiclass_deep_learning(classification, deepL, number_of_learning_for_mean, result_path)
+            else:
+                run_binary_deep_learning(classification, deepL, number_of_learning_for_mean, result_path)
 
 
 def run_multiclass_deep_learning(classification, deepL, number_of_learning_for_mean, result_path):

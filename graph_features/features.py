@@ -385,6 +385,15 @@ def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeCo
     if ('average_neighbor_degree' in fetures_list):
         map_average_neighbor_degree = compute_specific_eav(gnx, outputDirectory, algo_name='average_neighbor_degree')
         map_fetures[14] = map_average_neighbor_degree
+    if ('edge_flow' in fetures_list):
+        map_average_neighbor_degree = compute_specific_eav(gnx, outputDirectory, algo_name='edge_flow')
+        map_fetures[15] = map_average_neighbor_degree
+    if ('edge_betweenness' in fetures_list):
+        map_average_neighbor_degree = compute_specific_eav(gnx, outputDirectory, algo_name='edge_betweenness')
+        map_fetures[16] = map_average_neighbor_degree
+    if('motif3' in fetures_list):
+        file_name_edges =  outputDirectory+'/output/motifs3_directed_edges.txt'
+        map_fetures[17] = ReadFeatureFile.fileToMap_edges(file_name_edges)
 
     if(return_map):
         return [gnx,map_fetures]

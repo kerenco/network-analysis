@@ -69,7 +69,7 @@ class LearningBase:
             prob = self.classifier.predict_proba(node_features)
             coloring_node.append((n ,prob))
             if(file_name != None):
-                line = n +' ' + str(vertex_to_tags[n])
+                line = str(n) +' ' + str(vertex_to_tags[n])
                 for p in prob:
                     line += ',' + str(p)
                 f.writelines(line + '\n')
