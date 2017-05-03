@@ -31,16 +31,19 @@ def resultAnalysis(year, classifications, tags_type):
     gnx = result[0]
     map_fetures = result[1]
 
-    deep = True
+    deep = False
     if (deep):
         mm.deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0, classifications=classifications,
-                        tags_loader=tagsLoader, result_path=result_path)
+                        tags_loader=tagsLoader, result_path=result_path, save_clf_file_name=None,
+                        load_clf_file_name=result_path + r'clf/')
     else:
         mm.machineLearning(gnx, map_fetures, number_of_learning_for_mean=10.0,
                            classifications=classifications,
                            ml_algos=ml_algos,
                            tags_loader=tagsLoader,
-                           result_path=result_path)
+                           result_path=result_path,
+                           save_clf_file_name=result_path + r'clf/',
+                           load_clf_file_name=None)
 
 
 

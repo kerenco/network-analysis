@@ -11,32 +11,42 @@ import seaborn as sn
 import keras
 from learning_base import LearningBase
 from keras.callbacks import EarlyStopping
+from keras.models import load_model
+import os
 
 class DeepLearning(LearningBase):
 
-    def runNetwork(self,test_size = 0.3, output_activation='sigmoid', output_size=1):
-        self.DivideToTrainAndTest(test_size)
+    def runNetwork(self,test_size = 0.3, output_activation='sigmoid', output_size=1,
+                   load_clf_file_name = None, save_clf_file_name = None, random_state = None):
+        self.DivideToTrainAndTest(test_size, random_state=random_state)
         # create model
         print self.x_train.shape[1]
-        early_stopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=50,mode='min', verbose=1)
-        self.classifier = Sequential()
-        self.classifier.add(Dense(300, activation="relu", kernel_initializer="he_normal", input_dim=self.x_train.shape[1]))
-        self.classifier.add(Dropout(0.2))
-        self.classifier.add(Dense(100, init='he_normal', activation='relu', W_regularizer=l2(0.1)))
-        self.classifier.add(Dropout(0.2))
-        self.classifier.add(Dense(output_size, init='uniform', activation=output_activation, W_regularizer=l2(0.01)))
+        if load_clf_file_name == None or (not os.path.isfile(load_clf_file_name+'deep.h5')
+                                          or os.stat(load_clf_file_name+'deep.h5').st_size == 0):
+            early_stopping = EarlyStopping(monitor='val_loss', min_delta=0, patience=50,mode='min', verbose=1)
+            self.classifier = Sequential()
+            self.classifier.add(Dense(300, activation="relu", kernel_initializer="he_normal", input_dim=self.x_train.shape[1]))
+            self.classifier.add(Dropout(0.2))
+            self.classifier.add(Dense(100, init='he_normal', activation='relu', W_regularizer=l2(0.1)))
+            self.classifier.add(Dropout(0.2))
+            self.classifier.add(Dense(output_size, init='uniform', activation=output_activation, W_regularizer=l2(0.01)))
 
-        # self.classifier.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+            # self.classifier.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-        # Fit the model
-        if(output_activation == 'softmax'):
-            self.classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-            self.y_train = keras.utils.to_categorical(self.y_train, num_classes=max(self.y_train)+1)
-            self.y_test = keras.utils.to_categorical(self.y_test, num_classes=max(self.y_test)+1)
+            # Fit the model
+            if(output_activation == 'softmax'):
+                self.classifier.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+                self.y_train = keras.utils.to_categorical(self.y_train, num_classes=max(self.y_train)+1)
+                self.y_test = keras.utils.to_categorical(self.y_test, num_classes=max(self.y_test)+1)
+            else:
+                self.classifier.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+            self.classifier.fit(self.x_train, self.y_train,validation_split=0.1 ,callbacks=[early_stopping], epochs=1000, batch_size=10, verbose=2)
         else:
-            self.classifier.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+            self.classifier = self.load_clf(load_clf_file_name+'deep.h5')
 
-        self.classifier.fit(self.x_train, self.y_train,validation_split=0.1 ,callbacks=[early_stopping], epochs=1000, batch_size=10, verbose=2)
+        if save_clf_file_name != None:
+            self.save_clf(save_clf_file_name+'deep.h5')
 
         return self.classifier
 
@@ -84,7 +94,9 @@ class DeepLearning(LearningBase):
         plt.title(title)
         plt.savefig(plot_file_name)
 
+    def save_clf(self, file_name):
+        self.classifier.save(filepath=file_name)
 
-
-
+    def load_clf(self, file_name):
+        return load_model(file_name)
 

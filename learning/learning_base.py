@@ -15,8 +15,15 @@ class LearningBase:
         self.featuresMat = np.asmatrix(featuresMat, dtype=float)
         self.tagsVec = tagsVec
 
-    def DivideToTrainAndTest(self, testSize):
-        self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.featuresMat, self.tagsVec, test_size=testSize)
+    def DivideToTrainAndTest(self, testSize, random_state=None):
+        if random_state != None:
+            self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.featuresMat, self.tagsVec
+                                                                                    , test_size=testSize
+                                                                                    , random_state=1)
+            print 'random_state', random_state
+        else:
+            self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.featuresMat, self.tagsVec
+                                                                                    , test_size=testSize)
 
 
     def evaluate_AUC_test(self):
@@ -77,6 +84,7 @@ class LearningBase:
         if (file_name != None):
             f.close()
         return coloring_node
+
 
 
 
