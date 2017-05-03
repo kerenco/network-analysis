@@ -394,6 +394,11 @@ def calc_fetures_edges(file_input, motif_path, outputDirectory, directed, takeCo
     if('motif3' in fetures_list):
         file_name_edges =  outputDirectory+'/output/motifs3_directed_edges.txt'
         map_fetures[17] = ReadFeatureFile.fileToMap_edges(file_name_edges)
-
+    if ('motif4' in fetures_list):
+        file_name_edges = outputDirectory + '/output/motifs4_directed_edges.txt'
+        map_fetures[18] = ReadFeatureFile.fileToMap_edges(file_name_edges)
+    if ('mds' in fetures_list):
+        file_name_edges = outputDirectory + '/output/mds_edges.txt'
+        map_fetures[19] = ReadFeatureFile.fileToMap_edges(file_name_edges)
     if(return_map):
         return [gnx,map_fetures]

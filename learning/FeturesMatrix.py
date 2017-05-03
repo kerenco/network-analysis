@@ -35,7 +35,8 @@ def build_matrix_from_fetures(vertex_to_tag,map_fetures):
 
 def build_matrix_from_edges_fetures(edge_to_tag, map_features):
     edge_to_fetures = {}
-    for e in map_features[1].keys():
+    k = map_features.keys()[0]
+    for e in map_features[k].keys():
         if edge_to_tag.has_key(e):
             edge_to_fetures[e] = []
     for fm in map_features:
