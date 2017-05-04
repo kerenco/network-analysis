@@ -17,8 +17,9 @@ def z_scoring(matrix):
 
 def build_matrix_from_fetures(vertex_to_tag,map_fetures):
     node_to_fetures = {}
+    k = map_fetures.keys()[0]
     for n in vertex_to_tag.keys():
-        if n in map_fetures[1].keys():
+        if n in map_fetures[k].keys():
             node_to_fetures[n] = []
     for fm in map_fetures:
         for k in node_to_fetures:
