@@ -45,7 +45,8 @@ vertices_algo_dict = {'general' :1,
                       'eccentricity':14,
                       'load_centrality':15,
                       'communicability_centrality':16,
-                      'average_neighbor_degree':17}
+                      'average_neighbor_degree':17,
+                      'mds':18}
 
 vertices_algo_feature_directed_length_dict = {'general':2,
                                               'bfsmoments':2,
@@ -230,6 +231,14 @@ def calc_fetures_vertices(file_input, motif_path, outputDirectory, directed, tak
             map_fetures[17] = map_average_neighbor_degree
         except:
             print 'error in average neighbor:',sys.exc_info()[0]
+            print sys.exc_info()[2]
+            traceback.print_exc()
+    if ('mds' in fetures_list):
+        try:
+            file_name = outputDirectory + '/output/mds_nodes.txt'
+            map_fetures[18] = ReadFeatureFile.fileToMap_vertices(file_name)
+        except:
+            print 'error in mds:', sys.exc_info()[0]
             print sys.exc_info()[2]
             traceback.print_exc()
 
