@@ -17,7 +17,7 @@ def resultAnalysis(year, classifications, tags_type):
     calculator = featuresCalculator()
     features_list = featuresList.featuresList(True, 'nodes').getFeatures()
     # features_list.remove('eccentricity')
-    result = calculator.calculateFeatures(features_list, file_in, output_dir, True, 'nodes')
+    result = calculator.calculateFeatures(['mds'], file_in, output_dir, True, 'nodes')
 
     directory_tags_path = str(wdir) + r'/../data/directed/signaling_pathway/' + year + '/tags/'+tags_type+'/signaling_pathways_tags_'
     result_path = str(wdir) + r'/../data/directed/signaling_pathway/' + year + '/results/'
@@ -30,12 +30,15 @@ def resultAnalysis(year, classifications, tags_type):
 
     gnx = result[0]
     map_fetures = result[1]
+    load_clf_file_name = result_path + r'clf/'
+    save_clf_file_name = None
 
-    deep = False
+    deep = True
     if (deep):
-        mm.deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0, classifications=classifications,
-                        tags_loader=tagsLoader, result_path=result_path, save_clf_file_name=None,
-                        load_clf_file_name=result_path + r'clf/')
+        mm.deepLearning(gnx, map_fetures, number_of_learning_for_mean=3.0,
+                        classifications=classifications,
+                        tags_loader=tagsLoader,
+                        result_path=result_path)
     else:
         mm.machineLearning(gnx, map_fetures, number_of_learning_for_mean=10.0,
                            classifications=classifications,
