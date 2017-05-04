@@ -10,31 +10,31 @@ def buid_features_importance_dict(map_fetures):
     features_importance_dict = {}
     vertices_algo_dict = features.vertices_algo_dict
     features_list = []
-
-    for key_feature in map_fetures.keys():
-        features_list.append(vertices_algo_dict.keys()[vertices_algo_dict.values().index(key_feature)])
-
-
-    for k, v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
-        if k not in features_list:
-            continue
-        if k not in features.vertices_algo_feature_directed_length_dict:
-            features_importance_dict[place] = k
-            place += 1
-        else:
-            for i in range(features.vertices_algo_feature_directed_length_dict[k]):
-                features_importance_dict[place] = k + '[' + str(i) + ']'
-                place += 1
-
-    # print features_importance_dict
-
-    for k in features_list:
-        print k
-        if not features.vertices_algo_feature_directed_length_dict.has_key(k):
-            place += 1
-        else:
-            print k
-            place += features.vertices_algo_feature_directed_length_dict[k]
+    #
+    # for key_feature in map_fetures.keys():
+    #     features_list.append(vertices_algo_dict.keys()[vertices_algo_dict.values().index(key_feature)])
+    #
+    #
+    # for k, v in sorted(features.vertices_algo_dict.items(), key=itemgetter(1)):
+    #     if k not in features_list:
+    #         continue
+    #     if k not in features.vertices_algo_feature_directed_length_dict:
+    #         features_importance_dict[place] = k
+    #         place += 1
+    #     else:
+    #         for i in range(features.vertices_algo_feature_directed_length_dict[k]):
+    #             features_importance_dict[place] = k + '[' + str(i) + ']'
+    #             place += 1
+    #
+    # # print features_importance_dict
+    #
+    # for k in features_list:
+    #     print k
+    #     if not features.vertices_algo_feature_directed_length_dict.has_key(k):
+    #         place += 1
+    #     else:
+    #         print k
+    #         place += features.vertices_algo_feature_directed_length_dict[k]
     print place
 
 
