@@ -4,6 +4,16 @@ graphs_mains/mails_main.py
 data/output/
 data/times/
 data/roi/
+data/directed/social_sign/slashdot/features/output/motifs4.txt
+data/directed/social_sign/slashdot/features/output/motifs4_directed_edges.txt
+data/directed/social_sign/epinions/features/output/motifs4.txt
+data/directed/social_sign/epinions/features/output/motifs4_directed_edges.txt
+data/directed/social_sign/wiki/features/output/motifs4.txt
+data/directed/social_sign/wiki/features/output/motifs4_directed_edges.txt
+data/directed/social_sign/wiki/features/output/mds_edges.txt
+data/directed/social_sign/wiki/features/output/mds_nodes.txt
 learning/roi-main.py
 learning/roi-main-future-learn.py
 data/directed/mails/
+
+
