@@ -20,7 +20,6 @@ class LearningBase:
             self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.featuresMat, self.tagsVec
                                                                                     , test_size=testSize
                                                                                     , random_state=1)
-            print 'random_state', random_state
         else:
             self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(self.featuresMat, self.tagsVec
                                                                                     , test_size=testSize)
@@ -45,8 +44,9 @@ class LearningBase:
     def evaluate_confusion_metric_test(self):
         y_pred = self.classifier.predict_proba(self.x_test)
         y_pred = [np.argmax(lst) for lst in y_pred]
-        y_true = [np.argmax(lst) for lst in self.y_test]
+        y_true = [int(i) for i in self.y_test]
         confusion_matrix_result = metrics.confusion_matrix(y_true,y_pred)
+        print confusion_matrix_result
         confusion_matrix_result = confusion_matrix_result.astype('float') / confusion_matrix_result.sum(axis=1)[:, np.newaxis]
         return confusion_matrix_result
 
@@ -55,7 +55,6 @@ class LearningBase:
         y_pred = [np.argmax(lst) for lst in y_pred]
         y_true = [int(i) for i in self.y_train]
         confusion_matrix_result = metrics.confusion_matrix(y_true, y_pred)
-        print confusion_matrix_result
         return confusion_matrix_result
 
     def evaluate_f1_score(self):

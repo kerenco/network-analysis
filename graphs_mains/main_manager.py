@@ -58,13 +58,15 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
                 run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos, edges_to_tags,
                                                 node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                                 load_clf_file_name=load_clf_file_name,
-                                                save_clf_file_name=save_clf_file_name)
+                                                save_clf_file_name=save_clf_file_name,
+                                                random_state=random_state)
 
             else:
                 run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, edges_to_tags,
                                             node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                             load_clf_file_name=load_clf_file_name
-                                            , save_clf_file_name=save_clf_file_name)
+                                            , save_clf_file_name=save_clf_file_name,
+                                            random_state=random_state)
 
     else:
         for classification in classifications:
@@ -81,13 +83,15 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
                 run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
                                                 node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                                 load_clf_file_name=load_clf_file_name
-                                                , save_clf_file_name=save_clf_file_name)
+                                                , save_clf_file_name=save_clf_file_name,
+                                                random_state=random_state)
 
             else:
                 run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, vertex_to_tags,
                                             node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                             load_clf_file_name=load_clf_file_name,
-                                            save_clf_file_name=save_clf_file_name)
+                                            save_clf_file_name=save_clf_file_name,
+                                            random_state=random_state)
 
 
 def run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
@@ -115,7 +119,9 @@ def run_multiclass_machine_learning(classification, features_importance_dict, l,
             sum_confusion_matrix_test += cm
         confusion_matrix_file.writelines(algo + ',' + str(sum_confusion_matrix_test))
         plot_file_name = result_path + '//' + algo + '_confusion_matrix.png'
-        l.plot_confusion_matrix(sum_confusion_matrix_test, ['0', '1', '2', '3', '4', '5', '6'], True,
+        classes = [str(c) for c in set((vertex_to_tags.values()))]
+        print classes
+        l.plot_confusion_matrix(sum_confusion_matrix_test, classes, True,
                                 title='Confusion Matrix', plot_file_name=plot_file_name)
 
         # if algo == 'RF':
