@@ -70,6 +70,7 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
 
     else:
         for classification in classifications:
+            print classification
             vertex_to_tags = tags_loader.calssification_to_vertex_to_tag[classification]
             [feature_matrix, tags_vector, node_to_zscoringfeatures] = features_matrix.build_matrix_with_tags\
                                                                             (gnx, map_fetures, vertex_to_tags, zscoring=True)
@@ -179,7 +180,7 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,
     if(edges):
         for classification in classifications:
             edge_to_tags = tags_loader.calssification_to_edge_to_tag[classification]
-            result = features_matrix.build_matrix_with_tags(gnx, map_fetures, edge_to_tags, zscoring=True)
+            result = features_matrix.build_matrix_with_tags_edges(gnx, map_fetures, edge_to_tags, zscoring=True)
             feature_matrix = result[0]
             tags_vector = np.squeeze(np.asarray(result[1]))
             deepL = deep.DeepLearning(feature_matrix, tags_vector)
