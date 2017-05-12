@@ -1,5 +1,5 @@
 import networkx as nx
-from graph_features.utils import timer
+from utils import timer
 from networkx.algorithms.shortest_paths import weighted as weight
 
 
@@ -17,14 +17,12 @@ def attractor_basin(gnx, f, ft):
 def calc_attractor_basin(gnx):
     attractor_basin_details= initialize_attraction_basin_dist(gnx)####arrange the details for the calcultions
     attractor_basin = calc_final_attraction_basin(attractor_basin_details,gnx)
-    # print("attractor_basin",attractor_basin)
     return attractor_basin
 
 
 def initialize_attraction_basin_dist(gnx):
     attractor_basin_out_dist,attractor_basin_in_dist, avg_in, avg_out = initialize_variables(gnx)
     ####for each node we are calculating the the out and in distances for the other nodes in the graph
-    # print(gnx.nodes())
     for n in gnx.nodes():
         try:
             in_dist = []
@@ -45,8 +43,8 @@ def initialize_attraction_basin_dist(gnx):
             attractor_basin_out_dist.append(list())
             attractor_basin_in_dist.append(list())
     ####calculte "avg_out" and "avg_in" for each distance from the details of all the nodes
-    avg_out=calc_avg_for_dist(len(gnx.nodes()),attractor_basin_out_dist)
-    avg_in =calc_avg_for_dist(len(gnx.nodes()),attractor_basin_in_dist)
+    avg_out= calc_avg_for_dist(nx.number_of_nodes(gnx),attractor_basin_out_dist)
+    avg_in = calc_avg_for_dist(nx.number_of_nodes(gnx),attractor_basin_in_dist)
     attractor_basin_details=[attractor_basin_out_dist,avg_out,attractor_basin_in_dist, avg_in]
     return attractor_basin_details
 
@@ -60,7 +58,6 @@ def initialize_variables(gnx):
 
 
 def calc_final_attraction_basin(attractor_basin_details, gnx):
-    #print (attractor_basin_details)
     attractor_basin = {}
     avg_out=attractor_basin_details[1]
     avg_in = attractor_basin_details[3]
@@ -75,10 +72,12 @@ def calc_final_attraction_basin(attractor_basin_details, gnx):
              for avg_in_dist in avg_in:
                 if (m[0]==avg_in_dist[0]):
                     numerator = numerator + (m[1] / avg_in_dist[1]) * alpha ** (-m[0])
+                    break
         for k in out_dist:####calculating the denominator of the attraction_basin expression
             for avg_out_dist in avg_out:
                 if (k[0]==avg_out_dist[0]):
                     denominator = denominator + (k[1] / avg_out_dist[1]) * alpha ** (-k[0])
+                    break
         ####calculate the value of 'attraction_basin' of the node n and inssert it to attractor_basin list
         if (denominator == 0):
             attractor_basin[n] = -1
@@ -91,16 +90,21 @@ def calc_avg_for_dist(num_of_nodes_in_gragh,count_dist):
     #### arange the details in "count_dist" to be with unique distance in the array "all_dist_count"
     all_dist_count=[]
     avg_for_dist=[]
-    for i in range (0,len(count_dist)):
-        for j in range (0,len(count_dist[i])):
-            if (count_dist[i][j] not in all_dist_count):
-                all_dist_count.append(count_dist[i][j])
-            else: ####if the detail is already in all_dist_count, then we sum the appearance of it
-                for k in range (0,len(all_dist_count)):
-                    if(count_dist[i][j][0]==all_dist_count[k][0]):
-                        all_dist_count[k][1]+=count_dist[i][j][1]
+    for place in count_dist:
+        for i in place:
+            if len(all_dist_count)>0:
+                for j in all_dist_count:
+                    if (i[0] == j[0]):
+                        all_dist_count[ all_dist_count.index(j) ][1] += i[1]
+                        break
+                    if(j==  all_dist_count[-1]):
+                        all_dist_count.append([i[0],i[1]])
+                        break
+            else:
+                all_dist_count.append([i[0], i[1]])
+
     ####calculating for each distance the average
-    for l in range(0, len(all_dist_count)):
-        avg=float(all_dist_count[l][1])/num_of_nodes_in_gragh
-        avg_for_dist.append([all_dist_count[l][0],avg])
+    for l in all_dist_count:
+        avg=float(l[1])/num_of_nodes_in_gragh
+        avg_for_dist.append([l[0],avg])
     return avg_for_dist
