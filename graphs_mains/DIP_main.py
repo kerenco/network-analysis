@@ -14,7 +14,7 @@ if __name__ == "__main__":
     wdir = os.getcwd()
     file_in = str(wdir) + r'/../data/directed/DIP/input/DIP.txt'
 
-    output_dir = str(wdir) + r'/../data/directed/DIP/features'
+    output_dir = str(wdir) + r'/../data/directed/DIP/features/take_connected'
 
     calculator = featuresCalculator()
     features_list = featuresList.featuresList(directed=True, analysisType='nodes').getFeatures()
