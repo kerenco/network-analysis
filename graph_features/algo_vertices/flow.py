@@ -16,11 +16,12 @@ def flow_mesure(f, ft, gnx,threshold):
 
     return flow_map
 
-
 def calculate_flow_index(gnx,threshold):
-    flow_list = {}
     nodes = gnx.nodes()
+    flow_list = {n: 0 for n in nodes}
     gnx_without_direction=gnx.to_undirected()
+    frac_but = weight.all_pairs_dijkstra_path_length(gnx, len(nodes), weight='weight')
+    frac_top = weight.all_pairs_dijkstra_path_length(gnx_without_direction, len(nodes), weight='weight')
     max_b_v = 0;
     for n in nodes:
         b_v = len(nx.ancestors(gnx_without_direction, n))
@@ -28,14 +29,11 @@ def calculate_flow_index(gnx,threshold):
             max_b_v = b_v
     for n in nodes:
         b_u = len(nx.ancestors(gnx_without_direction,n))
-        frac_but=weight.all_pairs_dijkstra_path_length(gnx, b_u, weight='weight')
-        frac_top=weight.all_pairs_dijkstra_path_length(gnx_without_direction, b_u, weight='weight')
-        vet_sum = 0
-        for k in nodes:
-            if (k in frac_but[n]):
-                if (frac_but[n][k] != 0 and float(b_u)/max_b_v > threshold):
-                    vet_sum+=frac_top[n][k]/frac_but[n][k]
-        flow_node = float(vet_sum)/b_u
-        flow_list[n] = flow_node
-
+        if b_u !=0:
+            vet_sum = 0
+            for k in frac_but[n]:
+                if (frac_but[n][k] != 0 and float(b_u) / max_b_v > threshold):
+                    vet_sum += frac_top[n][k] / frac_but[n][k]
+            flow_node = float(vet_sum) / b_u
+            flow_list[n] = flow_node
     return flow_list
