@@ -39,7 +39,7 @@ def buid_features_importance_dict(map_fetures):
 
 
 def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classifications, ml_algos, tags_loader,
-                result_path,edges=False, load_clf_file_name=None, save_clf_file_name=None, random_state=None):
+                result_path,edges=False, load_clf_file_name=None, save_clf_file_name=None, test_size=0.3, random_state=None):
 
     features_importance_dict = buid_features_importance_dict(map_fetures)
 
@@ -59,14 +59,16 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
                                                 node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                                 load_clf_file_name=load_clf_file_name,
                                                 save_clf_file_name=save_clf_file_name,
-                                                random_state=random_state)
+                                                random_state=random_state,
+                                                test_size=test_size)
 
             else:
                 run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, edges_to_tags,
                                             node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                             load_clf_file_name=load_clf_file_name
                                             , save_clf_file_name=save_clf_file_name,
-                                            random_state=random_state)
+                                            random_state=random_state,
+                                            test_size=test_size)
 
     else:
         for classification in classifications:
@@ -85,19 +87,21 @@ def machineLearning(gnx, map_fetures, number_of_learning_for_mean, classificatio
                                                 node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                                 load_clf_file_name=load_clf_file_name
                                                 , save_clf_file_name=save_clf_file_name,
-                                                random_state=random_state)
+                                                random_state=random_state,
+                                                test_size=test_size)
 
             else:
                 run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, vertex_to_tags,
                                             node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
                                             load_clf_file_name=load_clf_file_name,
                                             save_clf_file_name=save_clf_file_name,
-                                            random_state=random_state)
+                                            random_state=random_state,
+                                            test_size=test_size)
 
 
 def run_multiclass_machine_learning(classification, features_importance_dict, l, ml_algos,vertex_to_tags,
                                     node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
-                                    load_clf_file_name, save_clf_file_name, random_state=None):
+                                    load_clf_file_name, save_clf_file_name, test_size , random_state=None):
     confusion_matrix_file_name = result_path + classification + '_confusion_matrix.txt'
     confusion_matrix_file = open(confusion_matrix_file_name, 'a')
     features_importance_file_name = result_path + 'features_importance.csv'
@@ -108,7 +112,8 @@ def run_multiclass_machine_learning(classification, features_importance_dict, l,
         sum_feature_importance = 0
         for i in range(int(number_of_learning_for_mean)):
             cls = l.implementLearningMethod(algo, load_clf_file_name=load_clf_file_name
-                                            , save_clf_file_name=save_clf_file_name, random_state=random_state)
+                                            , save_clf_file_name=save_clf_file_name, test_size=test_size,
+                                            random_state=random_state)
             if i < 2:
                 coloring_file_name = result_path + algo +'_coloring.txt'
                 l.write_coloring_file(node_to_zscoringfeatures, vertex_to_tags, coloring_file_name)
@@ -136,7 +141,7 @@ def run_multiclass_machine_learning(classification, features_importance_dict, l,
 
 def run_binary_machine_learning(classification, features_importance_dict, l, ml_algos, vertex_to_tags,
                                 node_to_zscoringfeatures, number_of_learning_for_mean, result_path,
-                                load_clf_file_name, save_clf_file_name, random_state=None):
+                                load_clf_file_name, save_clf_file_name,test_size, random_state=None):
     output_file_name = result_path + classification + '_auc.csv'
     auc_file = open(output_file_name, 'a')
     features_importance_file_name = result_path + classification + '_features_importance.csv'
@@ -145,9 +150,13 @@ def run_binary_machine_learning(classification, features_importance_dict, l, ml_
         print algo
         sum_auc_test = 0
         sum_auc_train = 0
+        sum_f1_test = 0
         sum_feature_importance = 0
         for i in range(int(number_of_learning_for_mean)):
-            cls = l.implementLearningMethod(algo, load_clf_file_name=load_clf_file_name, save_clf_file_name=save_clf_file_name, random_state=random_state)
+            cls = l.implementLearningMethod(algo, test_size=test_size
+                                            ,load_clf_file_name=load_clf_file_name,
+                                            save_clf_file_name=save_clf_file_name,
+                                            random_state=random_state)
             # if i < 2:
             #     coloring_file_name = result_path + algo +'_coloring.txt'
             #     l.write_coloring_file(node_to_zscoringfeatures, vertex_to_tags, coloring_file_name)
@@ -161,10 +170,15 @@ def run_binary_machine_learning(classification, features_importance_dict, l, ml_
             auc_train = l.evaluate_AUC_train()
             print 'auc_train', auc_train
             sum_auc_train += auc_train
+            f1_score = l.evaluate_f1_score()
+            print 'f1_score', f1_score
+            sum_f1_test += f1_score
         auc_file.writelines(algo + ',' + str(sum_auc_test / number_of_learning_for_mean) + '\n')
+        auc_file.writelines(algo + ' f1,' + str(sum_f1_test / number_of_learning_for_mean) + '\n')
         print 'mean_feature_importance', sum_feature_importance / number_of_learning_for_mean
         print 'mean_auc_test', sum_auc_test / number_of_learning_for_mean
         print 'mean_auc_train', sum_auc_train / number_of_learning_for_mean
+        print 'mean_f1_test', sum_f1_test / number_of_learning_for_mean
         # if algo == 'RF':
         #     for fi in features_importance_dict:
         #         feature_importance_value = sum_feature_importance[fi] / number_of_learning_for_mean
@@ -175,7 +189,7 @@ def run_binary_machine_learning(classification, features_importance_dict, l, ml_
 
 
 def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,tags_loader, result_path,edges=False,
-                 load_clf_file_name=None, save_clf_file_name=None, random_state=None):
+                 load_clf_file_name=None, save_clf_file_name=None, test_size=0.2, random_state=None):
     from learning import deep_learning as deep
     if(edges):
         for classification in classifications:
@@ -191,10 +205,12 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,
 
             if len(set(edge_to_tags.values())) != 2:
                 run_multiclass_deep_learning(classification, deepL, number_of_learning_for_mean, result_path,
-                                             load_clf_file_name, save_clf_file_name, random_state=random_state)
+                                             load_clf_file_name, save_clf_file_name, test_size=test_size,
+                                             random_state=random_state)
             else:
                 run_binary_deep_learning(classification, deepL, number_of_learning_for_mean, result_path,
-                                         load_clf_file_name, save_clf_file_name, random_state=random_state)
+                                         load_clf_file_name, save_clf_file_name, test_size=test_size,
+                                         random_state=random_state)
     else:
         for classification in classifications:
 
@@ -210,18 +226,20 @@ def deepLearning(gnx, map_fetures, number_of_learning_for_mean, classifications,
 
             if len(set(vertex_to_tags.values())) != 2:
                 run_multiclass_deep_learning(classification, deepL, number_of_learning_for_mean, result_path,
-                                             load_clf_file_name, save_clf_file_name,random_state=random_state)
+                                             load_clf_file_name, save_clf_file_name,test_size=test_size,
+                                             random_state=random_state)
             else:
                 run_binary_deep_learning(classification, deepL, number_of_learning_for_mean, result_path,
-                                         load_clf_file_name, save_clf_file_name, random_state=random_state)
+                                         load_clf_file_name, save_clf_file_name, test_size=test_size,
+                                         random_state=random_state)
 
 
 def run_multiclass_deep_learning(classification, deepL, number_of_learning_for_mean, result_path,
-                                 load_clf_file_name, save_clf_file_name, random_state = None):
+                                 load_clf_file_name, save_clf_file_name,test_size, random_state = None):
     confusion_matrix_file = result_path + classification + '_confusion_matrix.txt'
     sum_confusion_matrix_test = 0
     for i in range(int(number_of_learning_for_mean)):
-        cls = deepL.runNetwork(0.2, output_activation='softmax', output_size=7,
+        cls = deepL.runNetwork(test_size, output_activation='softmax', output_size=7,
                                load_clf_file_name=load_clf_file_name, save_clf_file_name=save_clf_file_name,
                                random_state=random_state)
         cm = deepL.evaluate_confusion_metric_test()
@@ -234,14 +252,14 @@ def run_multiclass_deep_learning(classification, deepL, number_of_learning_for_m
 
 
 def run_binary_deep_learning(classification, deepL, number_of_learning_for_mean, result_path,
-                             load_clf_file_name, save_clf_file_name, random_state=None):
+                             load_clf_file_name, save_clf_file_name,test_size, random_state=None):
     sum_auc_test = 0
     sum_auc_train = 0
     sum_f1_test = 0
     output_file_name = result_path + classification + '_auc.csv'
     auc_file = open(output_file_name, 'a')
     for i in range(int(number_of_learning_for_mean)):
-        cls = deepL.runNetwork(0.2,load_clf_file_name=load_clf_file_name, save_clf_file_name=save_clf_file_name,
+        cls = deepL.runNetwork(test_size,load_clf_file_name=load_clf_file_name, save_clf_file_name=save_clf_file_name,
                                random_state=random_state)
         auc_test = deepL.evaluate_AUC_test()
         print 'auc_test', auc_test
