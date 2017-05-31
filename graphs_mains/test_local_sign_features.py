@@ -330,7 +330,7 @@ def calc_by_train_size(graph_name,test_sizes,f_output,random_state,load,deep):
 
 test_sizes = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]
 # test_sizes = [0.2,0.4]
-graph_name = sys.argv[0]
+graph_name = sys.argv[1]
 # graph_name = 'slashdot'
 f_output = open('./../data/result_social_sign/'+graph_name+'/result.txt','w')
 calc_by_train_size(graph_name=graph_name,test_sizes=test_sizes,f_output=f_output,random_state=2,load=False,deep=False)
