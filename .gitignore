@@ -4,6 +4,8 @@ graphs_mains/mails_main.py
 data/output/
 data/times/
 data/roi/
+data/directed/social_sign/roi/
+data/result_social_sign/roi/
 data/directed/social_sign/slashdot/features/output/motifs4.txt
 data/directed/social_sign/slashdot/features/output/motifs4_directed_edges.txt
 data/directed/social_sign/epinions/features/output/motifs4.txt
