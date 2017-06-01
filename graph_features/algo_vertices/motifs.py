@@ -19,37 +19,37 @@ def parse_motif_result(f, ft, ggt, motifs_number, result,motifs_veriations):
     mapProperiesIndex = 2;
     mapProp = result[mapProperiesIndex];
 
-    print '1. ' + str(datetime.now())
+    print ('1. ' + str(datetime.now()))
     motifsHist = initialize_motif_hist(ggt, motifs_veriations)
 
-    print '2. ' + str(datetime.now())
+    print ('2. ' + str(datetime.now()))
     write_to_file_all_types_of_motifs(ft, result)
 
-    print '3. ' + str(datetime.now())
+    print ('3. ' + str(datetime.now()))
     motifsByType = calculate_motifs_histogram2(ggt, mapProp, motifsHist, motifs_number)
-    print '4. ' + str(datetime.now())
+    print ('4. ' + str(datetime.now()))
     write_to_file_motif_hist(f, motifsHist)
     return motifsHist, motifsByType
 
 
 def write_to_file_motif_hist(f, motifs_hist):
-    print 'start write to file' + str(datetime.now())
+    print ('start write to file' + str(datetime.now()))
     for i in motifs_hist:
         line = str(i)
         for h in motifs_hist[i]:
             line = line + ',' + str(h)
         f.writelines(line + '\n')
-    print 'finish write to file' + str(datetime.now())
+    print ('finish write to file' + str(datetime.now()))
 
 def calculate_motifs_histogram2(ggt, map_properties, motifs_hist, motifs_number):
     motifsByType={}
     typeIndex = 0
     for prop in map_properties:
-        print str(typeIndex) + '- '+str(len(prop))
+        print (str(typeIndex) + '- '+str(len(prop)))
         typeIndex +=1
     typeIndex =0
     for prop in map_properties:
-        print str(typeIndex) + '- '+str(len(prop)) + '. - ' + str(datetime.now())
+        print (str(typeIndex) + '- '+str(len(prop)) + '. - ' + str(datetime.now()))
         for p in prop:
             if(p!=0):
                 for v in p.a:
