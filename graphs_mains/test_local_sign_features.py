@@ -188,12 +188,12 @@ def perform_learning(train_features, test_features, f_output, local, gglobal, de
         # self.classifier.add(Dropout(0.5))
         # self.classifier.add(Dense(100, init='he_normal', activation='relu', W_regularizer=l2(0.5)))
         clf.add(Dropout(0.1))
-        clf.add(Dense(1, init='uniform', activation='relu', W_regularizer=l1_l2(0.4)))
+        clf.add(Dense(1, init='uniform', activation='sigmoid', W_regularizer=l1_l2(0.2)))
         clf.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
         clf.fit(train, train_tags, validation_data=[test, test_tags], epochs=100,
                             batch_size=10, verbose=2)
 
-        evaluate_auc(clf, test, test_tags, train, train_tags)
+        evaluate_auc(clf, test, test_tags, train, train_tags, f_output)
 
 
 def evaluate_auc(clf, test, test_tags, train, train_tags,f_output):
@@ -303,10 +303,13 @@ def calc_by_train_size(graph_name,test_sizes,f_output,random_state,load,deep):
                 pickle.dump(test_features[test_size], f)
         #
     else:
-        with open(output_result_dir+'/train_features_'+graph_name+'.dump', 'rb') as f:
-            train_features = pickle.load( f)
-        with open(output_result_dir+'/test_features_'+graph_name+'.dump', 'rb') as f:
-            test_features = pickle.load( f)
+        train_features={}
+        test_features={}
+        for test_size in test_sizes:
+            with open(output_result_dir+'/train_features_'+graph_name+'.dump', 'rb') as f:
+                train_features[test_size] = pickle.load( f)
+            with open(output_result_dir+'/test_features_'+graph_name+'.dump', 'rb') as f:
+                test_features[test_size] = pickle.load( f)
 
 
     for test_size in train_features.keys():
@@ -329,11 +332,12 @@ def calc_by_train_size(graph_name,test_sizes,f_output,random_state,load,deep):
 
 
 test_sizes = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]
+# test_sizes = [0.2]
 # test_sizes = [0.2,0.4]
-graph_name = sys.argv[1]
-# graph_name = 'slashdot'
-f_output = open('./../data/result_social_sign/'+graph_name+'/result.txt','w')
-calc_by_train_size(graph_name=graph_name,test_sizes=test_sizes,f_output=f_output,random_state=2,load=False,deep=False)
+# graph_name = sys.argv[1]
+graph_name = 'wiki'
+f_output = open('./../data/result_social_sign/'+graph_name+'/result_deep.txt','a')
+calc_by_train_size(graph_name=graph_name,test_sizes=test_sizes,f_output=f_output,random_state=2,load=True,deep=True)
 f_output.close()
 
 # for test_size in test_sizes:
