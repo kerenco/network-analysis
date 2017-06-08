@@ -129,6 +129,7 @@ def z_scoring(matrix):
     return new_matrix
 
 def perform_learning(train_features, test_features, f_output, local, gglobal, deep = False):
+    print train_features[0]
     if (local and gglobal):
         train = [x[1:-1] for x in train_features]
         test = [x[1:-1] for x in test_features]
@@ -147,8 +148,10 @@ def perform_learning(train_features, test_features, f_output, local, gglobal, de
     train = z_scoring(train)
     test = z_scoring(test)
     print len(train[0])
+    print train[0]
     if not deep:
         algos = ['adaBoost', 'RF', 'L-SVM', 'RBF-SVM', 'SGD']
+        # algos = ['RBF-SVM']
         for algo in algos:
             print algo
             f_output.writelines(algo +'\n')
@@ -210,10 +213,11 @@ def evaluate_auc(clf, test, test_tags, train, train_tags,f_output):
 
 
 def calc_by_train_size(graph_name,test_sizes,f_output,random_state,load,deep):
+    output_result_dir ={}
     for test_size in test_sizes:
-        output_result_dir = './../data/result_social_sign/'+graph_name+'/'+str(test_size)+'/'
-        if (not os.path.exists(output_result_dir)):
-            os.mkdir(output_result_dir)
+        output_result_dir[test_size] = './../data/result_social_sign/'+graph_name+'/'+str(test_size)+'/'
+        if (not os.path.exists(output_result_dir[test_size])):
+            os.mkdir(output_result_dir[test_size])
     if not load:
         wdir = os.getcwd()
         file_in = str(wdir) + r'/../data/directed/social_sign/'+graph_name+'/input/'+graph_name+'.txt'
@@ -296,48 +300,50 @@ def calc_by_train_size(graph_name,test_sizes,f_output,random_state,load,deep):
         # print test_features
         #
         for test_size in train_features.keys():
-            output_result_dir = './../data/result_social_sign/' + graph_name + '/' + str(test_size) + '/'
-            with open(output_result_dir +'train_features_'+graph_name+'.dump', 'wb') as f:
+            with open(output_result_dir[test_size] +'train_features_'+graph_name+'.dump', 'wb') as f:
                 pickle.dump(train_features[test_size], f)
-            with open(output_result_dir+'test_features_'+graph_name+'.dump', 'wb') as f:
+            with open(output_result_dir[test_size]+'test_features_'+graph_name+'.dump', 'wb') as f:
                 pickle.dump(test_features[test_size], f)
         #
     else:
-        train_features={}
-        test_features={}
         for test_size in test_sizes:
-            with open(output_result_dir+'/train_features_'+graph_name+'.dump', 'rb') as f:
-                train_features[test_size] = pickle.load( f)
-            with open(output_result_dir+'/test_features_'+graph_name+'.dump', 'rb') as f:
-                test_features[test_size] = pickle.load( f)
+            print output_result_dir[test_size]+'/train_features_'+graph_name+'.dump'
+            with open(output_result_dir[test_size]+'/train_features_'+graph_name+'.dump', 'rb') as f:
+                train_features_specific = pickle.load(f)
+            with open(output_result_dir[test_size]+'/test_features_'+graph_name+'.dump', 'rb') as f:
+                test_features_specific = pickle.load(f)
 
-
-    for test_size in train_features.keys():
-        print test_size
-        f_output.writelines(str(test_size)+'\n')
-        train_features_specific = train_features[test_size]
-        test_features_specific = test_features[test_size]
-        print 'local'
-        f_output.writelines('local\n')
-        perform_learning(train_features_specific, test_features_specific,f_output, local=True, gglobal=False, deep=deep)
-        print 'global'
-        f_output.writelines('global\n')
-        perform_learning(train_features_specific, test_features_specific,f_output, local=False, gglobal=True, deep=deep)
-        print 'Both'
-        f_output.writelines('Both\n')
-        perform_learning(train_features_specific, test_features_specific,f_output, local=True, gglobal=True, deep=deep)
-
-
-
+            print test_size
+            print graph_name
+            f_output.writelines(str(test_size)+'\n')
+            # train_features_specific = train_features[test_size]
+            # test_features_specific = test_features[test_size]
+            print 'local'
+            f_output.writelines('local\n')
+            perform_learning(train_features_specific, test_features_specific,f_output, local=True, gglobal=False, deep=deep)
+            print 'global'
+            f_output.writelines('global\n')
+            perform_learning(train_features_specific, test_features_specific,f_output, local=False, gglobal=True, deep=deep)
+            print 'Both'
+            f_output.writelines('Both\n')
+            perform_learning(train_features_specific, test_features_specific,f_output, local=True, gglobal=True, deep=deep)
+            f_output.flush()
 
 
 test_sizes = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.95]
 # test_sizes = [0.2]
 # test_sizes = [0.2,0.4]
 # graph_name = sys.argv[1]
-graph_name = 'wiki'
-f_output = open('./../data/result_social_sign/'+graph_name+'/result_deep.txt','a')
-calc_by_train_size(graph_name=graph_name,test_sizes=test_sizes,f_output=f_output,random_state=2,load=True,deep=True)
+graph_name = 'slashdot'
+print graph_name
+
+does_load_features = True
+deep = False
+if deep:
+    f_output = open('./../data/result_social_sign/'+graph_name+'/result_deep.txt','w')
+else:
+    f_output = open('./../data/result_social_sign/' + graph_name + '/result.txt', 'w')
+calc_by_train_size(graph_name=graph_name,test_sizes=test_sizes,f_output=f_output,random_state=2,load=does_load_features,deep=deep)
 f_output.close()
 
 # for test_size in test_sizes:

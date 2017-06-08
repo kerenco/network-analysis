@@ -1,0 +1,130 @@
+0.1
+local
+adaBoost
+Auc Test:0.652832294931
+Auc Train:0.657684987955
+global
+adaBoost
+Auc Test:0.591685834723
+Auc Train:0.581536582767
+Both
+adaBoost
+Auc Test:0.741132342855
+Auc Train:0.77159053954
+0.2
+local
+adaBoost
+Auc Test:0.647951164484
+Auc Train:0.647363745573
+global
+adaBoost
+Auc Test:0.594898451281
+Auc Train:0.583706704213
+Both
+adaBoost
+Auc Test:0.7373670968
+Auc Train:0.769368938065
+0.3
+local
+adaBoost
+Auc Test:0.650668087446
+Auc Train:0.652504003942
+global
+adaBoost
+Auc Test:0.58637304542
+Auc Train:0.581971015856
+Both
+adaBoost
+Auc Test:0.743468249124
+Auc Train:0.768116906539
+0.4
+local
+adaBoost
+Auc Test:0.660143397464
+Auc Train:0.661146893662
+global
+adaBoost
+Auc Test:0.588815589803
+Auc Train:0.582705582792
+Both
+adaBoost
+Auc Test:0.743389383925
+Auc Train:0.766495722379
+0.5
+local
+adaBoost
+Auc Test:0.661621692666
+Auc Train:0.663859796601
+global
+adaBoost
+Auc Test:0.583398321488
+Auc Train:0.583841380338
+Both
+adaBoost
+Auc Test:0.738819454523
+Auc Train:0.765089609657
+0.6
+local
+adaBoost
+Auc Test:0.749646505716
+Auc Train:0.661751387303
+global
+adaBoost
+Auc Test:0.583378978036
+Auc Train:0.581796143214
+Both
+adaBoost
+Auc Test:0.733148794329
+Auc Train:0.758482752491
+0.7
+local
+adaBoost
+Auc Test:0.667363154608
+Auc Train:0.669967609192
+global
+adaBoost
+Auc Test:0.575203144264
+Auc Train:0.587624295725
+Both
+adaBoost
+Auc Test:0.65899787984
+Auc Train:0.75530010244
+0.8
+local
+adaBoost
+Auc Test:0.687643179728
+Auc Train:0.688232315844
+global
+adaBoost
+Auc Test:0.58422666278
+Auc Train:0.588660869681
+Both
+adaBoost
+Auc Test:0.713398343689
+Auc Train:0.749406784012
+0.9
+local
+adaBoost
+Auc Test:0.642560320135
+Auc Train:0.617801675781
+global
+adaBoost
+Auc Test:0.579518259883
+Auc Train:0.592459694442
+Both
+adaBoost
+Auc Test:0.548722306412
+Auc Train:0.713979261603
+0.95
+local
+adaBoost
+Auc Test:0.599231131169
+Auc Train:0.59320627345
+global
+adaBoost
+Auc Test:0.52750982015
+Auc Train:0.597605687864
+Both
+adaBoost
+Auc Test:0.692622905005
+Auc Train:0.703635539731
