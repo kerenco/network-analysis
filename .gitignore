@@ -2,6 +2,7 @@
 .idea/
 graphs_mains/mails_main.py
 data/output/
+data/result_social_sign/
 data/times/
 data/roi/
 data/directed/social_sign/roi/
