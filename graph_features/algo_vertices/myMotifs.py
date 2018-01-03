@@ -381,8 +381,9 @@ def init_edges_dict(g):
             edges_dict[t2] = True
     return edges_dict
 
-def find_all_motifs(f, ft, gnx, motif_path, motifs_number= 3,calculate_edges = True):
+def find_all_motifs(f, ft, gnx, motif_path, motifs_number= 3):
     gnx_copy = gnx.copy()
+    calculate_edges = gnx_copy.is_directed()
     start = timer.start(ft, 'Find Motifs ' + str(motifs_number) + ' ')
 
     if motifs_number == 3:
